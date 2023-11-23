@@ -5,6 +5,16 @@ from llm import llm
 
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 
+SYSTEM_MESSAGE = """
+You are a movie expert providing information about movies.
+Be as helpful as possible and return as much information as possible.
+Do not answer any questions that do not relate to movies, actors or directors.
+
+Do not answer any questions using your pre-trained knowledge, only use the information provided in the context.
+
+Respond to all questions in French.
+"""
+
 memory = ConversationBufferWindowMemory(
     memory_key='chat_history',
     k=5,
@@ -20,6 +30,7 @@ agent = initialize_agent(
     memory=memory,
     verbose=True,
     agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
+    agent_kwargs={"system_message": SYSTEM_MESSAGE}
 )
 
 def generate_response(prompt):

@@ -5,6 +5,15 @@ from llm import llm
 
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 
+from langchain.tools import Tool
+
+from solutions.tools.vector import kg_qa
+
+from langchain.chains import GraphCypherQAChain
+from graph import graph
+from solutions.tools.cypher import cypher_qa
+
+
 SYSTEM_MESSAGE = """
 You are a movie expert providing information about movies.
 Be as helpful as possible and return as much information as possible.
@@ -21,7 +30,18 @@ memory = ConversationBufferWindowMemory(
     return_messages=True,
 )
 
-tools = []
+tools = [
+    Tool.from_function(
+        name="Vector Search Index",  # (1)
+        description="Provides information about movie plots using Vector Search", # (2)
+        func = kg_qa, # (3)
+    ),
+    Tool.from_function(
+        name="Graph Cypher QA Chain",  # (1)
+        description="Provides information about Movies including their Actors, Directors and User reviews", # (2)
+        func = cypher_qa, # (3)
+    ),
+]
 
 
 agent = initialize_agent(

@@ -9,19 +9,17 @@ from langchain.tools import Tool
 
 from solutions.tools.vector import kg_qa
 
-from langchain.chains import GraphCypherQAChain
-from graph import graph
-from solutions.tools.cypher import cypher_qa
+# from langchain.chains import GraphCypherQAChain
+# from graph import graph
+# from solutions.tools.cypher import cypher_qa
 
 
 SYSTEM_MESSAGE = """
-You are a movie expert providing information about movies.
-Be as helpful as possible and return as much information as possible.
-Do not answer any questions that do not relate to movies, actors or directors.
+You are an expert company news analyst specialising in provding information from Regulatory News Service (RNS).
 
-Do not answer any questions using your pre-trained knowledge, only use the information provided in the context.
+DO NOT answer questions using your pre-trained knowledge, only use the information provided in the context. This is very important, so before you make a response think if the information is only available in the context.
 
-Respond to all questions in French.
+Do not answer any questions that do not relate to company news.
 """
 
 memory = ConversationBufferWindowMemory(
@@ -33,14 +31,14 @@ memory = ConversationBufferWindowMemory(
 tools = [
     Tool.from_function(
         name="Vector Search Index",  # (1)
-        description="Provides information about movie plots using Vector Search", # (2)
+        description="Provides information from company news releases using Vector Search", # (2)
         func = kg_qa, # (3)
-    ),
-    Tool.from_function(
-        name="Graph Cypher QA Chain",  # (1)
-        description="Provides information about Movies including their Actors, Directors and User reviews", # (2)
-        func = cypher_qa, # (3)
-    ),
+    )
+    # Tool.from_function(
+    #     name="Graph Cypher QA Chain",  # (1)
+    #     description="Provides information about Movies including their Actors, Directors and User reviews", # (2)
+    #     func = cypher_qa, # (3)
+    # ),
 ]
 
 

@@ -12,6 +12,8 @@ llm = ChatOpenAI(
 from langchain.embeddings import OpenAIEmbeddings
 
 embeddings = OpenAIEmbeddings(
-    openai_api_key=st.secrets["OPENAI_API_KEY"]
+    openai_api_key=st.secrets["OPENAI_API_KEY"],
+    model = "text-embedding-ada-002",
+    show_progress_bar = False
 )
 # end::embedding[]

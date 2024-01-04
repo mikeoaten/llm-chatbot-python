@@ -12,15 +12,15 @@ from solutions.llm import llm
 # Use the Chains built in the previous lessons
 from solutions.tools.vector import kg_qa
 # from solutions.tools.fewshot import cypher_qa
-from solutions.tools.finetuned import cypher_qa
+# from solutions.tools.finetuned import cypher_qa
 
 # tag::tools[]
 tools = [
-    Tool.from_function(
-        name="Cypher QA",
-        description="Provide information about movies questions using Cypher",
-        func = cypher_qa,
-    ),
+    # Tool.from_function(
+    #     name="Cypher QA",
+    #     description="Provide information about movies questions using Cypher",
+    #     func = cypher_qa,
+    # ),
     Tool.from_function(
         name="Vector Search Index",
         description="Provides information about movie plots using Vector Search",

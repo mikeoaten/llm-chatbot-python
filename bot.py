@@ -4,14 +4,17 @@ from agent import generate_response
 
 # tag::setup[]
 # Page Config
-st.set_page_config("Ebert", page_icon=":movie_camera:")
+st.set_page_config(
+    page_title="RNS Buddy",
+    page_icon=":newspaper:"
+)
 # end::setup[]
 
 # tag::session[]
 # Set up Session State
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi, I'm the GraphAcademy Chatbot!  How can I help you?"},
+        {"role": "assistant", "content": "Ask me anything about listed UK companies"},
     ]
 # end::session[]
 
@@ -34,7 +37,7 @@ with st.container():
         write_message(message['role'], message['content'], save=False)
 
     # Handle any user input
-    if prompt := st.chat_input("What is up?"):
+    if prompt := st.chat_input("Ask away..."):
         # Display user message in chat message container
         write_message('user', prompt)
 

@@ -77,26 +77,3 @@ def generate_response(prompt):
 
     return response
 # end::generate-response[]
-
-"""
-The `kg_qa` can now be registered as a tool within the agent.
-
-# tag::import[]
-from tools.cypher import cypher_qa
-# end::import[]
-
-# tag::tool[]
-tools = [
-    Tool.from_function(
-        name="Vector Search Index",
-        description="Provides information about movie plots using Vector Search",
-        func = kg_qa,
-    ),
-    Tool.from_function(
-        name="Graph Cypher QA Chain",  # <1>
-        description="Provides information about Movies including their Actors, Directors and User reviews", # <2>
-        func = cypher_qa, # <3>
-    ),
-]
-# end::tool[]
-"""

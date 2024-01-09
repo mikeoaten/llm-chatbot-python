@@ -1,0 +1,267 @@
+// Instruction to ChatGPT 'Covert to JSON format and pretty print the output'
+
+{
+  "memory": {
+    "chat_memory": {
+      "messages": [
+        {
+          "content": "list all rns news titles",
+          "role": "User",
+          "timestamp": null
+        },
+        {
+          "content": "The response to your last comment is:\n1. Block Listing of Shares\n2. Publication of Suppl.Prospcts\n3. Director/PDMR Shareholding\n4. Director/PDMR Shareholding\n5. Transaction in Own Shares\n6. Total Voting Rights",
+          "role": "Assistant",
+          "timestamp": null
+        },
+        {
+          "content": "also return all the metadata for these",
+          "role": "User",
+          "timestamp": null
+        },
+        {
+          "content": "Here is the metadata for the news titles you mentioned:\n\nBlock Listing of Shares:\n- This refers to a company's decision to reserve a certain number of shares for potential future issuance. It allows the company to issue shares quickly and efficiently when needed, without having to seek additional shareholder approval.\n\nPublication of Suppl.Prospcts:\n- This refers to the publication of supplementary prospectuses. Prospectuses are documents that provide detailed information about a company and its securities to potential investors. Supplementary prospectuses are additional documents that are published after the initial prospectus to provide updated or additional information.\n\nDirector/PDMR Shareholding:\n- This refers to the shares held by directors or persons discharging managerial responsibilities (PDMRs) within a company. It is important for transparency and to monitor potential conflicts of interest.\n\nTransaction in Own Shares:\n- This refers to a company's purchase or sale of its own shares. Companies may engage in such transactions for various reasons, including share buybacks to return capital to shareholders or to support the company's share price.\n\nTotal Voting Rights:\n- This refers to the total number of voting rights attached to a company's shares. It is important for shareholders to know the total voting rights as it determines their voting power and influence in company decisions. The total voting rights may change over time due to factors such as share issuances, buybacks, or conversions."
+        }
+      ]
+    },
+    "return_messages": true,
+    "memory_key": "chat_history"
+  },
+  "verbose": true,
+  "tags": ["chat-conversational-react-description"],
+  "agent": {
+    "llm_chain": {
+      "prompt": {
+        "input_variables": ["agent_scratchpad", "chat_history", "input"],
+        "input_types": {
+          "chat_history": [
+            "langchain.schema.messages.AIMessage",
+            "langchain.schema.messages.HumanMessage",
+            "langchain.schema.messages.ChatMessage",
+            "langchain.schema.messages.SystemMessage",
+            "langchain.schema.messages.FunctionMessage",
+            "langchain.schema.messages.ToolMessage"
+          ],
+          "agent_scratchpad": [
+            "langchain.schema.messages.AIMessage",
+            "langchain.schema.messages.HumanMessage",
+            "langchain.schema.messages.ChatMessage",
+            "langchain.schema.messages.SystemMessage",
+            "langchain.schema.messages.FunctionMessage",
+            "langchain.schema.messages.ToolMessage"
+          ]
+        },
+        "messages": [
+          {
+            "prompt": {
+              "input_variables": [],
+              "template": "\nYou are an expert company news analyst specialising in provding information from Regulatory News Service (RNS).\n\nDO NOT answer questions using your pre-trained knowledge, only use the information provided in the context. This is very important, so before you make a response think if the information is only available in the context.\n\nDo not answer any questions that do not relate to company news."
+            },
+            "role": "SystemMessage"
+          },
+          {
+            "variable_name": "chat_history",
+            "role": "MessagesPlaceholder"
+          },
+          {
+            "prompt": {
+              "input_variables": ["input"],
+              "template":
+              "TOOLS
+              \n------
+              \nAssistant can ask the user to use tools to look up information that may be helpful in answering the users original question. The tools the human can use are:
+              \n
+              \n> Vector Search Index: Provides information from company news releases using Vector Search
+              \n
+              \nRESPONSE FORMAT INSTRUCTIONS
+              \n----------------------------
+              \n
+              \nWhen responding to me, please output a response in one of two formats:
+              \n
+              \n**Option 1:**
+              \nUse this if you want the human to use a tool.
+              \nMarkdown code snippet formatted in the following schema:
+              \n
+              \n```json
+              \n{{
+                \n    \"action\": string, \\\\ The action to take. Must be one of Vector Search Index
+                \n    \"action_input\": string \\\\ The input to the action
+              \n}}
+              \n```
+              \n
+              \n**Option #2:**
+              \nUse this if you want to respond directly to the human. Markdown code snippet formatted in the following schema:
+              \n
+              \n```json
+              \n{{
+                \n    \"action\": \"Final Answer\",
+                \n    \"action_input\": string \\\\ You should put what you want to return to use here
+              \n}}
+              \n```
+              \n
+              \nUSER\'S INPUT
+              \n--------------------
+              \nHere is the user\'s input (remember to respond with a markdown code snippet of a json blob with a single action, and NOTHING else):
+              \n
+              \n{input}"
+          },
+          {
+            "variable_name": "agent_scratchpad",
+            "role": "MessagesPlaceholder"
+          }
+        ]
+      },
+      "messages": [
+        {
+          "role": "SystemMessagePromptTemplate",
+          "prompt": {
+            "input_variables": [],
+            "template": "\nYou are an expert company news analyst specialising in provding information from Regulatory News Service (RNS).\n\nDO NOT answer questions using your pre-trained knowledge, only use the information provided in the context. This is very important, so before you make a response think if the information is only available in the context.\n\nDo not answer any questions that do not relate to company news."
+          }
+        },
+        {
+          "variable_name": "chat_history",
+          "role": "MessagesPlaceholder"
+        },
+        {
+          "role": "HumanMessagePromptTemplate",
+          "prompt": {
+            "input_variables": ["input"],
+            "template":
+            "TOOLS
+            \n------
+            \nAssistant can ask the user to use tools to look up information that may be helpful in answering the users original question. The tools the human can use are:
+            \n
+            \n> Vector Search Index: Provides information from company news releases using Vector Search
+            \n
+            \nRESPONSE FORMAT INSTRUCTIONS
+            \n----------------------------
+            \n
+            \nWhen responding to me, please output a response in one of two formats:
+            \n
+            \n**Option 1:**
+            \nUse this if you want the human to use a tool.
+            \nMarkdown code snippet formatted in the following schema:
+            \n
+            \n```json
+            \n{{
+                \n    \"action\": string, \\\\ The action to take. Must be one of Vector Search Index
+                \n    \"action_input\": string \\\\ The input to the action
+            \n}}
+            \n```
+            \n
+            \n**Option #2:**
+            \nUse this if you want to respond directly to the human. Markdown code snippet formatted in the following schema:
+            \n
+            \n```json
+            \n{{
+                \n    \"action\": \"Final Answer\",
+                \n    \"action_input\": string \\\\ You should put what you want to return to use here
+            \n}}
+            \n```
+            \n
+            \nUSER\'S INPUT
+            \n--------------------
+            \nHere is the user\'s input (remember to respond with a markdown code snippet of a json blob with a single action, and NOTHING else):
+            \n
+            \n{input}"
+          }
+        }
+      ]
+    },
+    "llm": {
+      "client": {
+        "object_type": "completions.Completions",
+        "id": 0
+      },
+      "async_client": {
+        "object_type": "chat.completions.AsyncCompletions",
+        "id": 1
+      },
+      "model_name": "gpt-3.5-turbo-0613",
+      "openai_api_key": "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",
+      "openai_proxy": "",
+      "object_type": "ChatOpenAI"
+    },
+    "output_parser": {
+      "object_type": "ConvoOutputParser"
+    },
+    "allowed_tools": ["Vector Search Index"],
+    "template_tool_response":
+    "TOOL RESPONSE: 
+    \n---------------------
+    \n{observation}
+    \n
+    \nUSER'S INPUT
+    \n--------------------
+    \n
+    \nOkay, so what is the response to my last comment? If using information obtained from the tools you must mention it explicitly without mentioning the tool names - I have forgotten all TOOL RESPONSES! Remember to respond with a markdown code snippet of a json blob with a single action, and NOTHING else."
+  },
+  "tools": [
+    {
+      "name": "Vector Search Index",
+      "description": "Provides information from company news releases using Vector Search",
+      "func": {
+        "object_type": "RetrievalQA",
+        "combine_documents_chain": {
+          "object_type": "StuffDocumentsChain",
+          "llm_chain": {
+            "prompt": {
+              "input_variables": ["context", "question"],
+              "messages": [
+                {
+                  "prompt": {
+                    "input_variables": ["context"],
+                    "template":
+                    "Use the following pieces of context to answer the user's question.
+                    \nIf you don't know the answer, just say that you don't know, don't try to make up an answer.
+                    \n----------------
+                    \n{context}"
+                  },
+                  "role": "SystemMessagePromptTemplate"
+                },
+                {
+                  "prompt": {
+                    "input_variables": ["question"],
+                    "template": "{question}"
+                  },
+                  "role": "HumanMessagePromptTemplate"
+                }
+              ]
+            },
+            "object_type": "LLMChain",
+            "llm": {
+              "client": {
+                "object_type": "completions.Completions",
+                "id": 2
+              },
+              "async_client": {
+                "object_type": "chat.completions.AsyncCompletions",
+                "id": 3
+              },
+              "model_name": "gpt-3.5-turbo-0613",
+              "openai_api_key": "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",
+              "openai_proxy": "",
+              "object_type": "ChatOpenAI"
+            },
+            "document_variable_name": "context",
+            "object_type": "LLMChain"
+          },
+          "retriever": {
+            "object_type": "VectorStoreRetriever",
+            "tags": ["Neo4jVector", "OpenAIEmbeddings"],
+            "vectorstore": {
+              "object_type": "Neo4jVector",
+              "id": 4
+            },
+            "search_type": "similarity_score_threshold",
+            "search_kwargs": {"k": 10, "score_threshold": 0.0},
+            "object_type": "VectorStoreRetriever"
+          },
+          "object_type": "RetrievalQA"
+        },
+        "object_type": "Tool"
+      }
+    }
+  ]
+}

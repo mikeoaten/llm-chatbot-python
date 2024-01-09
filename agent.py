@@ -10,7 +10,7 @@ from langchain.tools import Tool
 from solutions.tools.vector import kg_qa
 
 # from langchain.chains import GraphCypherQAChain
-# from graph import graph
+# from solutions.graph import graph
 # from solutions.tools.cypher import cypher_qa
 
 
@@ -34,11 +34,12 @@ tools = [
         description="Provides information from company news releases using Vector Search", # (2)
         func = kg_qa, # (3)
     )
+    # ,
     # Tool.from_function(
     #     name="Graph Cypher QA Chain",  # (1)
-    #     description="Provides information about Movies including their Actors, Directors and User reviews", # (2)
+    #     description="Provides information about company news", # (2)
     #     func = cypher_qa, # (3)
-    # ),
+    # )
 ]
 
 
@@ -47,8 +48,12 @@ agent = initialize_agent(
     llm,
     memory=memory,
     verbose=True,
+    return_source_documents=True,
+    return_intermediate_steps=True,
     agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
-    agent_kwargs={"system_message": SYSTEM_MESSAGE}
+    agent_kwargs={
+        "system_message": SYSTEM_MESSAGE
+        }
 )
 
 def generate_response(prompt):
@@ -56,7 +61,6 @@ def generate_response(prompt):
     Create a handler that calls the Conversational agent
     and returns a response to be rendered in the UI
     """
-
     response = agent(prompt)
 
     return response['output']

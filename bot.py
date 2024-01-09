@@ -1,6 +1,9 @@
 import streamlit as st
 from utils import write_message
-from agent import generate_response
+from agent import generate_response, agent, kg_qa
+from datetime import datetime
+from langchain.chains import RetrievalQA
+from solutions.tools.vector import retriever
 
 # tag::setup[]
 # Page Config
@@ -27,8 +30,20 @@ def handle_submit(message):
 
         response = generate_response(message)
         write_message('assistant', response)
+        #  logging
+        print("\nRESPONSE - ", end=' ')
+        print(datetime.now())
+        print("\n")
+        print("Agent\n ")
+        print(agent)
+        print("\n")
+        print("Response")
+        print(retriever.get_relevant_documents(query=prompt, kwargs={'score'}))
+        for doc in retriever.get_relevant_documents(prompt):
+            print("-" * 80)
+            print(doc)
+        print("\n")
 # end::submit[]
-
 
 # tag::chat[]
 with st.container():
@@ -44,3 +59,7 @@ with st.container():
         # Generate a response
         handle_submit(prompt)
 # end::chat[]
+
+# for doc in retriever:
+#     print("-" * 80)
+#     print(doc)

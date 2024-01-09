@@ -16,10 +16,10 @@ test_vector = Neo4jVector.from_existing_index(
 )
 
 r = test_vector.similarity_search_with_relevance_scores(
-    "News titles which are like 'Publication of Suppl.Prospects' ",
+    "News titles which are like 'Publication of Suppl.Prospects'",
     k=10)
 
 for doc, score in r:
     print("-" * 80)
-    print("Score: ", score)
+    print("Score: ", score) 
     print(doc.page_content)

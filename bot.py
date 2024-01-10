@@ -1,9 +1,10 @@
 import streamlit as st
 from utils import write_message
-from agent import generate_response, agent, kg_qa
+from agent import generate_response, agent, kg_qa, memory
 from datetime import datetime
 from langchain.chains import RetrievalQA
 from solutions.tools.vector import retriever
+from langchain.callbacks import get_openai_callback
 
 # tag::setup[]
 # Page Config
@@ -27,22 +28,26 @@ if "messages" not in st.session_state:
 def handle_submit(message):
     # Handle the response
     with st.spinner('Thinking...'):
-
-        response = generate_response(message)
-        write_message('assistant', response)
-        #  logging
-        print("\nRESPONSE - ", end=' ')
-        print(datetime.now())
-        print("\n")
-        print("Agent\n ")
-        print(agent)
-        print("\n")
-        print("Response")
-        print(retriever.get_relevant_documents(query=prompt, kwargs={'score'}))
-        for doc in retriever.get_relevant_documents(prompt):
-            print("-" * 80)
-            print(doc)
-        print("\n")
+        with get_openai_callback() as cb:
+            response = generate_response(message)
+            write_message('assistant', response)
+            #  logging
+            print("\nRESPONSE - ", end=' ')
+            print(datetime.now())
+            print("\n")
+            print("Agent\n ")
+            print(agent)
+            print("\n")
+            print("Response")
+            print(retriever.get_relevant_documents(query=prompt))
+            for doc in retriever.get_relevant_documents(prompt):
+                print("-" * 80)
+                print(doc)
+            print("\n")
+            print(f"Total Tokens: {cb.total_tokens}")
+            print(f"Prompt Tokens: {cb.prompt_tokens}")
+            print(f"Completion Tokens: {cb.completion_tokens}")
+            print(f"Total Cost (USD): ${cb.total_cost}")
 # end::submit[]
 
 # tag::chat[]
@@ -60,6 +65,14 @@ with st.container():
         handle_submit(prompt)
 # end::chat[]
 
-# for doc in retriever:
-#     print("-" * 80)
-#     print(doc)
+# Add a button to start a new chat
+# st.write("")  # Add an empty space for better separation
+# if st.button('Start a new chat'):
+#     # Clear the chat memory
+#     memory.clear()
+#     # Clear the chat messages fron the web app UI 
+#     # st.session_state.messages = []
+#     st.session_state['show_container'] = False
+#     st.session_state.messages = [
+#         {"role": "assistant", "content": "Ask me anything about listed UK companies"},
+#     ]

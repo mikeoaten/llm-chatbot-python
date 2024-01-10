@@ -3,11 +3,12 @@ import streamlit as st
 from langchain.vectorstores.neo4j_vector import Neo4jVector
 # end::importvector[]
 # tag::importqa[]
-from langchain.chains.qa_with_sources import load_qa_with_sources_chain
+# from langchain.chains.qa_with_sources import load_qa_with_sources_chain
 # end::importqa[]
 # tag::importretrievalqa[]
 from langchain.chains import RetrievalQA
-# from langchain.chains import RetrievalQAWithSourcesChain
+from langchain.chains import RetrievalQAWithSourcesChain
+
 # end::importretrievalqa[]
 
 # This file is in the solutions folder to separate the solution
@@ -64,10 +65,14 @@ kg_qa = RetrievalQA.from_chain_type(
     llm,                  # <1>
     chain_type="stuff",   # <2>
     retriever=retriever,  # <3>
-
 )
 # end::qa[]
 
+# kg_qa = RetrievalQAWithSourcesChain.from_chain_type(
+#     llm,                  # <1>
+#     chain_type="stuff",   # <2>
+#     retriever=retriever,  # <3>
+# )
 
 # tag::generate-response[]
 def generate_response(prompt):

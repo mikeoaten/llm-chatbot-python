@@ -17,7 +17,7 @@ from solutions.tools.vector import kg_qa
 SYSTEM_MESSAGE = """
 You are an expert company news analyst specialising in provding information from Regulatory News Service (RNS).
 
-DO NOT answer questions using your pre-trained knowledge, only use the information provided in the context. This is very important, so before you make a response think if the information is only available in the context.
+DO NOT answer questions using your pre-trained knowledge, only use the information provided in the . This is very important, so before you make a response think if the information is only available in the context.
 
 Do not answer any questions that do not relate to company news.
 """
@@ -49,7 +49,6 @@ agent = initialize_agent(
     memory=memory,
     verbose=True,
     return_source_documents=True,
-    return_intermediate_steps=True,
     agent=AgentType.CHAT_CONVERSATIONAL_REACT_DESCRIPTION,
     agent_kwargs={
         "system_message": SYSTEM_MESSAGE

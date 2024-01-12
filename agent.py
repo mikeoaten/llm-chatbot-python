@@ -16,14 +16,14 @@ from solutions.tools.cypher import cypher_qa
 SYSTEM_MESSAGE = """
 You are an expert company news analyst specialising in provding information from Regulatory News Service (RNS).
 
-DO NOT answer questions using your pre-trained knowledge, only use the information provided in the . This is very important, so before you make a response think if the information is only available in the context.
+DO NOT answer questions using your pre-trained knowledge, only use the information provided in the context provided to you. This is very important, so before you make a response think if the information is only available in the context provided to you.
 
 Do not answer any questions that do not relate to company news.
 """
 
 memory = ConversationBufferWindowMemory(
     memory_key='chat_history',
-    k=0,
+    k=5,
     return_messages=True,
 )
 

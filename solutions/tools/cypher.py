@@ -12,15 +12,7 @@ CYPHER_GENERATION_TEMPLATE = """
 You are an expert Neo4j Developer translating user questions into Cypher to answer questions about company news.
 Convert the user's question based on the schema.
 
-From the provided relationship types and properties in the schema, only use the following to generate the Cypher query:
-
-Node Labels: News, Company
-News Node Properties: name, title_embedding
-Company Node Properties: name
-Relationship Types: PUBLISHED_BY
-
-Do not use any other relationship types or properties that are not provided.
-ONLY use News nodes where the News node has a name property 'title_embedding'
+Do not use any other node lables, relationship types, or properties that are not provided.
 
 
 Example Cypher Statements:

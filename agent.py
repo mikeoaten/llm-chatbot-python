@@ -9,9 +9,9 @@ from langchain.tools import Tool
 
 from solutions.tools.vector import kg_qa
 
-# from langchain.chains import GraphCypherQAChain
-# from solutions.graph import graph
-# from solutions.tools.cypher import cypher_qa
+from langchain.chains import GraphCypherQAChain
+from graph import graph
+from solutions.tools.cypher import cypher_qa
 
 
 SYSTEM_MESSAGE = """
@@ -33,13 +33,12 @@ tools = [
         name="Vector Search Index",  # (1)
         description="Provides information from company news releases using Vector Search", # (2)
         func = kg_qa, # (3)
+    ),
+    Tool.from_function(
+        name="Graph Cypher QA Chain",  # (1)
+        description="Provides information about company news using graph database search", # (2)
+        func = cypher_qa, # (3)
     )
-    # ,
-    # Tool.from_function(
-    #     name="Graph Cypher QA Chain",  # (1)
-    #     description="Provides information about company news", # (2)
-    #     func = cypher_qa, # (3)
-    # )
 ]
 
 

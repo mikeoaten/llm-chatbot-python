@@ -4,7 +4,7 @@ from agent import generate_response, agent, kg_qa, memory
 from datetime import datetime
 from langchain.chains import RetrievalQA
 from solutions.tools.vector import retriever
-from langchain.callbacks import get_openai_callback
+from langchain_community.callbacks import get_openai_callback
 
 # tag::setup[]
 # Page Config
@@ -51,18 +51,18 @@ def handle_submit(message):
 # end::submit[]
 
 # tag::chat[]
-with st.container():
+# with st.container():
     # Display messages in Session State
-    for message in st.session_state.messages:
-        write_message(message['role'], message['content'], save=False)
+for message in st.session_state.messages:
+    write_message(message['role'], message['content'], save=False)
 
-    # Handle any user input
-    if prompt := st.chat_input("Ask away..."):
-        # Display user message in chat message container
-        write_message('user', prompt)
+# Handle any user input
+if prompt := st.chat_input("Ask away..."):
+    # Display user message in chat message container
+    write_message('user', prompt)
 
-        # Generate a response
-        handle_submit(prompt)
+    # Generate a response
+    handle_submit(prompt)
 # end::chat[]
 
 # Add a button to start a new chat

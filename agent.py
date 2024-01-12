@@ -13,7 +13,6 @@ from langchain.chains import GraphCypherQAChain
 from graph import graph
 from solutions.tools.cypher import cypher_qa
 
-
 SYSTEM_MESSAGE = """
 You are an expert company news analyst specialising in provding information from Regulatory News Service (RNS).
 
@@ -24,7 +23,7 @@ Do not answer any questions that do not relate to company news.
 
 memory = ConversationBufferWindowMemory(
     memory_key='chat_history',
-    k=5,
+    k=0,
     return_messages=True,
 )
 

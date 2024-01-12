@@ -5,6 +5,11 @@ from datetime import datetime
 from langchain.chains import RetrievalQA
 from solutions.tools.vector import retriever
 from langchain_community.callbacks import get_openai_callback
+# from langchain.globals import set_debug
+# from langchain.globals import set_verbose
+
+# set_debug(True)
+# # set_verbose(True)
 
 # tag::setup[]
 # Page Config
@@ -34,16 +39,16 @@ def handle_submit(message):
             #  logging
             print("\nRESPONSE - ", end=' ')
             print(datetime.now())
-            print("\n")
-            print("Agent\n ")
-            print(agent)
-            print("\n")
-            print("Response")
-            print(retriever.get_relevant_documents(query=prompt))
-            for doc in retriever.get_relevant_documents(prompt):
-                print("-" * 80)
-                print(doc)
-            print("\n")
+            # print("\n")
+            # print("Agent\n ")
+            # print(agent)
+            # print("\n")
+            # print("Response")
+            # print(retriever.get_relevant_documents(query=prompt))
+            # for doc in retriever.get_relevant_documents(prompt):
+            #     print("-" * 80)
+            #     print(doc)
+            # print("\n")
             print(f"Total Tokens: {cb.total_tokens}")
             print(f"Prompt Tokens: {cb.prompt_tokens}")
             print(f"Completion Tokens: {cb.completion_tokens}")

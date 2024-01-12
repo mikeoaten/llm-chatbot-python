@@ -9,7 +9,7 @@ from langchain_community.callbacks import get_openai_callback
 # from langchain.globals import set_verbose
 
 # set_debug(True)
-# # set_verbose(True)
+# set_verbose(True)
 
 # tag::setup[]
 # Page Config
@@ -19,12 +19,17 @@ st.set_page_config(
 )
 # end::setup[]
 
+    
+st.header("RNS buddy")
+
 # tag::session[]
 # Set up Session State
 if "messages" not in st.session_state:
+    st.session_state.messages = []
+    st.session_state.clear()
     st.session_state.messages = [
-        {"role": "assistant", "content": "Ask me anything about listed UK companies"},
-    ]
+            {"role": "assistant", "content": "Ask me anything about listed UK companies"},
+        ]
 # end::session[]
 
 # tag::submit[]
@@ -68,16 +73,15 @@ if prompt := st.chat_input("Ask away..."):
 
     # Generate a response
     handle_submit(prompt)
+
 # end::chat[]
 
-# Add a button to start a new chat
-# st.write("")  # Add an empty space for better separation
-# if st.button('Start a new chat'):
-#     # Clear the chat memory
-#     memory.clear()
-#     # Clear the chat messages fron the web app UI 
-#     # st.session_state.messages = []
-#     st.session_state['show_container'] = False
-#     st.session_state.messages = [
-#         {"role": "assistant", "content": "Ask me anything about listed UK companies"},
-#     ]
+def on_reset_chat_button_click():
+    print(agent.memory.chat_memory.messages)
+    st.session_state.messages = []
+    st.session_state.clear()
+    memory.clear()
+    print(agent.memory.chat_memory.messages)
+    st.success("Chat is reset")
+
+st.button("Reset chat", on_click=on_reset_chat_button_click)

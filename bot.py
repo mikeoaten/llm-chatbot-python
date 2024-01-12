@@ -25,8 +25,6 @@ st.header("RNS buddy")
 # tag::session[]
 # Set up Session State
 if "messages" not in st.session_state:
-    st.session_state.messages = []
-    st.session_state.clear()
     st.session_state.messages = [
             {"role": "assistant", "content": "Ask me anything about listed UK companies"},
         ]

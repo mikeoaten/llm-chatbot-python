@@ -1,0 +1,1927 @@
+{
+    "id": "8",
+    "layout": "onecol",
+    "info": {
+        "title": "News article",
+        "headers": {
+            "description": "News article - Regulatory News Service",
+            "keywords": "lseg stock prices",
+            "robots": null
+        }
+    },
+    "meta": {
+        "title": "News article",
+        "page_type": "news-article",
+        "page_background": null,
+        "available_languages": [
+            "en"
+        ],
+        "language": "en",
+        "open_graph": {
+            "og:description": "News article - Regulatory News Service",
+            "og:image": "",
+            "og:image:height": 0,
+            "og:image:width": 0,
+            "og:site_name": "",
+            "og:title": "News article",
+            "og:type": "website"
+        }
+    },
+    "components": [
+        {
+            "id": "block_content:60dcca26-350b-49e2-a21e-e13f0e80ce5d",
+            "timestamp": null,
+            "meta": {
+                "columns": 0,
+                "title": "News article issuer widget"
+            },
+            "position": "content",
+            "type": "news-article-issuer-widget",
+            "weight": 2,
+            "staticContent": {
+                "gotoCompanyLabel": "Go to the company page"
+            },
+            "content": [
+                {
+                    "name": "issuerlogo",
+                    "type": "DATATYPE",
+                    "value": {
+                        "logo": "https://assets.lsegissuerservices.com/original-042f7a6f-0411-4b56-941b-851741634627.png"
+                    }
+                },
+                {
+                    "name": "pricedata",
+                    "type": "DATATYPE",
+                    "value": {
+                        "description": "LLOYDS BANKING GROUP PLC ORD 10P",
+                        "name": "ORD 10P",
+                        "tidm": "LLOY",
+                        "topic": "TIT.LLOY.LD",
+                        "isin": "GB0008706128",
+                        "sedol": "0870612",
+                        "category": "EQUITY",
+                        "mifir": "SHRS",
+                        "country": "GB",
+                        "csm": "MAINMARKET.SET1.LSEUK",
+                        "market": "MAINMARKET",
+                        "segment": "SET1",
+                        "lipperId": "20000433",
+                        "fundsType": "NONE",
+                        "mifid": null,
+                        "currency": "GBX",
+                        "suspend": null,
+                        "bid": 44.055,
+                        "offer": 44.065,
+                        "volume": 92660620,
+                        "turnover": 8.0470864155E8,
+                        "fiftyTwoWeeksMin": 39.42,
+                        "fiftyTwoWeeksMax": 54.33,
+                        "high": 44.745,
+                        "low": 43.845,
+                        "underlying": null,
+                        "issuercode": "LLLLOY",
+                        "issuername": "LLOYDS BANKING GROUP PLC",
+                        "shortname": "LLOYDS GRP.",
+                        "instrumenttype": "STOCK",
+                        "marketsize": 50000,
+                        "tradingstatuscode": "N T",
+                        "tradingstatus": "N",
+                        "periodcode": "T",
+                        "openingprice": 44.645,
+                        "specialconditions": "",
+                        "ismidprice": false,
+                        "lastvolume": null,
+                        "lastturnover": null,
+                        "fourwaykey": "GB0008706128GBGBXSET1",
+                        "marketcapitalization": 28593437703,
+                        "listingadmissiondate": "2003-11-24",
+                        "sectorcode": "301010",
+                        "subsectorcode": "30101010",
+                        "datelastnews": null,
+                        "presentnews": true,
+                        "istodaynews": false,
+                        "idnews": 16285714,
+                        "sectioncodenews": null,
+                        "subjectnews": "Director/PDMR Shareholding",
+                        "previoussectioncodenews": "BRK",
+                        "annualreportweeklyurl": null,
+                        "netchangesign": "-1",
+                        "datepreviousnews": "2024-01-11T14:00:00.000",
+                        "previousreferenceprice": 44.98,
+                        "netchange": -0.915,
+                        "percentualchange": -2.034,
+                        "cwtype": null,
+                        "strikeprice": null,
+                        "strikepricecurrency": null,
+                        "maturitydate": null,
+                        "subSearchTags": null,
+                        "islse": true,
+                        "lastprice": 44.065,
+                        "lastpricedate": "2024-01-15T15:10:59.000",
+                        "lastclose": 44.98,
+                        "lastclosedate": "2024-01-12T00:00:00.000"
+                    }
+                }
+            ],
+            "datatypeFields": {
+                "issuerlogo": {
+                    "logo": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    }
+                },
+                "pricedata": {
+                    "category": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "currency": {
+                        "visibility": true,
+                        "label": "Price",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "lastprice": {
+                        "visibility": true,
+                        "label": "Price (GBX)",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "percentualchange": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "netchangesign": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "name": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "description": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "tidm": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "bid": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "offer": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "openingprice": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "lastclose": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "high": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "low": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "specialconditions": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "tradingstatuscode": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "turnover": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "maturitydate": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    }
+                }
+            },
+            "roundel": null,
+            "isDataComponentAndIsAvailable": true
+        },
+        {
+            "id": "block_content:936265d4-63db-4cf3-a668-65d3c251be7f",
+            "timestamp": null,
+            "meta": {
+                "columns": 0,
+                "title": "News article content"
+            },
+            "position": "content",
+            "type": "news-article-content",
+            "weight": 1,
+            "staticContent": {
+                "shareButton": "Share this article",
+                "newsArticleLegalText": "<p>London Stock Exchange plc is not responsible for and does not check content on this Website. Website users are responsible for checking content. Any news item (including any prospectus) which is addressed solely to the persons and countries specified therein should not be relied upon other than by such persons and/or outside the specified countries. <a href=\"/disclaimer\" target=\"_blank\">Terms and conditions</a>, including restrictions on use and distribution apply.</p>\r\n",
+                "newsArticleLegalTextFootnote": "© 2024 London Stock Exchange plc. All rights reserved.",
+                "ndTitle": "Before proceeding",
+                "ndSummary": "The London Stock Exchange is pleased to provide real time UK regulatory news announcements to the general public for personal use. Please declare your status before proceeding.",
+                "backToPageLabel": "Back",
+                "confirmLabel": "<p><strong>I confirm I am</strong> (as defined below)</p>\r\n",
+                "privateInvestorColumnTitle": "a private investor",
+                "privateInvestorColumnBody": "<p><strong>A Private Investor is a recipient of the Information who meets all of the conditions set out below, the recipient:</strong></p>\r\n\r\n<ul>\r\n\t<li>obtains access to the Information in a personal capacity;</li>\r\n\t<li>is not required to be regulated or supervised by a body concerned with the regulation or supervision of investment or financial services;</li>\r\n\t<li>is not currently registered or qualified as a professional securities trader or investment adviser with any national or state exchange, regulatory authority, professional association or recognised professional body;</li>\r\n\t<li>does not currently act in any capacity as an investment adviser, whether or not they have at some time been qualified to do so;</li>\r\n\t<li>uses the Information solely in relation to the management of their personal funds and not as a trader to the public or for the investment of corporate funds;</li>\r\n\t<li>does not distribute, republish or otherwise provide any Information or derived works to any third party in any manner or use or process Information or derived works for any commercial purpose.</li>\r\n</ul>\r\n",
+                "rnsCustomerColumnTitle": "an RNS customer",
+                "rnsCustomerColumnBody": "<p><strong>An RNS Customer is a recipient of the Information who meets all of the conditions set out below, the recipient:</strong></p>\r\n\r\n<ul>\r\n\t<li>obtains access to the Information in a professional capacity on behalf of their employer, who has signed a RNS Service Agreement and who submits announcements for publication through RNS on a regular basis;</li>\r\n\t<li>is not currently registered or qualified as a professional securities trader or investment adviser with any national or state exchange, regulatory authority, professional association or recognised professional body;</li>\r\n\t<li>does not currently act in any capacity as an investment adviser, whether or not they have at some time been qualified to do so;</li>\r\n\t<li>uses the Information solely in relation to the management of their regulatory disclosure requirements, or in an advisory capacity related to the same;</li>\r\n\t<li>does not distribute, republish or otherwise provide any Information or derived works to any third party in any manner or use or process Information or derived works for any commercial purpose.</li>\r\n</ul>\r\n",
+                "professionalInvestorColumnTitle": "a professional investor",
+                "professionalInvestorColumnBody": "<p><strong>A Professional Investor is a recipient of the Information who meets any of the conditions set out below, the recipient:</strong></p>\r\n\r\n<ul>\r\n\t<li>obtains access to the Information in a professional capacity;</li>\r\n\t<li>is required to be regulated or supervised by a body concerned with the regulation or supervision of investment or financial services;</li>\r\n\t<li>is currently registered or qualified as a professional securities trader or investment adviser with any national or state exchange, regulatory authority, professional association or recognised professional body;</li>\r\n\t<li>currently acts as an investment adviser, whether or not they have at some time been qualified to do so;</li>\r\n\t<li>uses the Information as a trader to the public or for the investment of corporate funds;</li>\r\n\t<li>distributes, republishes or otherwise provides Information to a third party or creates (for a commercial purpose) derived works using the Information</li>\r\n</ul>\r\n",
+                "rnsDenialMessage": "<p>The London Stock Exchange is pleased to provide real time UK regulatory news announcements to the general public for personal user and to RNS customers in a professional capacity.</p>\r\n\r\n<p>If you are a professional investor, access to delayed UK regulatory news announcements (meaning announcements older than 60 minutes) is available for historical reference. Access to real time UK regulatory news announcements is not accessible via the London Stock Exchange website.</p>\r\n\r\n<p><br />\r\n<a href=\"/news?tab=news-explorer\" style=\"color:black; cursor:pointer;\">Please click here to return to the News page.</a></p>\r\n\r\n<p><br />\r\nAlternatively, if you are a professional investor and require access to real time UK regulatory news announcements, please note that real time RNS information is widely available across a large number of data vendor service offerings to professional investors.</p>\r\n",
+                "privateInvestorColumnIcon_uuid": "1f8dfc76-33e0-45a0-81e2-6f71ea565aef",
+                "rnsCustomerColumnIcon_uuid": "89cca72d-ff3c-40ff-a2c5-f68e34e0e0e5",
+                "professionalInvestorColumnIcon_uuid": "1f8dfc76-33e0-45a0-81e2-6f71ea565aef"
+            },
+            "content": [
+                {
+                    "name": "newsarticle",
+                    "type": "DATATYPE",
+                    "value": {
+                        "id": 16257071,
+                        "category": "BOA",
+                        "title": "Board Committee Change",
+                        "body": "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<title></title>\n<meta name=\"generator\" content=\"RNS\" />\n<style type=\"text/css\">\n/*<![CDATA[*/\n/**/\n/**/\n/**/\n\n.k{size:595.3pt 841.9pt;margin:72.0pt 72.0pt 72.0pt 72.0pt;}div.k{}p.x{margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:11.0pt;font-family:\"Calibri\",\"sans-serif\";margin-bottom:0cm;margin-bottom:.0001pt; text-align:right;line-height:normal}span.v{font-family:\"Arial\",\"sans-serif\"}span.t{font-family: \"Arial\",\"sans-serif\"}p.y{margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:11.0pt;font-family:\"Calibri\",\"sans-serif\";margin-bottom:0cm;margin-bottom:.0001pt;text-align: justify;line-height:normal}p.z{margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:11.0pt;font-family:\"Calibri\",\"sans-serif\";margin-left:18.0pt;text-align:center}p.a,li.a,div.a{margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:11.0pt;font-family:\"Calibri\",\"sans-serif\";}table.aa{margin-left:-5.4pt;border-collapse:collapse}td.n{width:263.95pt;padding:0cm 5.4pt 0cm 5.4pt}\np.ab{margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:11.0pt;font-family:\"Calibri\",\"sans-serif\";margin-bottom:0cm;margin-bottom:.0001pt;text-autospace: none}span.q{font-family:\"Arial\",\"sans-serif\";color:black}p.ac{margin-top:0cm;margin-right:0cm;margin-bottom:10.0pt;margin-left:0cm;line-height:115%;font-size:11.0pt;font-family:\"Calibri\",\"sans-serif\";margin-bottom:0cm;margin-bottom:.0001pt;text-align: justify}td.m{width:176.55pt;padding:0cm 5.4pt 0cm 5.4pt} .fr-view-element{font-family: sans-serif;font-size: 12pt;line-height: 140%;padding: 20px;box-sizing: border-box;overflow-x: auto;min-height: 60px;text-align: left;margin-bottom: 10px;width: 837px;} .fr-view-element img{padding: 0 1px;} .fr-view-element .k{margin: 63.8pt 1.6cm 62.35pt 1.6cm;} .fr-view-element p{font-size: 10pt;}\n/**/\n/**/\n/**/\n/*]]>*/\n</style>\n</head>\n<body><img src=\"https://tracker.live.rns-distribution.com/track.live-rns/5007598_1e61d9955d105a8ed3fa56d43d8f64b5.png\" width=\"1\" height=\"1\" /><div style=\"text-align:left;font-family:Arial, Helvetica, sans-serif; font-size: 10pt;\"><div>RNS Number : 1862X</div>  <div>Lloyds Banking Group PLC</div>  <div>18 December 2023</div>  <div>&#160;</div></div>\n<div class=\"fr-view-element\">\n<div class=\"k\">\n<p class=\"x\" style=\"text-align:right;\"><span class=\"v\">18 December 2023</span></p>\n<p class=\"x\" style=\"text-align:right;\"><span style=\"font-weight: bold;\"><span class=\"t\">&#160;</span></span></p>\n<p class=\"y\"><span style=\"font-weight: bold;\"><span class=\"v\">LLOYDS BANKING GROUP: CHANGE TO MEMBERSHIP OF THE AUDIT COMMITTEE</span></span></p>\n<p class=\"y\"><span style=\"font-weight: bold;\"><span class=\"v\">&#160;</span></span></p>\n<p class=\"y\"><span class=\"v\">The Group is pleased to announce that Amanda Mackenzie, an independent non-executive director and Chair of the Responsible Business Committee, has been appointed as a member of the Audit Committee with effect from 1 January 2024.</span></p>\n<p class=\"y\"><span class=\"v\">&#160;</span></p>\n<p class=\"z\" style=\"text-align:center;\"><span class=\"v\">- END -</span></p>\n<p class=\"a\"><span class=\"v\">For further information:</span></p>\n<table class=\"aa\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"width: 352;\" valign=\"top\" class=\"n\">\n<p class=\"ab\"><span style=\"font-weight: bold;\"><span class=\"q\">Investor Relations</span></span></p>\n<p class=\"ac\"><span class=\"q\">Douglas Radcliffe</span></p>\n<p class=\"ab\"><span class=\"q\">Group Investor Relations Director</span></p>\n<p class=\"ab\"><span class=\"q\">Email: douglas.radcliffe@</span><span class=\"v\">lloydsbanking.com</span></p>\n<p class=\"ac\"><span class=\"v\">&#160;</span></p>\n<p class=\"ab\"><span style=\"font-weight: bold;\"><span class=\"q\">Group Corporate Affairs</span></span></p>\n<p class=\"ab\"><span class=\"q\">Matt Smith</span></p>\n<p class=\"ab\"><span class=\"q\">Head of Media Relations</span></p>\n<p class=\"ab\"><span class=\"q\">Email: matt.smith@lloydsbanking.com</span></p>\n</td>\n<td style=\"width: 235;\" valign=\"top\" class=\"m\">\n<p class=\"ac\"><span class=\"q\">&#160;</span></p>\n<p class=\"ac\"><span class=\"q\">+44 (0) 20</span> <span class=\"v\">7356 1571</span></p>\n<p class=\"ac\"><span class=\"v\">&#160;</span></p>\n<p class=\"ac\"><span class=\"v\">&#160;</span></p>\n<p class=\"ac\"><span class=\"v\">&#160;</span></p>\n<p class=\"ac\"><span class=\"v\">&#160;</span></p>\n<p class=\"ac\"><span class=\"q\">+44 (0) 7788 352 487</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"a\"><span>&#160;</span></p>\n<p class=\"y\"><span>&#160;</span></p>\n</div>\n</div>\n\n\n<div style=\"text-align:left;font-family:Arial, Helvetica, sans-serif; font-size: 10pt;\"><div>This information is provided by RNS, the news service of the London Stock Exchange. RNS is approved by the Financial Conduct Authority to act as a Primary Information Provider in the United Kingdom. Terms and conditions relating to the use and distribution of this information may apply. For further information, please contact <a href=\"mailto:rns@lseg.com\">rns@lseg.com</a> or visit <a href=\"http://www.rns.com/\">www.rns.com</a>.<br/><br/>RNS may use your IP address to confirm compliance with the terms and conditions, to analyse how you engage with the information contained in this communication, and to share such analysis on an anonymised basis with others as part of our commercial services. For further information about how RNS and the London Stock Exchange use the personal data you provide us, please see our <a href=\"https://www.lseg.com/privacy-and-cookie-policy\">Privacy Policy</a>.</div><div>&#160;</div>  END</div><div>&#160;</div><div>&#160;</div>BOANKFBPNBDDPBD</body></html>",
+                        "source": "RNS",
+                        "status": 1,
+                        "lang": "en",
+                        "sedol": "0870612",
+                        "link": null,
+                        "datetime": "2023-12-18T14:30:00.000",
+                        "companycode": "LLOY",
+                        "companyname": "Lloyds Banking Group PLC",
+                        "rnsnumber": "1862X",
+                        "headlinename": "Directorate Change",
+                        "issuercode": "LLLLOY",
+                        "issuername": "LLOYDS BANKING GROUP PLC",
+                        "showdisclaimer": false,
+                        "userprofile": "UNKNOWN",
+                        "instrumenturl": "https://www.londonstockexchange.com/stock/LLOY/lloyds-banking-group-plc"
+                    }
+                },
+                {
+                    "name": "issuerlogo",
+                    "type": "DATATYPE",
+                    "value": {
+                        "logo": "https://assets.lsegissuerservices.com/original-042f7a6f-0411-4b56-941b-851741634627.png"
+                    }
+                }
+            ],
+            "datatypeFields": {
+                "newsarticle": {
+                    "source": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "headlinetype": {
+                        "visibility": false,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "title": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "datetime": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "body": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "headlinename": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "rnsnumber": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "issuername": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    }
+                },
+                "issuerlogo": {
+                    "logo": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    }
+                }
+            },
+            "roundel": null,
+            "isDataComponentAndIsAvailable": true
+        },
+        {
+            "id": "block_content:46de6188-dbb2-40e5-97d2-8848dec7a7b9",
+            "timestamp": null,
+            "meta": {
+                "columns": 0,
+                "title": "News article related news"
+            },
+            "position": "content",
+            "type": "news-article-related-news",
+            "weight": 3,
+            "staticContent": null,
+            "content": [
+                {
+                    "name": "dailynews",
+                    "type": "DATATYPE",
+                    "value": {
+                        "content": [
+                            {
+                                "source": "RNS",
+                                "title": "Director/PDMR Shareholding",
+                                "id": 16285714,
+                                "companycode": "LLOY",
+                                "companyname": "Lloyds Banking Group PLC",
+                                "datetime": "2024-01-11T14:00:00.000",
+                                "newssource": "RNS",
+                                "issuercode": "LLLLOY",
+                                "issuername": "LLOYDS BANKING GROUP PLC"
+                            },
+                            {
+                                "source": "RNS",
+                                "title": "Publication of Final Terms",
+                                "id": 16278052,
+                                "companycode": "LLOY",
+                                "companyname": "Lloyds Banking Group PLC",
+                                "datetime": "2024-01-05T13:50:45.000",
+                                "newssource": "RNS",
+                                "issuercode": "LLLLOY",
+                                "issuername": "LLOYDS BANKING GROUP PLC"
+                            },
+                            {
+                                "source": "RNS",
+                                "title": "Total Voting Rights",
+                                "id": 16270196,
+                                "companycode": "LLOY",
+                                "companyname": "Lloyds Banking Group PLC",
+                                "datetime": "2023-12-29T10:30:00.000",
+                                "newssource": "RNS",
+                                "issuercode": "LLLLOY",
+                                "issuername": "LLOYDS BANKING GROUP PLC"
+                            },
+                            {
+                                "source": "RNS",
+                                "title": "Board Committee Change",
+                                "id": 16257071,
+                                "companycode": "LLOY",
+                                "companyname": "Lloyds Banking Group PLC",
+                                "datetime": "2023-12-18T14:30:00.000",
+                                "newssource": "RNS",
+                                "issuercode": "LLLLOY",
+                                "issuername": "LLOYDS BANKING GROUP PLC"
+                            },
+                            {
+                                "source": "RNS",
+                                "title": "Director/PDMR Shareholding",
+                                "id": 16257042,
+                                "companycode": "LLOY",
+                                "companyname": "Lloyds Banking Group PLC",
+                                "datetime": "2023-12-18T14:00:00.000",
+                                "newssource": "RNS",
+                                "issuercode": "LLLLOY",
+                                "issuername": "LLOYDS BANKING GROUP PLC"
+                            }
+                        ],
+                        "last": false,
+                        "totalElements": 16,
+                        "totalPages": 4,
+                        "numberOfElements": 5,
+                        "first": true,
+                        "sort": {
+                            "unsorted": false,
+                            "sorted": true,
+                            "empty": false
+                        },
+                        "size": 5,
+                        "number": 0,
+                        "empty": false
+                    }
+                },
+                {
+                    "name": "issuername",
+                    "type": "DATATYPE",
+                    "value": {
+                        "name": "Lloyds Banking Group Plc"
+                    }
+                },
+                {
+                    "name": "issuerreferencedata",
+                    "type": "DATATYPE",
+                    "value": {
+                        "code": "LLLLOY",
+                        "name": "LLOYDS BANKING GROUP PLC",
+                        "address": "25 Gresham Street, London, EC2V 7HN, United Kingdom",
+                        "telephone": null,
+                        "countryofincorporation": "GB",
+                        "webaddress": "http://www.lloydsbankinggroup.com/investors.asp",
+                        "starttradabledate": "1986-10-08",
+                        "marketcap": 28740237704,
+                        "icbindustrycode": "30",
+                        "icbindustry": "Financials",
+                        "icbsupersectorcode": "3010",
+                        "icbsupersector": "Banks",
+                        "icbsectorcode": "301010",
+                        "icbsector": "Banks",
+                        "icbsubsectorcode": "30101010",
+                        "icbsubsector": "Banks",
+                        "listingcategory": "PREMIUM",
+                        "issuedinstrumentscodes": [
+                            "LLOY",
+                            "BG44",
+                            "AU69",
+                            "AD02",
+                            "FA77",
+                            "AM28",
+                            "SA35",
+                            "RF83",
+                            "ZV20",
+                            "5JK0",
+                            "GEXW",
+                            "88FH",
+                            "92ZU",
+                            "17MS",
+                            "15YO",
+                            "99WI",
+                            "ELB9",
+                            "92KC",
+                            "83AA",
+                            "73BY",
+                            "LLD1",
+                            "LLD2",
+                            "LLD5",
+                            "LLD6",
+                            "LLPC",
+                            "LLPD",
+                            "LLPE",
+                            "LLPH",
+                            "LLPJ",
+                            "AM85"
+                        ],
+                        "defaultinstrumentcode": "LLOY"
+                    }
+                }
+            ],
+            "datatypeFields": {
+                "dailynews": {
+                    "title": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "description": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "source": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "datetime": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    },
+                    "issuername": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    }
+                },
+                "issuername": {
+                    "name": {
+                        "visibility": true,
+                        "label": "",
+                        "errorText": "",
+                        "whatsThisLink": null
+                    }
+                }
+            },
+            "roundel": null,
+            "isDataComponentAndIsAvailable": true
+        },
+        {
+            "id": "footer",
+            "timestamp": null,
+            "meta": {
+                "col": 0,
+                "title": "footer"
+            },
+            "position": "footer",
+            "type": "footer",
+            "weight": 0,
+            "staticContent": null,
+            "content": [
+                {
+                    "name": "empty",
+                    "type": "CMS",
+                    "value": {
+                        "menuSection": {
+                            "col_1": "About",
+                            "col_2": "Legal",
+                            "col_3": "Contact",
+                            "col_4": "Explore LSEG sites"
+                        },
+                        "footerBlueBar": {
+                            "surveyTitle": "Is this page useful?",
+                            "surveyOptionYes": {
+                                "label": "Yes",
+                                "text": "Thank you for your feedback."
+                            },
+                            "surveyOptionNo": {
+                                "label": "No",
+                                "uri": "api/v1/content/survey"
+                            },
+                            "feedbackLink": {
+                                "title": "Other query? Contact us here",
+                                "uri": "api/v1/content/feedback"
+                            },
+                            "menu": {
+                                "menu_col_1": "About",
+                                "menu_col_2": "Legal",
+                                "menu_col_3": "Contact",
+                                "menu_col_4": "Explore LSEG sites"
+                            }
+                        },
+                        "footerLinks": [
+                            {
+                                "title": "Who we are",
+                                "uri": "/discover/who-we-are",
+                                "col": "col_1",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Our history",
+                                "uri": "/discover/lseg/our-history",
+                                "col": "col_1",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "News and insights",
+                                "uri": "/discover/news-and-insights",
+                                "col": "col_1",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Events",
+                                "uri": "/events-at-london-stock-exchange",
+                                "col": "col_1",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Sitemap",
+                                "uri": "/sitemap",
+                                "col": "col_1",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Disclaimer",
+                                "uri": "/disclaimer",
+                                "col": "col_2",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "Privacy and cookie statement",
+                                "uri": "/privacy-and-cookie-statement-0",
+                                "col": "col_2",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Cookies settings",
+                                "uri": "/privacy-and-cookie-policy",
+                                "col": "col_2",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Conflict of interest policy & UK bribery act",
+                                "uri": "/conflicts-interest-policy-and-uk-bribery-act",
+                                "col": "col_2",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Modern Slavery Act",
+                                "uri": "https://www.lseg.com/investor-relations/sustainability/modern-slavery-act-statement",
+                                "col": "col_2",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "Accessibility",
+                                "uri": "/accessibility",
+                                "col": "col_2",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Section 172 (1) statement",
+                                "uri": "/section-172-statement",
+                                "col": "col_2",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Contact us",
+                                "uri": "/contact",
+                                "col": "col_3",
+                                "target": "_self"
+                            },
+                            {
+                                "title": "Whistleblowing",
+                                "uri": "https://www.lseg.com/whistleblowing",
+                                "col": "col_3",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "Security Centre",
+                                "uri": "https://www.lseg.com/en/investor-relations/share-fraud-warning",
+                                "col": "col_3",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "LSEG",
+                                "uri": "https://www.lseg.com",
+                                "col": "col_4",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "FTSE Russell",
+                                "uri": "https://www.ftserussell.com",
+                                "col": "col_4",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "Refinitiv",
+                                "uri": "https://www.refinitiv.com",
+                                "col": "col_4",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "LCH",
+                                "uri": "https://www.lch.com",
+                                "col": "col_4",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "Issuer Services",
+                                "uri": "https://www.lsegissuerservices.com",
+                                "col": "col_4",
+                                "target": "_blank"
+                            }
+                        ],
+                        "footerSocialLinks": [
+                            {
+                                "title": "LinkedIn",
+                                "uri": "https://www.linkedin.com/company/london-stock-exchange",
+                                "target": "_blank"
+                            },
+                            {
+                                "title": "Twitter",
+                                "uri": "https://twitter.com/LSEplc",
+                                "target": "_blank"
+                            }
+                        ],
+                        "jumpMenu": {
+                            "links": [
+                                {
+                                    "title": "Refinitiv",
+                                    "uri": "https://www.refinitiv.com/",
+                                    "target": "_blank"
+                                },
+                                {
+                                    "title": "Issuer Services",
+                                    "uri": "https://www.lsegissuerservices.com/",
+                                    "target": "_blank"
+                                },
+                                {
+                                    "title": "LSEG",
+                                    "uri": "https://www.lseg.com/",
+                                    "target": "_blank"
+                                },
+                                {
+                                    "title": "LCH",
+                                    "uri": "https://www.lch.com/",
+                                    "target": "_blank"
+                                },
+                                {
+                                    "title": "FTSE Russell",
+                                    "uri": "https://www.ftserussell.com/",
+                                    "target": "_blank"
+                                }
+                            ],
+                            "default": "Select",
+                            "label": "View our other sites"
+                        },
+                        "legalText": "© 2024 London Stock Exchange. All rights reserved."
+                    }
+                }
+            ],
+            "datatypeFields": null,
+            "roundel": null,
+            "isDataComponentAndIsAvailable": true
+        }
+    ],
+    "sharedComponents": [
+        {
+            "type": "cookie-policy-banner",
+            "content": {
+                "cookieText": "<p>The London Stock Exchange uses cookie to improve its website. The cookies for analytical purposes have already been set.</p>\r\n\r\n<p>For more details and how to manage cookies, please see our <a href=\"/privacy-and-cookie-policy\">privacy and cookie policy</a></p>\r\n",
+                "continueLabel": "Continue"
+            }
+        },
+        {
+            "type": "header",
+            "content": {
+                "logo": {
+                    "logoBlack": "https://docs.londonstockexchange.com/sites/default/files/images/londonstockexchange_logo.svg",
+                    "logoWhite": "https://docs.londonstockexchange.com/sites/default/files/images/londonstockexchange_logo.svg"
+                },
+                "navigation": [
+                    {
+                        "title": "Discover",
+                        "description": "Start your journey here",
+                        "uri": "/discover",
+                        "subNav": [
+                            {
+                                "title": "Discover the world’s international exchange",
+                                "description": null,
+                                "uri": "/discover"
+                            },
+                            {
+                                "title": "Our regions",
+                                "description": null,
+                                "uri": "/discover",
+                                "subNav": [
+                                    {
+                                        "title": "United Kingdom",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/united-kingdom"
+                                    },
+                                    {
+                                        "title": "Europe",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/europe"
+                                    },
+                                    {
+                                        "title": "Middle East",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/middle-east"
+                                    },
+                                    {
+                                        "title": "Israel",
+                                        "description": null,
+                                        "uri": "/discover/our-regions-/israel"
+                                    },
+                                    {
+                                        "title": "Africa",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/africa"
+                                    },
+                                    {
+                                        "title": "Americas",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/americas"
+                                    },
+                                    {
+                                        "title": "Asia Pacific",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/asia-pacific"
+                                    },
+                                    {
+                                        "title": "China",
+                                        "description": null,
+                                        "uri": "/discover/our-regions/china"
+                                    },
+                                    {
+                                        "title": "London Stock Exchange Stock Connect",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/london-stock-connect"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "News and insights",
+                                "description": null,
+                                "uri": "/discover/news-and-insights",
+                                "subNav": [
+                                    {
+                                        "title": "Latest",
+                                        "description": null,
+                                        "uri": "/discover/news-and-insights?tab=latest"
+                                    },
+                                    {
+                                        "title": "Welcome stories",
+                                        "description": null,
+                                        "uri": "/discover/news-and-insights?tab=welcome-stories"
+                                    },
+                                    {
+                                        "title": "Insights and reports",
+                                        "description": null,
+                                        "uri": "/discover/news-and-insights?tab=insights-and-reports"
+                                    },
+                                    {
+                                        "title": "Press releases",
+                                        "description": null,
+                                        "uri": "/discover/news-and-insights?tab=press-releases"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Events",
+                                "description": null,
+                                "uri": "/events-at-london-stock-exchange",
+                                "subNav": [
+                                    {
+                                        "title": "Welcome stories",
+                                        "description": null,
+                                        "uri": "/events-at-london-stock-exchange"
+                                    },
+                                    {
+                                        "title": "London Stock Exchange Market Ceremonies",
+                                        "description": null,
+                                        "uri": "/discover/events/london-stock-exchange-market-ceremonies"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "LSEG",
+                                "description": null,
+                                "uri": "/discover/london-stock-exchange-group",
+                                "subNav": [
+                                    {
+                                        "title": "LSEG products and services",
+                                        "description": null,
+                                        "uri": "/discover/lseg/lseg-products-and-services"
+                                    },
+                                    {
+                                        "title": "Our history",
+                                        "description": null,
+                                        "uri": "/discover/lseg/our-history"
+                                    }
+                                ]
+                            }
+                        ],
+                        "navFooter": {
+                            "iconType": [
+                                {
+                                    "icon": "icon-hand",
+                                    "title": "Who we are",
+                                    "uri": "/discover/who-we-are",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-magnify-glass",
+                                    "title": "Prices and markets search",
+                                    "uri": "/live-markets/market-data-dashboard/price-explorer",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-news",
+                                    "title": "News",
+                                    "uri": "/news?tab=news-explorer&headlinetypes=1,2&period=daily",
+                                    "target": "_self"
+                                }
+                            ],
+                            "imageType": {
+                                "image": "https://docs.londonstockexchange.com/sites/default/files/images/stock_connect_banner.jpg",
+                                "title": "Shanghai London Stock Connect",
+                                "uri": "/raise-finance/equity/london-stock-connect",
+                                "target": "_self"
+                            }
+                        }
+                    },
+                    {
+                        "title": "News and Prices",
+                        "description": "Start your journey here",
+                        "uri": "/market-data",
+                        "subNav": [
+                            {
+                                "title": "News and Prices",
+                                "description": null,
+                                "uri": "/market-data"
+                            },
+                            {
+                                "title": "FTSE indices",
+                                "description": null,
+                                "uri": "/indices",
+                                "subNav": [
+                                    {
+                                        "title": "FTSE 100",
+                                        "description": null,
+                                        "uri": "/indices/ftse-100"
+                                    },
+                                    {
+                                        "title": "FTSE 250",
+                                        "description": null,
+                                        "uri": "/indices/ftse-250"
+                                    },
+                                    {
+                                        "title": "FTSE 350",
+                                        "description": null,
+                                        "uri": "/indices/ftse-350"
+                                    },
+                                    {
+                                        "title": "FTSE All-Share",
+                                        "description": null,
+                                        "uri": "/indices/ftse-all-share"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Prices and Markets",
+                                "description": null,
+                                "uri": "/live-markets/market-data-dashboard/price-explorer",
+                                "subNav": [
+                                    {
+                                        "title": "Search by Market",
+                                        "description": null,
+                                        "uri": "/live-markets/market-data-dashboard/price-explorer"
+                                    },
+                                    {
+                                        "title": "Bond search",
+                                        "description": null,
+                                        "uri": "/live-markets/market-data-dashboard/price-explorer?categories=BONDS"
+                                    },
+                                    {
+                                        "title": "Retail bonds search",
+                                        "description": null,
+                                        "uri": "/live-markets/market-data-dashboard/price-explorer?categories=BONDS&subcategories=12"
+                                    },
+                                    {
+                                        "title": "ETFs search",
+                                        "description": null,
+                                        "uri": "/live-markets/market-data-dashboard/price-explorer?categories=ETFS&subcategories=15"
+                                    },
+                                    {
+                                        "title": "Advanced bond search",
+                                        "description": null,
+                                        "uri": "/live-markets/price-explorer/advanced-bond-search"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "News",
+                                "description": null,
+                                "uri": "/news?tab=news-explorer",
+                                "subNav": [
+                                    {
+                                        "title": "Today's news",
+                                        "description": null,
+                                        "uri": "/news?tab=today-s-news"
+                                    },
+                                    {
+                                        "title": "Regulatory news (RNS)",
+                                        "description": null,
+                                        "uri": "/news?tab=news-explorer&headlinestypes=1%2C2&period=daily"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Reports",
+                                "description": null,
+                                "uri": "/reports",
+                                "subNav": [
+                                    {
+                                        "title": "Issuers and instruments",
+                                        "description": null,
+                                        "uri": "/reports?tab=issuers"
+                                    },
+                                    {
+                                        "title": "Primary markets",
+                                        "description": null,
+                                        "uri": "/reports?tab=new-issues-and-ipos"
+                                    },
+                                    {
+                                        "title": "Secondary markets",
+                                        "description": null,
+                                        "uri": "/reports?tab=market-summary"
+                                    },
+                                    {
+                                        "title": "Group statistics",
+                                        "description": null,
+                                        "uri": "/reports?tab=monthly-market-report"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "New issues",
+                                "description": null,
+                                "uri": "/live-markets/new-issues",
+                                "subNav": [
+                                    {
+                                        "title": "Upcoming issues",
+                                        "description": null,
+                                        "uri": "/live-markets/new-issues"
+                                    },
+                                    {
+                                        "title": "Recent issues",
+                                        "description": null,
+                                        "uri": "/live-markets/new-issues"
+                                    }
+                                ]
+                            }
+                        ],
+                        "navFooter": {
+                            "iconType": [
+                                {
+                                    "icon": "icon-capital",
+                                    "title": "FTSE index values",
+                                    "uri": "/reports?tab=ftse-index-values",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-magnify-glass",
+                                    "title": "Market Data",
+                                    "uri": "/equities-trading/market-data",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-markets",
+                                    "title": "Risers and Fallers",
+                                    "uri": "/indices/ftse-100/constituents/risers-and-fallers-and-volume-leaders",
+                                    "target": "_self"
+                                }
+                            ],
+                            "imageType": {
+                                "image": "https://docs.londonstockexchange.com/sites/default/files/2020-04/personal_investing_small.jpg",
+                                "title": "Personal Investing",
+                                "uri": "/personal-investing-hub",
+                                "target": "_self"
+                            }
+                        }
+                    },
+                    {
+                        "title": "Raise Finance",
+                        "description": "Start your journey here",
+                        "uri": "/raise-finance",
+                        "subNav": [
+                            {
+                                "title": "Raise Finance",
+                                "description": null,
+                                "uri": "/raise-finance"
+                            },
+                            {
+                                "title": "Equity",
+                                "description": null,
+                                "uri": "/raise-finance/equity",
+                                "subNav": [
+                                    {
+                                        "title": "AIM",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/aim"
+                                    },
+                                    {
+                                        "title": "Main Market",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/main-market"
+                                    },
+                                    {
+                                        "title": "Private Markets",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/private-markets"
+                                    },
+                                    {
+                                        "title": "Compare markets for listing equity",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/compare-markets-listing-equity"
+                                    },
+                                    {
+                                        "title": "Direct Listings",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/direct-listings"
+                                    },
+                                    {
+                                        "title": "SPACs",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/spacs"
+                                    },
+                                    {
+                                        "title": "Calculating fees",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/how-list-equity/calculating-fees"
+                                    },
+                                    {
+                                        "title": "How to list equity",
+                                        "description": null,
+                                        "uri": "/raise-finance/equity/how-list-equity-listing-journey"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Debt",
+                                "description": null,
+                                "uri": "/raise-finance/debt",
+                                "subNav": [
+                                    {
+                                        "title": "Main Market",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/compare-our-debt-markets/main-market-debt"
+                                    },
+                                    {
+                                        "title": "International Securities Market",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/compare-our-debt-markets/international-securities-market"
+                                    },
+                                    {
+                                        "title": "Compare our debt markets",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/compare-our-debt-markets"
+                                    },
+                                    {
+                                        "title": "Issuer Services Flow",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/dcm-flow"
+                                    },
+                                    {
+                                        "title": "Our products",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/our-products"
+                                    },
+                                    {
+                                        "title": "Calculating fees",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=debt&accordionId=2-f643bf42-60cf-4de8-bfc6-53083461e0e3&moduleId=block_content%3A9c2cc651-868f-48ec-94f9-e72a28aefbe0"
+                                    },
+                                    {
+                                        "title": "How to list debt",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/how-list-debt-how-list"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "ETPs",
+                                "description": null,
+                                "uri": "/raise-finance/etps",
+                                "subNav": [
+                                    {
+                                        "title": "ETFs",
+                                        "description": null,
+                                        "uri": "/raise-finance/etps/etfs"
+                                    },
+                                    {
+                                        "title": "ETCs and ETNs",
+                                        "description": null,
+                                        "uri": "/raise-finance/etps/etcs-and-etns"
+                                    },
+                                    {
+                                        "title": "Calculating fees",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=exchange-traded-products-etps-&accordionId=2-87aa851b-1735-4538-9aac-df5547a69f8e&moduleId=block_content%3Ac611a600-063f-4e0a-80a2-6ca98581628c"
+                                    },
+                                    {
+                                        "title": "How to list ETPs",
+                                        "description": null,
+                                        "uri": "/raise-finance/etps/how-list-etps-how-list"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Investment funds",
+                                "description": null,
+                                "uri": "/raise-finance/investment-funds",
+                                "subNav": [
+                                    {
+                                        "title": "Compare markets for listing funds",
+                                        "description": null,
+                                        "uri": "/raise-finance/investment-funds/compare-markets-listing-funds"
+                                    },
+                                    {
+                                        "title": "Specialist Fund Segment",
+                                        "description": null,
+                                        "uri": "/raise-finance/investment-funds/specialist-fund-segment"
+                                    },
+                                    {
+                                        "title": "Single Asset Listings",
+                                        "description": null,
+                                        "uri": "/raise-finance/investment-funds/single-asset-listings"
+                                    },
+                                    {
+                                        "title": "REITs",
+                                        "description": null,
+                                        "uri": "/raise-finance/investment-funds/reits"
+                                    },
+                                    {
+                                        "title": "How to list funds",
+                                        "description": null,
+                                        "uri": "/raise-finance/investment-funds/how-list-funds-listing-journey"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Sustainable Finance",
+                                "description": null,
+                                "uri": "/raise-finance/sustainable-finance",
+                                "subNav": [
+                                    {
+                                        "title": "Voluntary Carbon Market",
+                                        "description": null,
+                                        "uri": "/raise-finance/sustainable-finance/voluntary-carbon-market"
+                                    },
+                                    {
+                                        "title": "Low-Carbon Transition & Climate Reporting",
+                                        "description": null,
+                                        "uri": "/raise-finance/sustainable-finance/low-carbon-transition-climate-reporting"
+                                    },
+                                    {
+                                        "title": "Green Economy Mark",
+                                        "description": null,
+                                        "uri": "/raise-finance/sustainable-finance/green-economy-mark"
+                                    },
+                                    {
+                                        "title": "ESG data and scores",
+                                        "description": null,
+                                        "uri": "/raise-finance/sustainable-finance/esg-data-and-scores"
+                                    },
+                                    {
+                                        "title": "Sustainable Bond Market",
+                                        "description": null,
+                                        "uri": "/raise-finance/debt/our-products/sustainable-bond-market"
+                                    }
+                                ]
+                            }
+                        ],
+                        "navFooter": {
+                            "iconType": [
+                                {
+                                    "icon": "icon-explore",
+                                    "title": "Nominated Advisers",
+                                    "uri": "/adviser",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-hand",
+                                    "title": "Issuer Services",
+                                    "uri": "/raise-finance/issuer-services",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-magnify-glass",
+                                    "title": "Corporate Actions",
+                                    "uri": "/raise-finance/corporate-actions",
+                                    "target": "_self"
+                                }
+                            ],
+                            "imageType": {
+                                "image": "https://docs.londonstockexchange.com/sites/default/files/2020-04/faq_bannerf.jpg",
+                                "title": "Admissions Self Service Portal",
+                                "uri": "/raise-finance/admissions-self-service-portal",
+                                "target": "_self"
+                            }
+                        }
+                    },
+                    {
+                        "title": "Equities Trading",
+                        "description": "Start your journey here",
+                        "uri": "/equities-trading",
+                        "subNav": [
+                            {
+                                "title": "Equities Trading",
+                                "description": null,
+                                "uri": "/equities-trading",
+                                "subNav": [
+                                    {
+                                        "title": "London Stock Exchange",
+                                        "description": null,
+                                        "uri": "/equities-trading/london-stock-exchange"
+                                    },
+                                    {
+                                        "title": "Turquoise",
+                                        "description": null,
+                                        "uri": "/equities-trading/turquoise/turquoise-trading-services"
+                                    },
+                                    {
+                                        "title": "Turquoise Europe",
+                                        "description": null,
+                                        "uri": "/equities-trading/turquoise/turquoise-europe"
+                                    },
+                                    {
+                                        "title": "TRADEcho",
+                                        "description": null,
+                                        "uri": "/equities-trading/tradecho"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Membership",
+                                "description": null,
+                                "uri": "/equities-trading/membership",
+                                "subNav": [
+                                    {
+                                        "title": "Member firm directory",
+                                        "description": null,
+                                        "uri": "/member-directory"
+                                    },
+                                    {
+                                        "title": "Member firm information sheets",
+                                        "description": null,
+                                        "uri": "/information-sheet"
+                                    },
+                                    {
+                                        "title": "Member services",
+                                        "description": null,
+                                        "uri": "/equities-trading/membership/member-services"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Asset Classes",
+                                "description": null,
+                                "uri": "/equities-trading/asset-classes",
+                                "subNav": [
+                                    {
+                                        "title": "Shares",
+                                        "description": null,
+                                        "uri": "/equities-trading/asset-classes/shares-trading"
+                                    },
+                                    {
+                                        "title": "Global Depository Receipts",
+                                        "description": null,
+                                        "uri": "/equities-trading/asset-classes/shares-trading/international-order-book"
+                                    },
+                                    {
+                                        "title": "ETPs",
+                                        "description": null,
+                                        "uri": "/equities-trading/asset-classes/etp-trading"
+                                    },
+                                    {
+                                        "title": "Debt",
+                                        "description": null,
+                                        "uri": "/equities-trading/asset-classes/debt-trading"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Trading Innovations",
+                                "description": null,
+                                "uri": "/equities-trading/trading-innovations",
+                                "subNav": [
+                                    {
+                                        "title": "Turquoise Plato Block Discovery™",
+                                        "description": null,
+                                        "uri": "/equities-trading/turquoise/turquoise-trading-services/turquoise-plato?tab=turquoise-plato-block-discovery-"
+                                    },
+                                    {
+                                        "title": "Appital Turquoise BookBuilder™",
+                                        "description": null,
+                                        "uri": "/equities-trading/trading-innovations/turquoise-automated-bookbuilding"
+                                    },
+                                    {
+                                        "title": "Turquoise Plato Trade at Last™",
+                                        "description": null,
+                                        "uri": "https://www.londonstockexchange.com/equities-trading/turquoise/turquoise-trading-services/turquoise-plato?tab=turquoise-plato-trade-at-last-"
+                                    },
+                                    {
+                                        "title": "Turquoise Retail Max™",
+                                        "description": null,
+                                        "uri": "/equities-trading/trading-innovations/turquoise-retail-max"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Market Data",
+                                "description": null,
+                                "uri": "/equities-trading/market-data",
+                                "subNav": [
+                                    {
+                                        "title": "Market data licensing",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-data/market-data-licensing"
+                                    },
+                                    {
+                                        "title": "Real-time data",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-data/real-time-data"
+                                    },
+                                    {
+                                        "title": "Historical data products",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-data/historical-data-products"
+                                    },
+                                    {
+                                        "title": "Pricing and policies",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-data/pricing-and-policies"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Market Connectivity",
+                                "description": null,
+                                "uri": "/equities-trading/market-connectivity",
+                                "subNav": [
+                                    {
+                                        "title": "Exchange Hosting",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-connectivity/exchange-hosting"
+                                    },
+                                    {
+                                        "title": "Customer Managed Connectivity",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-connectivity/customer-managed-connectivity"
+                                    },
+                                    {
+                                        "title": "Third Party Connectivity",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-connectivity/third-party-connectivity"
+                                    },
+                                    {
+                                        "title": "Customer Certification and Testing Services",
+                                        "description": null,
+                                        "uri": "/equities-trading/market-connectivity/customer-certification-testing-services"
+                                    }
+                                ]
+                            }
+                        ],
+                        "navFooter": {
+                            "iconType": [
+                                {
+                                    "icon": "icon-advice",
+                                    "title": "Equities Trading resources",
+                                    "uri": "/resources/equities-trading-resources",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-capital",
+                                    "title": "Turquoise markets and instruments",
+                                    "uri": "/trade/turquoise-markets-and-instruments",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-news",
+                                    "title": "News and insights",
+                                    "uri": "/equities-trading/news-and-insights",
+                                    "target": "_self"
+                                }
+                            ],
+                            "imageType": {
+                                "image": "https://docs.londonstockexchange.com/sites/default/files/2022-10/contact-securities-trading-menu-icon.png",
+                                "title": "Contact Equities Trading",
+                                "uri": "/equities-trading/contact",
+                                "target": "_self"
+                            }
+                        }
+                    },
+                    {
+                        "title": "Personal Investing",
+                        "description": "Start your journey here",
+                        "uri": "/personal-investing-hub",
+                        "subNav": [
+                            {
+                                "title": "Personal Investing Hub",
+                                "description": "Start your journey here",
+                                "uri": "/personal-investing-hub"
+                            },
+                            {
+                                "title": "Tools",
+                                "description": null,
+                                "uri": "/personal-investing/tools",
+                                "subNav": [
+                                    {
+                                        "title": "My account",
+                                        "description": null,
+                                        "uri": "/my-account"
+                                    },
+                                    {
+                                        "title": "Prices and markets search",
+                                        "description": null,
+                                        "uri": "/live-markets/market-data-dashboard/price-explorer"
+                                    },
+                                    {
+                                        "title": "Email alerts",
+                                        "description": null,
+                                        "uri": "/personal-investing/tools/email-alerts"
+                                    },
+                                    {
+                                        "title": "Virtual Portfolio and Watchlist",
+                                        "description": null,
+                                        "uri": "/personal-investing/tools/virtual-portfolio-and-watchlist"
+                                    },
+                                    {
+                                        "title": "Historical Price Service",
+                                        "description": null,
+                                        "uri": "/personal-investing/tools/historical-price-service"
+                                    },
+                                    {
+                                        "title": "Find a Broker",
+                                        "description": null,
+                                        "uri": "/personal-investing/tools/find-broker"
+                                    },
+                                    {
+                                        "title": "Direct Market Access",
+                                        "description": null,
+                                        "uri": "/personal-investing/tools/direct-market-access"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Broker directory",
+                                "description": null,
+                                "uri": "/personal-investing/member-firm-broker-directory",
+                                "subNav": [
+                                    {
+                                        "title": "Execution only",
+                                        "description": null,
+                                        "uri": "/personal-investing/member-firm-broker-directory?services=EXECUTION"
+                                    },
+                                    {
+                                        "title": "Advisory",
+                                        "description": null,
+                                        "uri": "/personal-investing/member-firm-broker-directory?services=ADVISORY"
+                                    },
+                                    {
+                                        "title": "Discretionary",
+                                        "description": null,
+                                        "uri": "/personal-investing/member-firm-broker-directory?services=DISCRETIONARY"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "All articles",
+                                "description": null,
+                                "uri": "/personal-investing-hub",
+                                "subNav": [
+                                    {
+                                        "title": "Why investing matters",
+                                        "description": null,
+                                        "uri": "/personal-investing/why-investing-matters-lse"
+                                    },
+                                    {
+                                        "title": "What should you consider before investing",
+                                        "description": null,
+                                        "uri": "/personal-investing/what-should-you-consider-investing-lse"
+                                    },
+                                    {
+                                        "title": "What are stocks & shares",
+                                        "description": null,
+                                        "uri": "/personal-investing/what-are-stocks-and-shares-lse"
+                                    }
+                                ]
+                            }
+                        ],
+                        "navFooter": {
+                            "iconType": [
+                                {
+                                    "icon": "icon-bars",
+                                    "title": "FTSE indices",
+                                    "uri": "/indices",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-magnify-glass",
+                                    "title": "Prices and markets search",
+                                    "uri": "/live-markets/market-data-dashboard/price-explorer",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-faqs",
+                                    "title": "FAQs",
+                                    "uri": "/personal-investing/faqs",
+                                    "target": "_self"
+                                }
+                            ],
+                            "imageType": {
+                                "image": "https://docs.londonstockexchange.com/sites/default/files/2020-04/personal_investing_featured.png",
+                                "title": "Exchanging ideas: Impact investing",
+                                "uri": "/personal-investing/exchanging-ideas-4-impact-investing-lse",
+                                "target": "_self"
+                            }
+                        }
+                    },
+                    {
+                        "title": "Resources",
+                        "description": "Start your journey here",
+                        "uri": "/resources",
+                        "subNav": [
+                            {
+                                "title": "Resources",
+                                "description": null,
+                                "uri": "/resources"
+                            },
+                            {
+                                "title": "Raise finance",
+                                "description": null,
+                                "uri": "/resources/raise-finance-resources",
+                                "subNav": [
+                                    {
+                                        "title": "Main Market",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=main-market"
+                                    },
+                                    {
+                                        "title": "AIM",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=aim"
+                                    },
+                                    {
+                                        "title": "Debt",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=debt"
+                                    },
+                                    {
+                                        "title": "Exchange Traded Products",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=exchange-traded-products-etps-"
+                                    },
+                                    {
+                                        "title": "Funds",
+                                        "description": null,
+                                        "uri": "/resources/raise-finance-resources?tab=funds"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Equities Trading",
+                                "description": null,
+                                "uri": "/resources/equities-trading-resources",
+                                "subNav": [
+                                    {
+                                        "title": "Rules and regulations",
+                                        "description": null,
+                                        "uri": "/resources/equities-trading-resources?tab=rules-and-regulations"
+                                    },
+                                    {
+                                        "title": "Technical library",
+                                        "description": null,
+                                        "uri": "/resources/equities-trading-resources?tab=technical-library"
+                                    },
+                                    {
+                                        "title": "Shares",
+                                        "description": null,
+                                        "uri": "/resources/equities-trading-resources?tab=shares"
+                                    },
+                                    {
+                                        "title": "Debt",
+                                        "description": null,
+                                        "uri": "/resources/equities-trading-resources?tab=debt"
+                                    },
+                                    {
+                                        "title": "Exchange Traded Products",
+                                        "description": null,
+                                        "uri": "/resources/equities-trading-resources?tab=exchange-traded-products-etps-"
+                                    },
+                                    {
+                                        "title": "Membership",
+                                        "description": null,
+                                        "uri": "/resources/equities-trading-resources?tab=shares&accordionId=1-b8cdabc4-28d5-451d-ae42-c912979ddea1&moduleId=block_content%3A42c1b9c1-3677-49f9-ba28-71ee3c7253a0"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "London Stock Exchange notices",
+                                "description": null,
+                                "uri": "/resources/london-stock-exchange-notices",
+                                "subNav": [
+                                    {
+                                        "title": "2023",
+                                        "description": null,
+                                        "uri": "https://www.londonstockexchange.com/resources/london-stock-exchange-notices?tab=2023"
+                                    },
+                                    {
+                                        "title": "2022",
+                                        "description": null,
+                                        "uri": "https://www.londonstockexchange.com/resources/london-stock-exchange-notices?tab=2022"
+                                    },
+                                    {
+                                        "title": "2021",
+                                        "description": null,
+                                        "uri": "https://www.londonstockexchange.com/resources/london-stock-exchange-notices?tab=2021"
+                                    },
+                                    {
+                                        "title": "2020",
+                                        "description": null,
+                                        "uri": "/resources/london-stock-exchange-notices?tab=2020"
+                                    },
+                                    {
+                                        "title": "2019",
+                                        "description": null,
+                                        "uri": "/resources/london-stock-exchange-notices?tab=2019"
+                                    },
+                                    {
+                                        "title": "2018",
+                                        "description": null,
+                                        "uri": "/resources/london-stock-exchange-notices?tab=2018"
+                                    },
+                                    {
+                                        "title": "2017",
+                                        "description": null,
+                                        "uri": "/resources/london-stock-exchange-notices?tab=2017"
+                                    },
+                                    {
+                                        "title": "2016",
+                                        "description": null,
+                                        "uri": "/resources/london-stock-exchange-notices?tab=2016"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Service Announcements",
+                                "description": null,
+                                "uri": "/resources/service-announcements",
+                                "subNav": [
+                                    {
+                                        "title": "2023",
+                                        "description": null,
+                                        "uri": "https://www.londonstockexchange.com/resources/service-announcements?tab=2023"
+                                    },
+                                    {
+                                        "title": "2022",
+                                        "description": null,
+                                        "uri": "/resources/service-announcements?tab=2022"
+                                    },
+                                    {
+                                        "title": "2021",
+                                        "description": null,
+                                        "uri": "/resources/service-announcements?tab=2021"
+                                    },
+                                    {
+                                        "title": "2020",
+                                        "description": null,
+                                        "uri": "/resources/service-announcements?tab=2020"
+                                    },
+                                    {
+                                        "title": "2019",
+                                        "description": null,
+                                        "uri": "/resources/service-announcements?tab=2019"
+                                    },
+                                    {
+                                        "title": "2018",
+                                        "description": null,
+                                        "uri": "/resources/service-announcements?tab=2018"
+                                    },
+                                    {
+                                        "title": "2017",
+                                        "description": null,
+                                        "uri": "/resources/service-announcements?tab=2017"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "FAQs",
+                                "description": null,
+                                "uri": "/resources/faqs",
+                                "subNav": [
+                                    {
+                                        "title": "Website FAQs",
+                                        "description": null,
+                                        "uri": "/resources/faqs?tab=website-faqs"
+                                    },
+                                    {
+                                        "title": "Main Market",
+                                        "description": null,
+                                        "uri": "/resources/faqs?tab=main-market"
+                                    },
+                                    {
+                                        "title": "AIM",
+                                        "description": null,
+                                        "uri": "/resources/faqs?tab=aim"
+                                    },
+                                    {
+                                        "title": "Debt",
+                                        "description": null,
+                                        "uri": "/resources/faqs?tab=debt"
+                                    },
+                                    {
+                                        "title": "Exchange Traded Products",
+                                        "description": null,
+                                        "uri": "/resources/faqs?tab=exchange-traded-products-etps-"
+                                    },
+                                    {
+                                        "title": "Funds",
+                                        "description": null,
+                                        "uri": "/resources/faqs?tab=funds"
+                                    }
+                                ]
+                            }
+                        ],
+                        "navFooter": {
+                            "iconType": [
+                                {
+                                    "icon": "icon-calendar",
+                                    "title": "AIM Notices",
+                                    "uri": "/resources/raise-finance-resources?tab=aim&accordionId=5-2c64dcab-97a0-4dd7-9511-1aa3eb2019cb&moduleId=block_content%3A61bc57c5-c7eb-4445-a16e-f6dd6e095785",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-markets",
+                                    "title": "Trading access",
+                                    "uri": "/resources/securities-trading-resources?tab=equity&accordionId=4-1ff0a7b6-bef9-465d-9de3-7d84a927e7a2&moduleId=block_content%3A7e1d2e52-97f5-41cc-a9e8-6e2d6d31ab28",
+                                    "target": "_self"
+                                },
+                                {
+                                    "icon": "icon-bars",
+                                    "title": "Reports",
+                                    "uri": "/reports?tab=issuers",
+                                    "target": "_self"
+                                }
+                            ],
+                            "imageType": {
+                                "image": "https://docs.londonstockexchange.com/sites/default/files/2020-05/price_explorer_featured.png",
+                                "title": "Prices and Markets",
+                                "uri": "/live-markets/market-data-dashboard/price-explorer",
+                                "target": "_self"
+                            }
+                        }
+                    }
+                ],
+                "breadcrumb": [
+                    {
+                        "title": "Home",
+                        "uri": "/"
+                    },
+                    {
+                        "title": "News article",
+                        "uri": "/news-article"
+                    }
+                ],
+                "othersites": [
+                    {
+                        "label": "Issuer Services",
+                        "url": "https://www.lsegissuerservices.com/home",
+                        "icon": "icon-web"
+                    },
+                    {
+                        "label": "LSEG",
+                        "url": "https://www.lseg.com/",
+                        "icon": "icon-web"
+                    },
+                    {
+                        "label": "LCH",
+                        "url": "https://www.lch.com/",
+                        "icon": "icon-web"
+                    },
+                    {
+                        "label": "FTSE Russell",
+                        "url": "https://www.ftserussell.com/",
+                        "icon": "icon-web"
+                    }
+                ]
+            }
+        }
+    ]
+}

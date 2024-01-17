@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
-from api_loader import merge_data
+from build.api_loader import merge_data
 
 
 class TestAPILoader(unittest.TestCase):

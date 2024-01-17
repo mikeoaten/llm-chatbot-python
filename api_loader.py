@@ -49,7 +49,7 @@ def create_constraints(tx):
     )
 
 
-def merge_newsarticle_data(
+def merge_newsarticle_nodes(
     tx,
     id,
     news_article,
@@ -64,9 +64,10 @@ def merge_newsarticle_data(
     supersector,
     sector,
     subsector,
+    tidm,
 ):
     """
-    Merge newsarticle data into Neo4j graph database.
+    Merge newsarticle nodes into Neo4j graph database.
 
     Parameters:
     - tx: Neo4j transaction object
@@ -83,6 +84,7 @@ def merge_newsarticle_data(
     - supersector: Supersector
     - sector: Sector
     - subsector: Subsector
+    - tidm: TIDM
     """
     tx.run(
         "MERGE (:Rns {id: $id, news_article: $news_article})",
@@ -90,18 +92,29 @@ def merge_newsarticle_data(
         news_article=news_article,
     )
     tx.run(
-        "MERGE (:Company {company_name: $company_name})",
+        "MERGE (:Company {company_name: $company_name, industry: $industry, supersector: $supersector, sector: $sector, subsector: $subsector, tidm: $tidm})",
         company_name=company_name,
+        industry=industry,
+        supersector=supersector,
+        sector=sector,
+        subsector=subsector,
+        tidm=tidm,
     )
     tx.run(
-        "MERGE (:News {id: $id, title: $title, source: $source, datetime: $datetime, rns_number: $rns_number, category: $category, headline_name: $headline_name})",
+        "MERGE (:News {id: $id, title: $title, source: $source, datetime: $datetime, company_name: $company_name, rns_number: $rns_number, category: $category, headline_name: $headline_name, tidm: $tidm, industry: $industry, supersector: $supersector, sector: $sector, subsector: $subsector })",
         id=id,
         title=title,
         source=source,
         datetime=datetime,
+        company_name=company_name,
         rns_number=rns_number,
         category=category,
         headline_name=headline_name,
+        tidm=tidm,
+        industry=industry,
+        supersector=supersector,
+        sector=sector,
+        subsector=subsector,
     )
     tx.run(
         "MERGE (:NewsCategory {category: $category})",
@@ -126,6 +139,90 @@ def merge_newsarticle_data(
     tx.run(
         "MERGE (:SubSector {subsector: $subsector})",
         subsector=subsector,
+    )
+
+
+def merge_newsarticle_relationships(
+    tx,
+):
+    """
+    Merge newsarticle relationships into Neo4j graph database.
+
+    Parameters:
+    - tx: Neo4j transaction object
+    """
+    tx.run(
+        """
+        MATCH
+            (r:Rns),
+            (n:News)
+        WHERE r.id = n.id
+        AND NOT EXISTS ((r)-[:SOURCE_OF]->(n))
+        CREATE (r)-[:SOURCE_OF]->(n);
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (n:News),
+            (d:Date)
+        WHERE d.date = left(n.datetime, 10)
+        CREATE (n)-[:PUBLISHED_ON]->(d);        
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (n:News),
+            (nc:NewsCategory)
+        WHERE n.category = nc.category
+        CREATE (n)-[:CATEGORY]->(nc);
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (c:Company),
+            (sbs:SubSector)
+        WHERE c.subsector = sbs.subsector
+        CREATE (c)-[:SUBSECTOR]->(sbs);
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (c:Company),
+            (s:Sector)
+        WHERE c.sector = s.sector
+        CREATE (c)-[:SECTOR]->(s);
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (c:Company),
+            (ss:SuperSector)
+        WHERE c.supersector = ss.supersector
+        CREATE (c)-[:SUPERSECTOR]->(ss);
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (c:Company),
+            (i:Industry)
+        WHERE c.industry = i.industry
+        CREATE (c)-[:INDUSTRY]->(i);
+        """
+    )
+    tx.run(
+        """
+        MATCH
+            (c:Company),
+            (n:News)
+        WHERE c.company_name = n.company_name
+        CREATE (n)-[:PUBLISHED_BY]->(c);
+        """
     )
 
 
@@ -172,9 +269,13 @@ try:
                             sector = content["value"]["icbsector"]
                             subsector = content["value"]["icbsubsector"]
 
-                # Write data
+                        if content["name"] == "pricedata":
+                            # Format data
+                            tidm = content["value"]["tidm"]
+
+                # Merge nodes
                 session.execute_write(
-                    merge_newsarticle_data,
+                    merge_newsarticle_nodes,
                     id,
                     news_article,
                     company_name,
@@ -188,11 +289,15 @@ try:
                     supersector,
                     sector,
                     subsector,
+                    tidm,
                 )
             else:
                 logging.warning(
                     f"Failed to retrieve data for newsId {id}. Status code: {response.status_code}"
                 )
+
+        # Merge relationships
+        session.execute_write(merge_newsarticle_relationships)
 
 except Exception as e:
     logging.error(f"Failed to create Neo4j driver: {e}")

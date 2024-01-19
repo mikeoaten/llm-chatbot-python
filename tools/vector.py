@@ -50,13 +50,10 @@ kg_qa = RetrievalQA.from_chain_type(
 
 def generate_response(prompt):
     """
-    Use the Neo4j Vector Search Index to generate the response. Do not use any pre-trained knowledge.
+    Use the Neo4j Vector Search Index
+    to augment the response from the LLM
     """
 
     # Handle the response
     response = kg_qa({"question": prompt})
-
     return response["answer"]
-
-
-# docs = retriever.get_relevant_documents(query="News titles which are like 'Publication of Suppl.Prospects'", k=10)

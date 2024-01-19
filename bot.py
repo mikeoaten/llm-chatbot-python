@@ -1,16 +1,16 @@
 import streamlit as st
 from utils import write_message
-from agent import generate_response, agent, memory, agent_executor
+from agent import generate_response, memory, agent_executor
 from datetime import datetime
 from solutions.tools.vector import retriever
 from langchain_community.callbacks import get_openai_callback
 
 from langchain.globals import set_debug
 
-# from langchain.globals import set_verbose
+from langchain.globals import set_verbose
 
 set_debug(True)
-# set_verbose(True)
+set_verbose(True)
 
 # Page Config
 st.set_page_config(page_title="RNS Buddy", page_icon=":newspaper:")
@@ -36,6 +36,7 @@ def handle_submit(message):
         with get_openai_callback() as cb:
             response = generate_response(message)
             write_message("assistant", response)
+
             #  logging
             # print("\nRESPONSE - ", end=" ")
             # print(datetime.now())

@@ -1,0 +1,253 @@
+[chain/start] [1:chain:AgentExecutor] Entering Chain run with input:
+{
+  "input": "hi",
+  "chat_history": []
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence] Entering Chain run with input:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": []
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad>] Entering Chain run with input:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": []
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad>] Entering Chain run with input:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": []
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad> > 5:chain:RunnableLambda] Entering Chain run with input:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": []
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad> > 5:chain:RunnableLambda] [10ms] Exiting Chain run with output:
+{
+  "output": ""
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad>] [21ms] Exiting Chain run with output:
+{
+  "agent_scratchpad": ""
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad>] [32ms] Exiting Chain run with output:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": [],
+  "agent_scratchpad": ""
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 6:prompt:PromptTemplate] Entering Prompt run with input:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": [],
+  "agent_scratchpad": ""
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 6:prompt:PromptTemplate] [18ms] Exiting Prompt run with output:
+{
+  "lc": 1,
+  "type": "constructor",
+  "id": [
+    "langchain",
+    "prompts",
+    "base",
+    "StringPromptValue"
+  ],
+  "kwargs": {
+    "text": "\nYou are a company news expert providing information from the rns company news service for listed UK companies.\n\nBe as helpful as possible and return as much information as possible.\nDo not answer any questions that do not relate to UK company news.\n\nDo not answer any questions using your pre-trained knowledge, only use the information provided in the context.\n\nIf the answer isn’t included in the provided context, refuse 
+to answer the question and ask for more information.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\nGeneral Chat: For general chat not covered by other tools\nCypher QA: Provides information about company news using Cypher\nVector Search Index: Provides information about company news using Vector Search\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to take, should be one of [General Chat, Cypher QA, Vector Search Index]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n[]\n\nNew input: hi\n\n"
+  }
+}
+[llm/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 7:llm:ChatOpenAI] Entering LLM run with input:
+{
+  "prompts": [
+    "Human: \nYou are a company news expert providing information from the rns company news service for listed UK companies.\n\nBe as helpful as possible and return as much information as possible.\nDo not answer any questions that do not relate to UK company news.\n\nDo not answer any questions using your pre-trained knowledge, only use the information provided in the context.\n\nIf the answer isn’t included in the provided context, refuse to answer the question and ask for more information.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\nGeneral Chat: For general chat not covered by other tools\nCypher QA: Provides information about company news using Cypher\nVector Search Index: Provides information about company news using Vector Search\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to 
+take, should be one of [General Chat, Cypher QA, Vector Search Index]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n[]\n\nNew input: hi"
+  ]
+}
+[llm/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 7:llm:ChatOpenAI] [647ms] Exiting LLM run with output:
+{
+  "generations": [
+    [
+      {
+        "text": "Hello! How can I assist you today with UK company news?",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "Hello! How can I assist you today with UK company news?",
+            "additional_kwargs": {}
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 13,
+      "prompt_tokens": 279,
+      "total_tokens": 292
+    },
+    "model_name": "gpt-3.5-turbo",
+    "system_fingerprint": null
+  },
+  "run": null
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 8:parser:ReActSingleInputOutputParser] Entering Parser run with input:
+[inputs]
+[chain/error] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 8:parser:ReActSingleInputOutputParser] [7ms] Parser run errored with error:
+"OutputParserException('Could not parse LLM output: `Hello! How can I assist you today with UK company news?`')Traceback (most recent call last):\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\runnables\\base.py\", line 975, in _call_with_config\n    context.run(\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\runnables\\config.py\", line 323, in call_func_with_variable_args\n    
+return func(input, **kwargs)  # type: ignore[call-arg]\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\output_parsers\\base.py\", line 168, in <lambda>\n    lambda inner_input: self.parse_result(\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\output_parsers\\base.py\", line 219, in parse_result\n    return self.parse(result[0].text)\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain\\agents\\output_parsers\\react_single_input.py\", line 75, in parse\n    raise OutputParserException(\n\n\nlangchain_core.exceptions.OutputParserException: Could not parse LLM output: `Hello! How can I assist you today with UK company news?`"
+[chain/error] [1:chain:AgentExecutor > 2:chain:RunnableSequence] [752ms] Chain run errored with error:
+"OutputParserException('Could not parse LLM output: `Hello! How can I assist you today with UK company news?`')Traceback (most recent call last):\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\runnables\\base.py\", line 1774, in invoke\n    input = step.invoke(\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\output_parsers\\base.py\", line 167, in invoke\n    return self._call_with_config(\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\runnables\\base.py\", line 975, in _call_with_config\n    context.run(\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\runnables\\config.py\", line 323, in call_func_with_variable_args\n    return func(input, **kwargs)  # type: ignore[call-arg]\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\output_parsers\\base.py\", line 168, in <lambda>\n    lambda inner_input: self.parse_result(\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain_core\\output_parsers\\base.py\", line 219, in parse_result\n    return self.parse(result[0].text)\n\n\n  File \"C:\\Users\\mikej\\anaconda3\\lib\\site-packages\\langchain\\agents\\output_parsers\\react_single_input.py\", line 75, in parse\n    raise OutputParserException(\n\n\nlangchain_core.exceptions.OutputParserException: Could not parse LLM output: `Hello! How can I assist you today with UK company news?`"
+[tool/start] [1:chain:AgentExecutor > 9:tool:_Exception] Entering Tool run with input:
+"Invalid Format: Missing 'Action:' after 'Thought:"
+[tool/end] [1:chain:AgentExecutor > 9:tool:_Exception] [2ms] Exiting Tool run with output:
+"Invalid Format: Missing 'Action:' after 'Thought:"
+[chain/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 11:chain:RunnableAssign<agent_scratchpad>] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 11:chain:RunnableAssign<agent_scratchpad> > 12:chain:RunnableParallel<agent_scratchpad>] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 11:chain:RunnableAssign<agent_scratchpad> > 12:chain:RunnableParallel<agent_scratchpad> > 13:chain:RunnableLambda] Entering Chain run with input:
+[inputs]
+[chain/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 11:chain:RunnableAssign<agent_scratchpad> > 12:chain:RunnableParallel<agent_scratchpad> > 13:chain:RunnableLambda] [3ms] Exiting Chain run with output:       
+{
+  "output": "Hello! How can I assist you today with UK company news?\nObservation: Invalid Format: Missing 'Action:' after 'Thought:\nThought: "
+}
+[chain/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 11:chain:RunnableAssign<agent_scratchpad> > 12:chain:RunnableParallel<agent_scratchpad>] [18ms] Exiting Chain run with output:
+{
+  "agent_scratchpad": "Hello! How can I assist you today with UK company news?\nObservation: Invalid Format: Missing 'Action:' after 'Thought:\nThought: "
+}
+[chain/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 11:chain:RunnableAssign<agent_scratchpad>] [29ms] Exiting Chain run with output:
+{
+  "input": "hi",
+  "chat_history": [],
+  "intermediate_steps": [
+    [
+      {
+        "lc": 1,
+        "type": "constructor",
+        "id": [
+          "langchain",
+          "schema",
+          "agent",
+          "AgentAction"
+        ],
+        "kwargs": {
+          "tool": "_Exception",
+          "tool_input": "Invalid Format: Missing 'Action:' after 'Thought:",
+          "log": "Hello! How can I assist you today with UK company news?"
+        }
+      },
+      "Invalid Format: Missing 'Action:' after 'Thought:"
+    ]
+  ],
+  "agent_scratchpad": "Hello! How can I assist you today with UK company news?\nObservation: Invalid Format: Missing 'Action:' after 'Thought:\nThought: "
+}
+[chain/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 14:prompt:PromptTemplate] Entering Prompt run with input:
+[inputs]
+[chain/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 14:prompt:PromptTemplate] [2ms] Exiting Prompt run with output:
+{
+  "lc": 1,
+  "type": "constructor",
+  "id": [
+    "langchain",
+    "prompts",
+    "base",
+    "StringPromptValue"
+  ],
+  "kwargs": {
+    "text": "\nYou are a company news expert providing information from the rns company news service for listed UK companies.\n\nBe as helpful as possible and return as much information as possible.\nDo not answer any questions that do not relate to UK company news.\n\nDo not answer any questions using your pre-trained knowledge, only use the information provided in the context.\n\nIf the answer isn’t included in the provided context, refuse 
+to answer the question and ask for more information.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\nGeneral Chat: For general chat not covered by other tools\nCypher QA: Provides information about company news using Cypher\nVector Search Index: Provides information about company news using Vector Search\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to take, should be one of [General Chat, Cypher QA, Vector Search Index]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n[]\n\nNew input: hi\nHello! How can I assist you today with UK company news?\nObservation: Invalid Format: Missing 'Action:' after 'Thought:\nThought: \n"
+  }
+}
+[llm/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 15:llm:ChatOpenAI] Entering LLM run with input:
+{
+  "prompts": [
+    "Human: \nYou are a company news expert providing information from the rns company news service for listed UK companies.\n\nBe as helpful as possible and return as much information as possible.\nDo not answer any questions that do not relate to UK company news.\n\nDo not answer any questions using your pre-trained knowledge, only use the information provided in the context.\n\nIf the answer isn’t included in the provided context, refuse to answer the question and ask for more information.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\nGeneral Chat: For general chat not covered by other tools\nCypher QA: Provides information about company news using Cypher\nVector Search Index: Provides information about company news using Vector Search\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to 
+take, should be one of [General Chat, Cypher QA, Vector Search Index]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n[]\n\nNew input: hi\nHello! How can I assist you today with UK company news?\nObservation: Invalid Format: Missing 'Action:' after 'Thought:\nThought:"
+  ]
+}
+[llm/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 15:llm:ChatOpenAI] [1.45s] Exiting LLM run with output:
+{
+  "generations": [
+    [
+      {
+        "text": "Do I need to use a tool? No\nFinal Answer: Hello! How can I assist you today with UK company news?",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "Do I need to use a tool? No\nFinal Answer: Hello! How can I assist you today with UK company news?",
+            "additional_kwargs": {}
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 26,
+      "prompt_tokens": 309,
+      "total_tokens": 335
+    },
+    "model_name": "gpt-3.5-turbo",
+    "system_fingerprint": null
+  },
+  "run": null
+}
+[chain/start] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 16:parser:ReActSingleInputOutputParser] Entering Parser run with input:
+[inputs]
+[chain/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence > 16:parser:ReActSingleInputOutputParser] [2ms] Exiting Parser run with output:
+{
+  "lc": 1,
+  "type": "constructor",
+  "id": [
+    "langchain",
+    "schema",
+    "agent",
+    "AgentFinish"
+  ],
+  "kwargs": {
+    "return_values": {
+      "output": "Hello! How can I assist you today with UK company news?"
+    },
+    "log": "Do I need to use a tool? No\nFinal Answer: Hello! How can I assist you today with UK company news?"
+  }
+}
+[chain/end] [1:chain:AgentExecutor > 10:chain:RunnableSequence] [1.52s] Exiting Chain run with output:
+[outputs]
+[chain/end] [1:chain:AgentExecutor] [2.35s] Exiting Chain run with output:
+{
+  "output": "Hello! How can I assist you today with UK company news?"
+}

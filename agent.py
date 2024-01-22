@@ -13,21 +13,21 @@ from langchain.agents.output_parsers import OpenAIFunctionsAgentOutputParser
 
 tools = [
     Tool.from_function(
-        name="General Chat",
-        description="For general chat not covered by other tools",
-        func=llm.invoke,
+        name="Vector Search Index",
+        description="Provides information about company news using Vector Search. Always use this tool before using Cypher QA tool.",
+        func=kg_qa,
         return_direct=True,
     ),
     Tool.from_function(
         name="Cypher QA",
-        description="Provides information about company news using Cypher",
+        description="Provides information about company news using Cypher. Only use this tool after using Vector Search Index tool.",
         func=cypher_qa,
         return_direct=True,
     ),
     Tool.from_function(
-        name="Vector Search Index",
-        description="Provides information about company news using Vector Search",
-        func=kg_qa,
+        name="General Chat",
+        description="For general chat not covered by other tools",
+        func=llm.invoke,
         return_direct=True,
     ),
 ]
@@ -40,6 +40,11 @@ memory = ConversationBufferWindowMemory(
     Verbose=True,
 )
 
+
+def _handle_error(error) -> str:
+    return str(error)[:50]
+
+
 # agent_prompt = hub.pull("hwchase17/react-chat")
 agent_prompt = agent_prompt
 agent = create_react_agent(llm, tools, agent_prompt)
@@ -48,8 +53,9 @@ agent_executor = AgentExecutor(
     tools=tools,
     memory=memory,
     verbose=True,
-    # handle_parsing_errors="Check your output and make sure it conforms, so every AIMessage content includes Thought: Do I need to use a tool? Yes/No",
-    handle_parsing_errors=True,
+    # handle_parsing_errors="Check your output and make sure it conforms, use the Action/Action Input syntax",
+    # handle_parsing_errors=False,
+    handle_parsing_errors=_handle_error,
 )
 
 
@@ -70,13 +76,6 @@ def generate_response(prompt):
         return output.get("result", "")
     else:
         return "Unexpected output format"
-
-
-# for chunk in agent_executor.stream(
-#     {"input": "using vector search name one rns headline"}
-# ):
-#     print(chunk)
-#     print("------")
 
 
 # while True:

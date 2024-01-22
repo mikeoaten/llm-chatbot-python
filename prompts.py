@@ -26,13 +26,16 @@ You have access to the following tools:
 
 {tools}
 
-Use the following format:
+CHAT FORMAT:
+------------
+
+Use the following sequence of steps to respond to a human user:
 
 Thought: Do I need to use a tool? Yes
-Action: The action to take, should be one of [{tool_names}]
-Action Input: The input to the action
+Action: You must select the most appropriate tool from this list: {tool_names} and try them in the order they appear, i.e. Vector Seach Index first, then Cypher QA, then General Chat
+Action Input: The input to the action, this should be exact text as entered by the human user at {input}
 Observation: The result of the action
-... (this Thought/Action/Action Input/Observation can repeat 3 times)
+... (this Thought/Action/Action Input/Observation sequence can repeat 3 times)
 
 
 When you have a response to say to the Human or if you do not need to use a tool you MUST use the format:
@@ -42,8 +45,8 @@ Thought: Do I need to use a tool? No
 Final Answer: [your response here]
 ```
 
-
 Begin!
+Remember to always give a COMPLETE answer e.g. after a "Thought:" with  "Do i need to use a tool? Yes/No" follows ALWAYS in a new line Action: (...) or Final Answer: (...), as described above.
 
 Previous conversation history:
 {chat_history}

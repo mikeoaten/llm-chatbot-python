@@ -6,10 +6,10 @@ from langchain_community.callbacks import get_openai_callback
 
 from langchain.globals import set_debug
 
-from langchain.globals import set_verbose
+# from langchain.globals import set_verbose
 
 set_debug(True)
-set_verbose(True)
+# set_verbose(True)
 
 # Page Config
 st.set_page_config(page_title="RNS Buddy", page_icon=":newspaper:")

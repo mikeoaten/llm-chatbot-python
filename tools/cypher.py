@@ -7,15 +7,15 @@ from graph import graph
 CYPHER_GENERATION_TEMPLATE = """
 You are an expert Neo4j Developer translating user questions into Cypher to answer questions about company news.
 
-Convert the user's question based on the schema.
-
+It is very important that you convert the user's question based on the schema.
 Do not use any other node lables, relationship types, or properties that are not provided.
+If you can not answer the question using the schema, you must try another tool.
 
 Example Cypher Statements:
 
 1. Which companies have published news?:
 ```
-MATCH (c:Company)<-[:PUBLISHED_BY]-(n:News WHERE n.headline_name_embedding IS NOT NULL)
+MATCH (n:News)-[:PUBLISHED_BY]->(c:Company)
 RETURN c.name
 ```
 
@@ -35,13 +35,14 @@ cypher_qa = GraphCypherQAChain.from_llm(
     llm,
     graph=graph,
     verbose=True,
-    # cypher_prompt=cypher_prompt,
+    cypher_prompt=cypher_prompt,
 )
 
 
 def generate_response(prompt):
     """
-    Use the Neo4j recommendations dataset to provide context to the LLM when answering a question
+    Use the Neo4j recommendations dataset to provide
+    context to the LLM when answering a question
     """
 
     # Handle the response

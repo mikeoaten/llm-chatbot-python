@@ -3,7 +3,7 @@ Version is 0.1
 
 == Building the Graph
 
-run 'api_loader.py'.
+.run `api_loader.py`
 * Create constraints if they do not exist
 * Merge newsarticle nodes into Neo4j graph database
 * Merge newsarticle relationships into Neo4j graph database
@@ -11,7 +11,7 @@ run 'api_loader.py'.
 
 == Create embeddings
 
-run 'create_embeddings.py'
+.run `create_embeddings.py`
 * Use Langchain and Neo4j
 
 

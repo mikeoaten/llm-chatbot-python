@@ -1,0 +1,242 @@
+[chain/start] [1:chain:AgentExecutor] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad>] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad>] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad> > 5:chain:RunnableLambda] Entering Chain run with input:
+[inputs]
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad> > 5:chain:RunnableLambda] [20ms] Exiting Chain run with output:
+{
+  "output": ""
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad> > 4:chain:RunnableParallel<agent_scratchpad>] [104ms] Exiting Chain run with output:
+{
+  "agent_scratchpad": ""
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 3:chain:RunnableAssign<agent_scratchpad>] [183ms] Exiting Chain run with output:
+{
+  "input": "use vector search, name one rns news headline",
+  "chat_history": [
+    {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain",
+        "schema",
+        "messages",
+        "HumanMessage"
+      ],
+      "kwargs": {
+        "content": "hi"
+      }
+    },
+    {
+      "lc": 1,
+      "type": "constructor",
+      "id": [
+        "langchain",
+        "schema",
+        "messages",
+        "AIMessage"
+      ],
+      "kwargs": {
+        "content": "Hello! How can I assist you today with UK company news?"
+      }
+    }
+  ],
+  "intermediate_steps": [],
+  "agent_scratchpad": ""
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 6:prompt:PromptTemplate] Entering Prompt run with input:
+[inputs]
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 6:prompt:PromptTemplate] [15ms] Exiting Prompt run with output:
+{
+  "lc": 1,
+  "type": "constructor",
+  "id": [
+    "langchain",
+    "prompts",
+    "base",
+    "StringPromptValue"
+  ],
+  "kwargs": {
+    "text": "\nYou are a company news expert providing information from the rns company news service for listed UK companies.\n\nBe as helpful as possible and return as much information as possible.\nDo not answer any questions that do not relate to UK company news.\n\nDo not answer any questions using your pre-trained knowledge, only use the information provided in the context.\n\nIf the answer isn’t included in the provided context, refuse 
+to answer the question and ask for more information.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\nGeneral Chat: For general chat not covered by other tools\nCypher QA: Provides information about company news using Cypher\nVector Search Index: Provides information about company news using Vector Search\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to take, should be one of [General Chat, Cypher QA, Vector Search Index]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n[HumanMessage(content='hi'), AIMessage(content='Hello! How can I assist you today with UK company news?')]\n\nNew input: use vector search, name one rns news headline\n\n"
+  }
+}
+[llm/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 7:llm:ChatOpenAI] Entering LLM run with input:
+{
+  "prompts": [
+    "Human: \nYou are a company news expert providing information from the rns company news service for listed UK companies.\n\nBe as helpful as possible and return as much information as possible.\nDo not answer any questions that do not relate to UK company news.\n\nDo not answer any questions using your pre-trained knowledge, only use the information provided in the context.\n\nIf the answer isn’t included in the provided context, refuse to answer the question and ask for more information.\n\nTOOLS:\n------\n\nAssistant has access to the following tools:\n\nGeneral Chat: For general chat not covered by other tools\nCypher QA: Provides information about company news using Cypher\nVector Search Index: Provides information about company news using Vector Search\n\nTo use a tool, please use the following format:\n\n```\nThought: Do I need to use a tool? Yes\nAction: the action to 
+take, should be one of [General Chat, Cypher QA, Vector Search Index]\nAction Input: the input to the action\nObservation: the result of the action\n```\n\nWhen you have a response to say to the Human, or if you do not need to use a tool, you MUST use the format:\n\n```\nThought: Do I need to use a tool? No\nFinal Answer: [your response here]\n```\n\nBegin!\n\nPrevious conversation history:\n[HumanMessage(content='hi'), AIMessage(content='Hello! How can I assist you today with UK company news?')]\n\nNew input: use vector search, name one rns news headline"
+  ]
+}
+[llm/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 7:llm:ChatOpenAI] [1.53s] Exiting LLM run with output:
+{
+  "generations": [
+    [
+      {
+        "text": "Thought: Do I need to use a tool? Yes\nAction: Vector Search Index\nAction Input: Company News Headlines",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "Thought: Do I need to use a tool? Yes\nAction: Vector Search Index\nAction Input: Company News Headlines",
+            "additional_kwargs": {}
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 25,
+      "prompt_tokens": 312,
+      "total_tokens": 337
+    },
+    "model_name": "gpt-3.5-turbo",
+    "system_fingerprint": null
+  },
+  "run": null
+}
+[chain/start] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 8:parser:ReActSingleInputOutputParser] Entering Parser run with input:
+[inputs]
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence > 8:parser:ReActSingleInputOutputParser] [2ms] Exiting Parser run with output:
+{
+  "lc": 1,
+  "type": "constructor",
+  "id": [
+    "langchain",
+    "schema",
+    "agent",
+    "AgentAction"
+  ],
+  "kwargs": {
+    "tool": "Vector Search Index",
+    "tool_input": "Company News Headlines",
+    "log": "Thought: Do I need to use a tool? Yes\nAction: Vector Search Index\nAction Input: Company News Headlines"
+  }
+}
+[chain/end] [1:chain:AgentExecutor > 2:chain:RunnableSequence] [1.82s] Exiting Chain run with output:
+[outputs]
+[tool/start] [1:chain:AgentExecutor > 9:tool:Vector Search Index] Entering Tool run with input:
+"Company News Headlines"
+[chain/start] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA] Entering Chain run with input:
+{
+  "query": "Company News Headlines"
+}
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01<00:00,  1.05s/it] 
+[chain/start] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA > 12:chain:StuffDocumentsChain] Entering Chain run with input:
+[inputs]
+[chain/start] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA > 12:chain:StuffDocumentsChain > 13:chain:LLMChain] Entering Chain run with input:
+{
+  "question": "Company News Headlines",
+  "context": "Publication of Suppl.Prospcts\n\nTransaction in Own Shares\n\nDirector/PDMR Shareholding\n\nDirector/PDMR Shareholding\n\nBlock Listing of Shares\n\nTotal Voting Rights"
+}
+[llm/start] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA > 12:chain:StuffDocumentsChain > 13:chain:LLMChain > 14:llm:ChatOpenAI] Entering LLM run with input:
+{
+  "prompts": [
+    "System: Use the following pieces of context to answer the user's question. \nIf you don't know the answer, just say that you don't know, don't try to make up an answer.\n----------------\nPublication of Suppl.Prospcts\n\nTransaction in Own Shares\n\nDirector/PDMR Shareholding\n\nDirector/PDMR Shareholding\n\nBlock Listing of Shares\n\nTotal Voting Rights\nHuman: Company News Headlines"
+  ]
+}
+[llm/end] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA > 12:chain:StuffDocumentsChain > 13:chain:LLMChain > 14:llm:ChatOpenAI] [1.06s] Exiting LLM run with output:
+{
+  "generations": [
+    [
+      {
+        "text": "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?",
+        "generation_info": {
+          "finish_reason": "stop",
+          "logprobs": null
+        },
+        "type": "ChatGeneration",
+        "message": {
+          "lc": 1,
+          "type": "constructor",
+          "id": [
+            "langchain",
+            "schema",
+            "messages",
+            "AIMessage"
+          ],
+          "kwargs": {
+            "content": "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?",
+            "additional_kwargs": {}
+          }
+        }
+      }
+    ]
+  ],
+  "llm_output": {
+    "token_usage": {
+      "completion_tokens": 32,
+      "prompt_tokens": 91,
+      "total_tokens": 123
+    },
+    "model_name": "gpt-3.5-turbo",
+    "system_fingerprint": null
+  },
+  "run": null
+}
+[chain/end] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA > 12:chain:StuffDocumentsChain > 13:chain:LLMChain] [1.08s] Exiting Chain run with output:
+{
+  "text": "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?"
+}
+[chain/end] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA > 12:chain:StuffDocumentsChain] [1.08s] Exiting Chain run with output:
+{
+  "output_text": "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?"
+}
+[chain/end] [1:chain:AgentExecutor > 9:tool:Vector Search Index > 10:chain:RetrievalQA] [2.17s] Exiting Chain run with output:
+{
+  "result": "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?"
+}
+[tool/end] [1:chain:AgentExecutor > 9:tool:Vector Search Index] [2.18s] Exiting Tool run with output:
+"{'query': 'Company News Headlines', 'result': "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?"}"
+[chain/end] [1:chain:AgentExecutor] [4.02s] Exiting Chain run with output:
+{
+  "output": {
+    "query": "Company News Headlines",
+    "result": "I'm sorry, I don't have access to real-time news updates. Can you please specify the company for which you would like to know the news headlines?"
+  }
+}
+2024-01-18 11:38:11.158 Uncaught app exception
+Traceback (most recent call last):
+  File "C:\Users\mikej\anaconda3\lib\site-packages\streamlit\runtime\scriptrunner\script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "C:\Users\mikej\Documents\GitHub\llm-chatbot-python\bot.py", line 69, in <module>
+    handle_submit(prompt)
+  File "C:\Users\mikej\Documents\GitHub\llm-chatbot-python\bot.py", line 37, in handle_submit
+    response = generate_response(message)
+  File "C:\Users\mikej\Documents\GitHub\llm-chatbot-python\agent.py", line 59, in generate_response
+    response = agent_executor.invoke({"input": prompt})
+  File "C:\Users\mikej\anaconda3\lib\site-packages\langchain\chains\base.py", line 164, in invoke
+    final_outputs: Dict[str, Any] = self.prep_outputs(
+  File "C:\Users\mikej\anaconda3\lib\site-packages\langchain\chains\base.py", line 440, in prep_outputs
+    self.memory.save_context(inputs, outputs)
+  File "C:\Users\mikej\anaconda3\lib\site-packages\langchain\memory\chat_memory.py", line 39, in save_context
+    self.chat_memory.add_ai_message(output_str)
+  File "C:\Users\mikej\anaconda3\lib\site-packages\langchain_core\chat_history.py", line 65, in add_ai_message
+    self.add_message(AIMessage(content=message))
+  File "C:\Users\mikej\anaconda3\lib\site-packages\langchain_core\load\serializable.py", line 107, in __init__
+    super().__init__(**kwargs)
+  File "C:\Users\mikej\anaconda3\lib\site-packages\pydantic\v1\main.py", line 341, in __init__
+    raise validation_error
+pydantic.v1.error_wrappers.ValidationError: 2 validation errors for AIMessage
+content
+  str type expected (type=type_error.str)
+content
+  value is not a valid list (type=type_error.list)

@@ -1,5 +1,4 @@
 import streamlit as st
-from utils import write_message
 from agent import generate_response, memory, agent_executor
 from datetime import datetime
 from solutions.tools.vector import retriever

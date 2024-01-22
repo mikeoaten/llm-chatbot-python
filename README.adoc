@@ -1,7 +1,7 @@
 Author is Mike Oaten
 Version is 0.1
 
-== Building the Graph
+== Building the graph
 
 .run `api_loader.py`
 * Create constraints if they do not exist
@@ -13,6 +13,12 @@ Version is 0.1
 
 .run `create_embeddings.py`
 * Use Langchain and Neo4j
+
+
+== Reset the graph
+.run `delete_data_drop_neo4j_constraints_indexes.py`
+* Delete all nodes and relationships in the Neo4j database
+* Drop all constraints and indexes in the Neo4j database
 
 
 == Running the application

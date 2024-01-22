@@ -8,7 +8,7 @@ from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain.tools import Tool
 from tools.vector import kg_qa
 from tools.cypher import cypher_qa
-from test_prompt import agent_prompt
+from prompts import agent_prompt
 from langchain.agents.output_parsers import OpenAIFunctionsAgentOutputParser
 
 tools = [

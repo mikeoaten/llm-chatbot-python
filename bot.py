@@ -1,8 +1,9 @@
 import streamlit as st
 from agent import generate_response, memory, agent_executor
 from datetime import datetime
-from solutions.tools.vector import retriever
+from tools.vector import retriever
 from langchain_community.callbacks import get_openai_callback
+import json
 
 from langchain.globals import set_debug
 
@@ -48,25 +49,25 @@ def handle_submit(message):
     with st.spinner("Thinking..."):
         with get_openai_callback() as cb:
             response = generate_response(message)
-            write_message("assistant", response)
-
-            #  logging
-            # print("\nRESPONSE - ", end=" ")
-            # print(datetime.now())
-            # print("\n")
-            # print("Agent\n ")
-            # print(agent)
-            # print("\n")
-            # print("Response")
+            result_json = retriever.get_relevant_documents(query=prompt)[0].to_json()
+            # Extract the 'metadata' value as a string
+            metadata_value_str = json.dumps(
+                result_json.get("kwargs", {}).get("metadata", {}), indent=4
+            )
+            write_message(
+                "assistant",
+                response
+                + "\n\n"
+                + metadata_value_str
+                + " "
+                + datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            )
             # print(retriever.get_relevant_documents(query=prompt))
             # for doc in retriever.get_relevant_documents(prompt):
             #     print("-" * 80)
+            #     print(datetime.now())
             #     print(doc)
-            # print("\n")
-            # print(f"Total Tokens: {cb.total_tokens}")
-            # print(f"Prompt Tokens: {cb.prompt_tokens}")
-            # print(f"Completion Tokens: {cb.completion_tokens}")
-            # print(f"Total Cost (USD): ${cb.total_cost}")
+            # print(cb)
 
 
 # with st.container():

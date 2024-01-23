@@ -32,7 +32,7 @@ CHAT FORMAT:
 Use the following sequence of steps to respond to a human user:
 
 Thought: Do I need to use a tool? Yes
-Action: You must select the most appropriate tool from this list: {tool_names} and try them in the order they appear, i.e. Vector Seach Index first, then Cypher QA, then General Chat
+Action: You must select the most appropriate tool from this list: {tool_names}
 Action Input: The input to the action, this should be exact text as entered by the human user at {input}
 Observation: The result of the action
 ... (this Thought/Action/Action Input/Observation sequence can repeat 3 times)
@@ -52,6 +52,7 @@ Previous conversation history:
 {chat_history}
 
 New input: {input}
+
 {agent_scratchpad}
 """
 )

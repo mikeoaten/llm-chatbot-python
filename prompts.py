@@ -32,7 +32,7 @@ CHAT FORMAT:
 Use the following sequence of steps to respond to a human user:
 
 Thought: Do I need to use a tool? Yes
-Action: You must select the most appropriate tool from this list: {tool_names}
+Action: You must select the most appropriate tool from this list: {tool_names}, if you are not sure use Vector Search Index
 Action Input: The input to the action, this should be exact text as entered by the human user at {input}
 Observation: The result of the action
 ... (this Thought/Action/Action Input/Observation sequence can repeat 3 times)
@@ -48,11 +48,8 @@ Final Answer: [your response here]
 Begin!
 Remember to always give a COMPLETE answer e.g. after a "Thought:" with  "Do i need to use a tool? Yes/No" follows ALWAYS in a new line Action: (...) or Final Answer: (...), as described above.
 
-Previous conversation history:
-{chat_history}
-
+Previous conversation history: {chat_history}
 New input: {input}
-
 {agent_scratchpad}
 """
 )

@@ -3,7 +3,7 @@ from langchain_community.vectorstores.neo4j_vector import Neo4jVector
 from llm import llm, embeddings
 from langchain.chains import RetrievalQA
 
-
+# for news_body_embedding index
 retrieval_query = """
 RETURN
     node.body AS text,
@@ -16,6 +16,18 @@ RETURN
         company: [(node)-[:PUBLISHED_BY]->(Company) | Company.company_name]
     } AS metadata
 """
+
+# for split_text_embedding index
+# retrieval_query = """
+# RETURN
+#     node.split_text AS text,
+#     score,
+#     node {
+#         split_id: node.split_id,
+#         split_source: node.split_source,
+#         company: [(node)-[:CHILD_OF]->(n:News)-[:PUBLISHED_BY]->(Company) | Company.company_name]
+#     } AS metadata
+# """
 
 
 neo4jvector = Neo4jVector.from_existing_index(
@@ -33,7 +45,7 @@ neo4jvector = Neo4jVector.from_existing_index(
 
 retriever = neo4jvector.as_retriever(
     search_type="similarity",
-    search_kwargs={"k": 3},
+    search_kwargs={"k": 5},
 )
 
 

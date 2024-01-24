@@ -55,7 +55,7 @@ agent_executor = AgentExecutor(
     verbose=True,
     # handle_parsing_errors="Check your output and make sure it conforms, use the Action/Action Input syntax",
     # handle_parsing_errors=False,
-    handle_parsing_errors=_handle_error,
+    # handle_parsing_errors=_handle_error,
 )
 
 

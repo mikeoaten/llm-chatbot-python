@@ -16,6 +16,7 @@ uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
 
+
 # Create embeddings for news headlines
 Neo4jVector.from_existing_graph(
     embeddings,
@@ -40,4 +41,17 @@ Neo4jVector.from_existing_graph(
     node_label="News",
     text_node_properties=["body"],
     embedding_node_property="body_embedding",
+)
+
+# Create embeddings for news article split text
+Neo4jVector.from_existing_graph(
+    embeddings,
+    url=uri,
+    username=username,
+    password=password,
+    database="neo4j",
+    index_name="split_text_embedding",
+    node_label="SplitText",
+    text_node_properties=["split_text"],
+    embedding_node_property="split_text_embedding",
 )

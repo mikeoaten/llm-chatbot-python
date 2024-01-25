@@ -55,10 +55,11 @@ def handle_submit(message):
         metadata_values = [
             {
                 key: result_json.get("kwargs", {}).get("metadata", {}).get(key)
-                for key in ["company", "url", "graph"]
+                for key in ["company", "url"]
             }
             for result_json in results_json
         ]
+
         metadata_values_str = [
             json.dumps(metadata, indent=4) for metadata in metadata_values
         ]
@@ -76,29 +77,34 @@ def handle_submit(message):
             + datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         )
 
-        graph = graphviz.Digraph(
-            graph_attr={"size": "2.5,2.5", "rankdir": "LR"},
-            engine="neato",
-        )
-        graph.edge("run", "intr")
-        graph.edge("intr", "runbl")
-        graph.edge("runbl", "run")
-        graph.edge("run", "kernel")
-        graph.edge("kernel", "zombie")
-        graph.edge("kernel", "sleep")
-
-        st.graphviz_chart(graph)
-
         # # Create a Graphviz graph
-        # dot = graphviz.Digraph()
-        # # Add nodes and edges based on the response
-        # for item in response:
-        #     dot.node(item['id'], item['label'])
-        #     for child in item['children']:
-        #         dot.edge(item['id'], child)
+        dot = graphviz.Digraph(comment="Graph")
 
-        # # Display the graph using Streamlit
-        # st.graphviz_chart(dot.source)
+        top_result_json = None
+
+        if results_json:
+            top_result_json = results_json[0]
+
+        if top_result_json:
+            data = top_result_json.get("kwargs", {}).get("metadata", {}).get("graph")
+
+            for item in data:
+                if len(item) == 6:  # Assuming each item has 6 elements
+                    (
+                        node_from_id,
+                        node_from_label,
+                        node_to_id,
+                        edge_label,
+                        node_to_id,
+                        node_to_label,
+                    ) = item
+
+                    # Add nodes and edges to the graph
+                    dot.node(str(node_from_id), label=str(node_from_label))
+                    dot.node(str(node_to_id), label=str(node_to_label))
+                    dot.edge(str(node_from_id), str(node_to_id), label=str(edge_label))
+
+        st.graphviz_chart(dot)
 
 
 # with st.container():

@@ -53,9 +53,10 @@ agent_executor = AgentExecutor(
     tools=tools,
     memory=memory,
     verbose=True,
-    # handle_parsing_errors="Check your output and make sure it conforms, use the Action/Action Input syntax",
+    # handle_parsing_errors="If the error is Could not parse LLM output: `Do I need to use a tool? Yes` then use Vector Search Index tool",
     # handle_parsing_errors=False,
-    # handle_parsing_errors=_handle_error,
+    handle_parsing_errors=_handle_error,
+    # return_intermediate_steps=True,
 )
 
 
@@ -76,8 +77,3 @@ def generate_response(prompt):
         return output.get("result", "")
     else:
         return "Unexpected output format"
-
-
-# while True:
-#     q = input("> ")
-#     print(agent_executor.invoke({"input": q}))

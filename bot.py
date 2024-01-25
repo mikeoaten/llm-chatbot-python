@@ -2,8 +2,8 @@ import streamlit as st
 from agent import generate_response, memory, agent_executor
 from datetime import datetime
 from tools.vector import retriever
-from langchain_community.callbacks import get_openai_callback
 import json
+import graphviz
 
 from langchain.globals import set_debug
 
@@ -47,27 +47,58 @@ if "messages" not in st.session_state:
 def handle_submit(message):
     # Handle the response
     with st.spinner("Thinking..."):
-        with get_openai_callback() as cb:
-            response = generate_response(message)
-            result_json = retriever.get_relevant_documents(query=prompt)[0].to_json()
-            # Extract the 'metadata' value as a string
-            metadata_value_str = json.dumps(
-                result_json.get("kwargs", {}).get("metadata", {}), indent=4
-            )
-            write_message(
-                "assistant",
-                response
-                + "\n\n"
-                + metadata_value_str
-                + " "
-                + datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            )
-            # print(retriever.get_relevant_documents(query=prompt))
-            # for doc in retriever.get_relevant_documents(prompt):
-            #     print("-" * 80)
-            #     print(datetime.now())
-            #     print(doc)
-            # print(cb)
+        response = generate_response(message)
+
+        results = retriever.get_relevant_documents(query=prompt)
+        results_json = [result.to_json() for result in results]
+
+        metadata_values = [
+            {
+                key: result_json.get("kwargs", {}).get("metadata", {}).get(key)
+                for key in ["company", "url", "graph"]
+            }
+            for result_json in results_json
+        ]
+        metadata_values_str = [
+            json.dumps(metadata, indent=4) for metadata in metadata_values
+        ]
+
+        metadata_values_str_combined = "\n\n".join(metadata_values_str)
+
+        write_message(
+            "assistant",
+            response
+            + "\n\n"
+            + "Relevant documents:"
+            + "\n\n"
+            + metadata_values_str_combined
+            + "\n\n"
+            + datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        )
+
+        graph = graphviz.Digraph(
+            graph_attr={"size": "2.5,2.5", "rankdir": "LR"},
+            engine="neato",
+        )
+        graph.edge("run", "intr")
+        graph.edge("intr", "runbl")
+        graph.edge("runbl", "run")
+        graph.edge("run", "kernel")
+        graph.edge("kernel", "zombie")
+        graph.edge("kernel", "sleep")
+
+        st.graphviz_chart(graph)
+
+        # # Create a Graphviz graph
+        # dot = graphviz.Digraph()
+        # # Add nodes and edges based on the response
+        # for item in response:
+        #     dot.node(item['id'], item['label'])
+        #     for child in item['children']:
+        #         dot.edge(item['id'], child)
+
+        # # Display the graph using Streamlit
+        # st.graphviz_chart(dot.source)
 
 
 # with st.container():

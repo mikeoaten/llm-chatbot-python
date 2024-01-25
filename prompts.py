@@ -35,8 +35,6 @@ Thought: Do I need to use a tool? Yes
 Action: You must select the most appropriate tool from this list: {tool_names}, if you are not sure use Vector Search Index
 Action Input: The input to the action, this should be exact text as entered by the human user at {input}
 Observation: The result of the action
-... (this Thought/Action/Action Input/Observation sequence can repeat 3 times)
-
 
 When you have a response to say to the Human or if you do not need to use a tool you MUST use the format:
 

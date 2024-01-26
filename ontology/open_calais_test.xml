@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Use of the Calais Web Service is governed by the Terms of Service located at http://www.opencalais.com. By using this service or the results of the service you agree to these terms of service.-->
+<!--Relations: 
+Company: Lloyds Banking Group PLC, the financial conduct authority
+Organization: Financial Conduct Authority
+-->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:c="http://s.opencalais.com/1/pred/">
+    <rdf:Description c:id="http://id.opencalais.com/k65-msawr8XUETey6EGsbg" c:ontology="http://trit-us-east-1-sharedamd.int.refinitiv.com/owlschema/0.5.2/onecalais.owl.allmetadata.xml" rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/DocInfo"/>
+        <c:document>
+            <![CDATA[RNS Number : 2583V Lloyds Banking Group PLC 30 November 2023 30 November 2023 LLOYDS BANKING GROUP PLC NOTIFICATION OF VOTING RIGHTS AND CAPITAL As at 30 November 2023, the total number of shares issued by Lloyds Banking Group plc with rights to vote which are exercisable in all circumstances at general meetings is 63,562,569,090 ordinary shares of 10p each, which includes shares represented by American Depositary Receipts. No shares are held in treasury. That figure may be used by shareholders as the "denominator" for the calculations by which they will determine whether they are required to notify their interest in, or a change to their interest in, Lloyds Banking Group plc under the Financial Conduct Authority's Disclosure Guidance and Transparency Rules. . END TVREADFEDEEDFFA]]>
+        </c:document>
+        <c:docTitle/>
+        <c:docDate>2023-12-14 18:57:59.630</c:docDate>
+    </rdf:Description>
+    <rdf:Description c:contentType="text/raw" c:language="English" c:processingVer="AllMetadata" c:serverVersion="N/A" c:stagsVer="defaultVersion" c:submissionDate="2023-12-14 18:57:59.404" rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/meta">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/DocInfoMeta"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:submitterCode>0ca6a864-5659-789d-5f32-f365f695e757</c:submitterCode>
+        <c:signature>digestalg-1|BagJrTFWSmKeimm9M6i9+oqUlNQ=|NLi1VwuhzbMl50+kaOHrRPclLm59VShRRt7/a+bfjB+Qf0LaT/GwPA==</c:signature>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/ComponentVersions">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/ComponentVersions"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:version>Deals Index:202312141832:202312141832</c:version>
+        <c:version>config-blackList-DIY:250957349:250957349</c:version>
+        <c:version>index-refineries:202107102126:202107102126</c:version>
+        <c:version>config-physicalAssets-powerStations:1227:1227</c:version>
+        <c:version>NextTags:2.5.191-legacy-trit-release-master:191</c:version>
+        <c:version>config-sca-DataPackage:50:50</c:version>
+        <c:version>config-companyNe:90557:90557</c:version>
+        <c:version>People Index:202312141547:202312141547</c:version>
+        <c:version>config-negativeSignature:994:994</c:version>
+        <c:version>Dial4J:2.0.17:17</c:version>
+        <c:version>OA Override:90554:90554</c:version>
+        <c:version>People Override:994:994</c:version>
+        <c:version>index-sluglines:202312141832:202312141832</c:version>
+        <c:version>index-company-oa3:202209072147:202209072147</c:version>
+        <c:version>index-vessels:202206111824:202206111824</c:version>
+        <c:version>config-forEndUserDisplay:4:4</c:version>
+        <c:version>config-refineries:994:994</c:version>
+        <c:version>config-cse-DIY:250960639:250960639</c:version>
+        <c:version>config-cse:994:994</c:version>
+        <c:version>config-vessels:994:994</c:version>
+        <c:version>override-company-DIY:250960639:250960639</c:version>
+        <c:version>config-physicalAssets-mines:1227:1227</c:version>
+        <c:version>BlackList:994:994</c:version>
+        <c:version>index-ports:202311191625:202311191625</c:version>
+        <c:version>config-physicalAssets-ports:994:994</c:version>
+        <c:version>config-drugs:994:994</c:version>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/lid/DefaultLangId">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/lid/DefaultLangId"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:lang rdf:resource="http://d.opencalais.com/lid/DefaultLangId/English"/>
+        <c:forenduserdisplay>false</c:forenduserdisplay>
+        <c:permid>505062</c:permid>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/SocialTag/1">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/SocialTag"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:socialtag rdf:resource="http://d.opencalais.com/genericHasher-1/d442b5b7-2d45-3687-959e-83422fdb38ed"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:name>Lloyds Banking Group</c:name>
+        <c:importance>1</c:importance>
+        <c:originalValue>Lloyds Banking Group</c:originalValue>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/SocialTag/2">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/SocialTag"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:socialtag rdf:resource="http://d.opencalais.com/genericHasher-1/6a1728e2-f66a-3d7d-9318-85af28fe10f3"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:name>Lloyds Bank</c:name>
+        <c:importance>1</c:importance>
+        <c:originalValue>Lloyds Bank</c:originalValue>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/SocialTag/3">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/SocialTag"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:socialtag rdf:resource="http://d.opencalais.com/genericHasher-1/9ce3213f-95ce-36c7-bf0a-e83c171e001a"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:name>Lloyds TSB Act</c:name>
+        <c:importance>1</c:importance>
+        <c:originalValue>Lloyds TSB Act 1998</c:originalValue>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/SocialTag/4">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/SocialTag"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:socialtag rdf:resource="http://d.opencalais.com/genericHasher-1/720c3028-4b15-3889-b337-2f5e4da7b20b"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:name>TSB Bank</c:name>
+        <c:importance>2</c:importance>
+        <c:originalValue>TSB Bank (United Kingdom)</c:originalValue>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/cat/1">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/cat/DocCat"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:forenduserdisplay>false</c:forenduserdisplay>
+        <c:score>1.000</c:score>
+        <c:name>Business_Finance</c:name>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Industry/1">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/Industry"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:forenduserdisplay>false</c:forenduserdisplay>
+        <c:name>Banks (NEC)</c:name>
+        <c:rcscode>B:1615</c:rcscode>
+        <c:permid>4294951386</c:permid>
+        <c:relevance>0.800</c:relevance>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Industry/2">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/Industry"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:forenduserdisplay>false</c:forenduserdisplay>
+        <c:name>Government Administration Activities</c:name>
+        <c:rcscode>B:1893</c:rcscode>
+        <c:permid>1004365576</c:permid>
+        <c:relevance>0.200</c:relevance>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Slugline/1">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/Slugline"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:slugline>LLOYDS BANK UK-RESULTS/SUMMARY</c:slugline>
+        <c:isactive>true</c:isactive>
+        <c:creationdate>2017-01-01T00:00:00.000Z</c:creationdate>
+        <c:slugid>sluglines/LLOYDSnbspBANKnbspUK-RESULTS/SUMMARY</c:slugid>
+        <c:confidencelevel>0.5471</c:confidencelevel>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Slugline/2">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/Slugline"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:slugline>LLOYDS BANK UK-RESULTS/PREVIEW</c:slugline>
+        <c:isactive>true</c:isactive>
+        <c:creationdate>2017-01-01T00:00:00.000Z</c:creationdate>
+        <c:slugid>sluglines/LLOYDSnbspBANKnbspUK-RESULTS/PREVIEW</c:slugid>
+        <c:confidencelevel>0.5154</c:confidencelevel>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/er/company/ralg-oa/8589934357">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/er/Company"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:name>THE FINANCIAL CONDUCT AUTHORITY</c:name>
+        <c:permid>8589934357</c:permid>
+        <c:ispublic>false</c:ispublic>
+        <c:commonname>FCA UK</c:commonname>
+        <c:score>0.12286514</c:score>
+        <!--the financial conduct authority-->
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/9cb1b91d-347b-3f71-9d8a-9cfc94517208"/>
+        <c:legacyid rdf:resource="http://d.opencalais.com/er/company/ralg-tr1r/8c22a3e3-c54d-3f67-b095-1cae5333448e"/>
+        <c:openpermid rdf:resource="https://permid.org/1-8589934357"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/conf/comphash-1/9cb1b91d-347b-3f71-9d8a-9cfc94517208">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/Confidence"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <!--the financial conduct authority-->
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/9cb1b91d-347b-3f71-9d8a-9cfc94517208"/>
+        <c:statisticalfeature>0.697</c:statisticalfeature>
+        <c:dblookup>0.0</c:dblookup>
+        <c:resolution>0.12286514</c:resolution>
+        <c:aggregate>0.902</c:aggregate>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/er/company/ralg-oa/8589934254">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/er/Company"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:name>LLOYDS BANKING GROUP PLC</c:name>
+        <c:permid>8589934254</c:permid>
+        <c:primaryric>LLOY.L</c:primaryric>
+        <c:ispublic>true</c:ispublic>
+        <c:commonname>Lloyds Bank UK</c:commonname>
+        <c:score>0.99009955</c:score>
+        <!--Lloyds Banking Group PLC-->
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <c:legacyid rdf:resource="http://d.opencalais.com/er/company/ralg-tr1r/6281b35d-600c-3209-9f81-6af427334a6c"/>
+        <c:openpermid rdf:resource="https://permid.org/1-8589934254"/>
+        <c:ticker>LLOY</c:ticker>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/em/e/Company"/>
+        <c:forenduserdisplay>true</c:forenduserdisplay>
+        <c:name>Lloyds Banking Group PLC</c:name>
+        <c:nationality>N/A</c:nationality>
+        <c:confidencelevel>0.98</c:confidencelevel>
+        <c:recognizedas>name</c:recognizedas>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Instance/1">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/InstanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <!--Company: Lloyds Banking Group PLC; -->
+        <c:detection>[RNS Number : 2583V ]Lloyds Banking Group PLC[ 30 November 2023 30 November 2023 LLOYDS BANKING]</c:detection>
+        <c:prefix>RNS Number : 2583V </c:prefix>
+        <c:exact>Lloyds Banking Group PLC</c:exact>
+        <c:suffix> 30 November 2023 30 November 2023 LLOYDS BANKING</c:suffix>
+        <c:offset>19</c:offset>
+        <c:length>24</c:length>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Instance/2">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/InstanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <!--Company: Lloyds Banking Group PLC; -->
+        <c:detection>[Group PLC 30 November 2023 30 November 2023 ]LLOYDS BANKING GROUP PLC[ NOTIFICATION OF VOTING RIGHTS AND CAPITAL As at]</c:detection>
+        <c:prefix>Group PLC 30 November 2023 30 November 2023 </c:prefix>
+        <c:exact>LLOYDS BANKING GROUP PLC</c:exact>
+        <c:suffix> NOTIFICATION OF VOTING RIGHTS AND CAPITAL As at</c:suffix>
+        <c:offset>78</c:offset>
+        <c:length>24</c:length>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Instance/3">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/InstanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <!--Company: Lloyds Banking Group PLC; -->
+        <c:detection>[2023, the total number of shares issued by ]Lloyds Banking Group plc[ with rights to vote which are exercisable in all]</c:detection>
+        <c:prefix>2023, the total number of shares issued by </c:prefix>
+        <c:exact>Lloyds Banking Group plc</c:exact>
+        <c:suffix> with rights to vote which are exercisable in all</c:suffix>
+        <c:offset>206</c:offset>
+        <c:length>24</c:length>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Instance/4">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/InstanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <!--Company: Lloyds Banking Group PLC; -->
+        <c:detection>[interest in, or a change to their interest in, ]Lloyds Banking Group plc[ under the Financial Conduct Authority's]</c:detection>
+        <c:prefix>interest in, or a change to their interest in, </c:prefix>
+        <c:exact>Lloyds Banking Group plc</c:exact>
+        <c:suffix> under the Financial Conduct Authority's</c:suffix>
+        <c:offset>660</c:offset>
+        <c:length>24</c:length>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Relevance/1">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/RelevanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <c:relevance>0.8</c:relevance>
+        <c:relevancecont>0.88</c:relevancecont>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/conf/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/tag/Confidence"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <!--Lloyds Banking Group PLC-->
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/dd5ff1b5-608b-30fc-b552-4ae099859d3b"/>
+        <c:statisticalfeature>0.925</c:statisticalfeature>
+        <c:dblookup>0.0</c:dblookup>
+        <c:resolution>0.99009955</c:resolution>
+        <c:aggregate>0.98</c:aggregate>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/comphash-1/9cb1b91d-347b-3f71-9d8a-9cfc94517208">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/em/e/Company"/>
+        <c:forenduserdisplay>false</c:forenduserdisplay>
+        <c:name>the financial conduct authority</c:name>
+        <c:confidencelevel>0.902</c:confidencelevel>
+        <c:recognizedas>name</c:recognizedas>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Instance/5">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/InstanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/9cb1b91d-347b-3f71-9d8a-9cfc94517208"/>
+        <!--Company: the financial conduct authority; -->
+        <c:detection>[interest in, Lloyds Banking Group plc under ]the Financial Conduct Authority['s Disclosure Guidance and Transparency Rules. .]</c:detection>
+        <c:prefix>interest in, Lloyds Banking Group plc under </c:prefix>
+        <c:exact>the Financial Conduct Authority</c:exact>
+        <c:suffix>'s Disclosure Guidance and Transparency Rules. .</c:suffix>
+        <c:offset>691</c:offset>
+        <c:length>31</c:length>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Relevance/2">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/RelevanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/comphash-1/9cb1b91d-347b-3f71-9d8a-9cfc94517208"/>
+        <c:relevance>0.2</c:relevance>
+        <c:relevancecont>0.03</c:relevancecont>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/genericHasher-1/5cb1a355-d24e-3c7f-bfa9-3ca0a256988f">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/em/e/Organization"/>
+        <c:permid rdf:resource="https://permid.org/1-404010"/>
+        <c:forenduserdisplay>false</c:forenduserdisplay>
+        <c:name>Financial Conduct Authority</c:name>
+        <c:organizationtype>governmental civilian</c:organizationtype>
+        <c:nationality>N/A</c:nationality>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Instance/6">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/InstanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/genericHasher-1/5cb1a355-d24e-3c7f-bfa9-3ca0a256988f"/>
+        <!--Organization: Financial Conduct Authority; -->
+        <c:detection>[interest in, Lloyds Banking Group plc under the ]Financial Conduct Authority['s Disclosure Guidance and Transparency Rules. .]</c:detection>
+        <c:prefix>interest in, Lloyds Banking Group plc under the </c:prefix>
+        <c:exact>Financial Conduct Authority</c:exact>
+        <c:suffix>'s Disclosure Guidance and Transparency Rules. .</c:suffix>
+        <c:offset>695</c:offset>
+        <c:length>27</c:length>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2/Relevance/3">
+        <rdf:type rdf:resource="http://s.opencalais.com/1/type/sys/RelevanceInfo"/>
+        <c:docId rdf:resource="http://d.opencalais.com/dochash-1/d10eec53-bc54-3f5d-b33b-6225fd4ebad2"/>
+        <c:subject rdf:resource="http://d.opencalais.com/genericHasher-1/5cb1a355-d24e-3c7f-bfa9-3ca0a256988f"/>
+        <c:relevance>0.2</c:relevance>
+    </rdf:Description>
+</rdf:RDF>

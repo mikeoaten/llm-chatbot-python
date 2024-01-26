@@ -13,5 +13,6 @@ llm = ChatOpenAI(
 embeddings = OpenAIEmbeddings(
     openai_api_key=st.secrets["OPENAI_API_KEY"],
     model="text-embedding-ada-002",
+    # model="text-embedding-3-small",
     show_progress_bar=True,
 )

@@ -1,3 +1,8 @@
+"""
+This module contains the code for the RNS Buddy chatbot.
+The chatbot interacts with the user, generates responses, and displays relevant documents.
+"""
+
 import streamlit as st
 from agent import generate_response, memory, agent_executor
 from datetime import datetime
@@ -45,6 +50,10 @@ if "messages" not in st.session_state:
 
 # Submit handler
 def handle_submit(message):
+    """
+    This function handles the submission of user messages and generates a response.
+    It also retrieves relevant documents and displays them in the UI.
+    """
     # Handle the response
     with st.spinner("Thinking..."):
         response = generate_response(message)
@@ -122,6 +131,10 @@ if prompt := st.chat_input("Ask away..."):
 
 
 def on_reset_chat_button_click():
+    """
+    This function handles the reset of the chat.
+    It clears the session state, memory, and prints the chat messages.
+    """
     print(agent_executor.memory.chat_memory.messages)
     st.session_state.messages = []
     st.session_state.clear()

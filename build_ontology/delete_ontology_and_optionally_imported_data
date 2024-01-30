@@ -10,7 +10,7 @@ username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
 
 
-def delete_imported_ontology(tx):
+def delete_imported_reference_ontology(tx):
     """
     Deletes all imported ontology resources from the database.
 
@@ -22,17 +22,38 @@ def delete_imported_ontology(tx):
     """
     tx.run(
         """MATCH
-        (r1:Resource where not r1.uri STARTS WITH 'http://d')
+        (r1:Resource WHERE NOT r1.uri STARTS WITH 'http://d')
         -[*..1]->
-        (r2:Resource where not r2.uri STARTS WITH 'http://d' or not r2.uri STARTS WITH 'https://permid.org/')
-        detach delete r1, r2;
+        (r2:Resource WHERE NOT r2.uri STARTS WITH 'http://d' OR NOT r2.uri STARTS WITH 'https://permid.org/')
+        DETACH DELETE r1, r2;
         """
     )
-    return None
+
+
+def delete_imported_ontology(tx):
+    """
+    Delete all imported ontology resources.
+
+    This function deletes all resources in the ontology that have URIs starting with 'http://d'.
+    It uses a Cypher query to match and delete the resources, along with any relationships they have.
+
+    Args:
+        tx: The transaction object for executing the Cypher query.
+
+    Returns:
+        None
+    """
+    tx.run(
+        """
+        MATCH (r:Resource WHERE r.uri STARTS WITH 'http://d')--()
+        DETACH DELETE r;
+        """
+    )
 
 
 def delete_merged_ontology(tx):
-    """Deletes the merged ontology by removing all relationships
+    """
+    Deletes the merged ontology by removing all relationships
     and nodes that are connected to the 'News' node.
 
     Args:
@@ -48,9 +69,9 @@ def delete_merged_ontology(tx):
     DETACH DELETE o;
     """
     )
-    return None
 
 
+# !! to do
 # def drop_all_onotology_constraints_and_indexes(tx):
 #     """
 #     Drop all onotology constraints and indexes in the Neo4j database.
@@ -69,20 +90,14 @@ def delete_merged_ontology(tx):
 #             tx.run(f"DROP INDEX {index['name']}")
 
 
-# Ask the user whether to delete all nodes and relationships
-delete_data = input("Delete all nodes and relationships? (yes/no) ") == "yes"
-
-# Import the drop_all_constraints_and_indexes function
 # Create the driver instance
 driver = None
 try:
     driver = GraphDatabase.driver(uri, auth=(username, password))
     with driver.session() as session:
-        if delete_data:
-            # Delete all nodes and relationships in a separate transaction
-            session.execute_write(delete_imported_ontology)
-        # Call the drop_all_constraints_and_indexes function
-        # session.execute_write(drop_all_constraints_and_indexes)
+        session.execute_write(delete_imported_reference_ontology)
+        session.execute_write(delete_imported_ontology)
+        session.execute_write(delete_merged_ontology)
 
 except Exception as e:
     logging.error(f"Failed to create Neo4j driver: {e}")

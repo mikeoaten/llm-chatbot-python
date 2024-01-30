@@ -51,9 +51,6 @@ except Exception as e:
 # Close the driver instance
 driver.close()
 
-# print(results)
-
-
 # --------------------------------------------
 # Open Calais API
 
@@ -122,10 +119,8 @@ def get_response_text(api_key, results):
                 f"Failed to retrieve data for newsId {id}. Status code: {response.status_code}"
             )
 
-        # Optionally break after the first API call, useful for testing
-        # break
-
-    return None
+    # Optionally break after the first API call, useful for testing
+    # break
 
 
 # --------------------------------------------
@@ -153,7 +148,7 @@ def write_data(tx, response_text):
         print("Failed to import data")
 
 
-# Create the driver instance and write the data
+# # Create the driver instance and write the data
 driver = None
 try:
     driver = GraphDatabase.driver(uri, auth=(username, password))
@@ -169,6 +164,10 @@ except Exception as e:
 
 # Close the driver instance
 driver.close()
+
+# Check if the data has been imported
+# match path = (r1:Resource where r1.uri starts with 'http://d')-[*..1]-(r2:Resource where r2.uri starts with 'http://d')
+# return path
 
 # --------------------------------------------
 # Create relationships between the imported data and the ontology
@@ -221,9 +220,19 @@ def merge_data(tx):
     Returns:
         None
     """
+    # Create relationship between the News and ns1__DocInfo nodes
     tx.run(
         """
-        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..1]-(ns3:ns3__SocialTag)
+        MATCH (di:ns1__DocInfo)
+        MATCH(n:News)
+        WHERE left(di.ns0__document, 15) = left(n.body, 15)
+        AND di.ns0__document contains n.rns_number
+        MERGE (di)<-[:ONTOLOGY]-(n)
+        """
+    )
+    # Create remaining relationships
+    tx.run(
+        """MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..1]-(ns3:ns3__SocialTag)
         MERGE (t:Tag {tag_name: ns3.ns0__name})
         MERGE (n)<-[:TAG_OF]-(t)
         """
@@ -271,12 +280,19 @@ try:
     driver = GraphDatabase.driver(uri, auth=(username, password))
     driver.verify_connectivity()
     with driver.session() as session:
-        results = session.execute_write(create_constraints)
+        session.execute_write(create_constraints)
     with driver.session() as session:
-        results = session.execute_write(merge_data)
+        session.execute_write(merge_data)
 
 except Exception as e:
     logging.error(f"Failed to create Neo4j driver: {e}")
 
 # Close the driver instance
 driver.close()
+
+# Check if the constraints have been created
+# show constraints where name ends with '_name'
+
+# Check if the data has been merged
+# match path = (n1:!Resource)--(n2:!Resource)
+# return path

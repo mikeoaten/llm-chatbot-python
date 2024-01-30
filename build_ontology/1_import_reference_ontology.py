@@ -38,6 +38,12 @@ def create_uri_constraint(tx):
     )
 
 
+# check if the constraint exists
+# show constraints where name = 'n10s_unique_uri'
+
+
+# !! to do - this is not working, having to manually import the ontology
+# in the Neo4j browser
 def load_reference_ontology(tx):
     """
     Load the reference ontology.
@@ -47,6 +53,10 @@ def load_reference_ontology(tx):
         CALL n10s.onto.import.fetch("file:///C:\\Users\\mikej\\Documents\\GitHub\\llm-chatbot-python\\build_ontology\\onecalais.owl.allmetadata.xml", "RDF/XML");
         """
     )
+
+
+# check if the ontology has been loaded
+# MATCH path = (r:Resource)--() RETURN path
 
 
 # Create the driver instance

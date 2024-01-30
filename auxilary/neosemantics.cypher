@@ -21,7 +21,7 @@ REQUIRE r.uri IS UNIQUE;
 //CALL n10s.rdf.import.fetch("file:///D:\\Data\\some_rdf_file.rdf", "RDF/XML");
 
 // preview/import of an open calais output
-CALL n10s.rdf.preview.fetch("file: ///C:\\Users\\mikej\\Documents\\GitHub\\llm-chatbot-python\\ontology\\open_calais_test.xml", "RDF/XML");
+CALL n10s.rdf.preview.fetch("file: ///C:\\Users\\mikej\\Documents\\GitHub\\llm-chatbot-python\\build_ontology\\open_calais_test.xml", "RDF/XML");
 
 // to clear out all RDF data from the graph
 MATCH (n:Resource)
@@ -30,7 +30,7 @@ DETACH DELETE n;
 // Imported an RDF ontology into Neo4j
 // https://neo4j.com/labs/neosemantics/4.3/importing-ontologies/
 // n.b. graphconfig.init() and constraints must be run first
-CALL n10s.onto.import.fetch("file: ///C:\\Users\\mikej\\Documents\\GitHub\\llm-chatbot-python\\ontology\\onecalais.owl.allmetadata.xml", "RDF/XML");
+CALL n10s.onto.import.fetch("file: ///C:\\Users\\mikej\\Documents\\GitHub\\llm-chatbot-python\\build_ontology\\onecalais.owl.allmetadata.xml", "RDF/XML");
 
 // Create MAPPED_TO relationships between the imported data and the ontology
 MATCH (m:Resource)

@@ -48,6 +48,8 @@ def create_constraints(tx):
         "CREATE CONSTRAINT supersector_supersector IF NOT EXISTS FOR (s:SuperSector) REQUIRE s.supersector IS UNIQUE"
     )
 
+    return
+
 
 def merge_newsarticle_nodes(
     tx,
@@ -141,6 +143,8 @@ def merge_newsarticle_nodes(
         subsector=subsector,
     )
 
+    return
+
 
 def merge_newsarticle_relationships(
     tx,
@@ -224,6 +228,8 @@ def merge_newsarticle_relationships(
         CREATE (n)-[:PUBLISHED_BY]->(c);
         """
     )
+
+    return
 
 
 # Create the driver instance

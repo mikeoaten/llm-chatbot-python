@@ -12,9 +12,43 @@ password = st.secrets["NEO4J_PASSWORD"]
 
 def delete_imported_ontology(tx):
     """
-    Delete all nodes and relationships in the Neo4j database.
+    Deletes all imported ontology resources from the database.
+
+    Parameters:
+    - tx: The transaction object for executing the Cypher query.
+
+    Returns:
+    None
     """
-    tx.run("MATCH (n:Resource) DETACH DELETE n;")
+    tx.run(
+        """MATCH
+        (r1:Resource where not r1.uri STARTS WITH 'http://d')
+        -[*..1]->
+        (r2:Resource where not r2.uri STARTS WITH 'http://d' or not r2.uri STARTS WITH 'https://permid.org/')
+        detach delete r1, r2;
+        """
+    )
+    return None
+
+
+def delete_merged_ontology(tx):
+    """Deletes the merged ontology by removing all relationships
+    and nodes that are connected to the 'News' node.
+
+    Args:
+        tx: The transaction object used for executing the Cypher query.
+
+    Returns:
+        None
+    """
+    tx.run(
+        """
+    MATCH (n:News)<-[r]-(o)
+    WHERE type(r) IN ["TAG_OF", "PERSON_OF", "ORGANISATION__OF", "INDUSTRY_OF", "COMPANY_OF", "POSITION_OF"]
+    DETACH DELETE o;
+    """
+    )
+    return None
 
 
 # def drop_all_onotology_constraints_and_indexes(tx):

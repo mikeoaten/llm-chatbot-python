@@ -20,7 +20,7 @@ username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
 
 
-# Define the query to read the news body from the database
+# Read the news body from the database
 def read_news_body(tx):
     """
     Read the news body from the database.
@@ -61,7 +61,7 @@ driver.close()
 api_key = st.secrets["OPENCALAIS_API_KEY"]
 
 
-# Define the function to make the API call
+# Format the OpenCalais API call
 def make_api_call(api_key, body):
     """
     Makes an API call to the Refinitiv PermID service.
@@ -96,7 +96,7 @@ def make_api_call(api_key, body):
     return api_response
 
 
-# Define the function to get the response text from the API call
+# Loop through the results and make the OpenCalais API call
 def get_response_text(api_key, results):
     """
     Retrieves the response text from the API call for each result in the given list of results.
@@ -115,8 +115,6 @@ def get_response_text(api_key, results):
         response = make_api_call(api_key, body)
 
         if response.status_code == 200:
-            print(response.text)
-
             return response.text
 
         else:
@@ -124,16 +122,17 @@ def get_response_text(api_key, results):
                 f"Failed to retrieve data for newsId {id}. Status code: {response.status_code}"
             )
 
-        # Break after the first API call
+        # Optionally break after the first API call, useful for testing
         # break
 
     return None
 
 
 # --------------------------------------------
-# Write the results to the Neo4j
+# Write the results to Neo4j database
 
 
+# Set variables for Neo4j driver
 def write_data(tx, response_text):
     """Write data to the ontology.
 
@@ -152,10 +151,9 @@ def write_data(tx, response_text):
         print("Data imported successfully")
     else:
         print("Failed to import data")
-    return
 
 
-# Create the driver instance
+# Create the driver instance and write the data
 driver = None
 try:
     driver = GraphDatabase.driver(uri, auth=(username, password))
@@ -176,28 +174,109 @@ driver.close()
 # Create relationships between the imported data and the ontology
 
 
-# // Create MAPPED_TO relationships between the imported data and the ontology
-# MATCH (m:Resource)
-# WHERE m.uri STARTS //s.opencalais.com/1/type/em/e/'
-# WITH 'http:
-#  OR m.uri STARTS //s.opencalais.com/1/type/em/r/'
-# WITH 'http:
-#  OR m.uri STARTS //s.opencalais.com/1/type/er/'
-# WITH 'http:
-#  OR m.uri STARTS //s.opencalais.com/1/type/er/Geo/'
-# WITH 'http:
-# WITH m, split(m.uri, '/') AS parts
-# MATCH (n)
-# WHERE 'ns7__' + last(parts) IN labels(n)
-#  OR 'ns5__' + last(parts) IN labels(n)
-#  OR 'ns6__' + last(parts) IN labels(n)
-#  OR 'ns8__' + last(parts) IN labels(n)
-# MERGE (n)-[:MAPPED_TO]->(m)
-# RETURN
-# m, n;
+def create_constraints(tx):
+    """
+    Create constraints if they do not exist.
+    """
+    tx.run(
+        """CREATE CONSTRAINT tag_tag_name IF NOT EXISTS
+        for (t:Tag) REQUIRE t.tag_name IS UNIQUE
+        """
+    )
+    tx.run(
+        """
+        CREATE CONSTRAINT person_person_name IF NOT EXISTS
+        for (p:Person) REQUIRE p.person_name IS UNIQUE
+        """
+    )
+    tx.run(
+        """CREATE CONSTRAINT organisation_organisation_name IF NOT EXISTS
+        for (o:Organisation) REQUIRE o.organisation_name IS UNIQUE
+        """
+    )
+    tx.run(
+        """CREATE CONSTRAINT industry_industry_name IF NOT EXISTS
+        for (i:Industry) REQUIRE i.industry_name IS UNIQUE
+        """
+    )
+    tx.run(
+        """CREATE CONSTRAINT company_company_name IF NOT EXISTS
+        for (c:Company) REQUIRE c.company_name IS UNIQUE
+        """
+    )
+    tx.run(
+        """CREATE CONSTRAINT position_position_name IF NOT EXISTS
+        for (p:Position) REQUIRE p.position_name IS UNIQUE
+        """
+    )
 
-# // Created MATCHED_TO relationships between rns Companies and Open Calais Compnaies
-# MATCH (c1:Company)
-# MATCH (c2: ns6__Company)
-# WHERE c1.tidm = c2.ns0__ticker
-# MERGE (c1)-[:MATCHED_TO]->(c2);
+
+def merge_data(tx):
+    """Merge data to the ontology.
+
+    Args:
+        tx (Transaction): The Neo4j transaction object.
+        response_text (str): The response text containing RDF/XML data.
+
+    Returns:
+        None
+    """
+    tx.run(
+        """
+        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..1]-(ns3:ns3__SocialTag)
+        MERGE (t:Tag {tag_name: ns3.ns0__name})
+        MERGE (n)<-[:TAG_OF]-(t)
+        """
+    )
+    tx.run(
+        """
+        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..2]-(ns5:ns5__Person)
+        MERGE (p:Person {person_name: ns5.ns0__name})
+        MERGE (n)<-[:PERSON_OF]-(p)
+        """
+    )
+    tx.run(
+        """
+        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..2]-(ns5:ns5__Organization)
+        MERGE (o:Organisation {organisation_name: ns5.ns0__name})
+        MERGE (n)<-[:ORGANISATION__OF]-(o)
+        """
+    )
+    tx.run(
+        """
+        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..1]-(ns3:ns3__Industry)
+        MERGE (i:Industry {industry_name: ns3.ns0__name})
+        MERGE (n)<-[:INDUSTRY_OF]-(i)
+        """
+    )
+    tx.run(
+        """
+        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..2]-(ns5:ns5__Company)
+        MERGE (c:Company {company_name: ns5.ns0__name})
+        MERGE (n)<-[:COMPANY_OF]-(c)
+        """
+    )
+    tx.run(
+        """
+        MATCH (n:News)-[:ONTOLOGY]->(ns1:ns1__DocInfo)-[*..2]-(ns5:ns5__Position)
+        MERGE (p:Position {position_name: ns5.ns0__name})
+        MERGE (n)<-[:POSITION_OF]-(p)
+        """
+    )
+
+
+# Create the driver instance and merge the data
+driver = None
+try:
+    driver = GraphDatabase.driver(uri, auth=(username, password))
+    driver.verify_connectivity()
+    with driver.session() as session:
+        results = session.execute_write(create_constraints)
+    with driver.session() as session:
+        results = session.execute_write(merge_data)
+
+except Exception as e:
+    logging.error(f"Failed to create Neo4j driver: {e}")
+
+# Close the driver instance
+driver.close()

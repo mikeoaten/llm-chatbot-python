@@ -3,9 +3,9 @@ This script deletes all nodes and relationships in a Neo4j database
 and drops all constraints and indexes.
 """
 
+import logging
 from neo4j import GraphDatabase
 import streamlit as st
-import logging
 
 
 # Set variables for Neo4j driver

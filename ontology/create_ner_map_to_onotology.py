@@ -161,10 +161,6 @@ try:
     driver = GraphDatabase.driver(uri, auth=(username, password))
     driver.verify_connectivity()
 
-    # response_text = get_response_text(api_key, results)
-    # with driver.session() as session:
-    #     results = session.execute_write(write_data, response_text)
-
     for result in results:
         response_text = get_response_text(api_key, [result])
         with driver.session() as session:

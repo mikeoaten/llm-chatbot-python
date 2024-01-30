@@ -20,7 +20,7 @@ username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
 
 
-# Define a function to read the news body from the database
+# Define the query to read the news body from the database
 def read_news_body(tx):
     """
     Read the news body from the database.
@@ -51,6 +51,8 @@ except Exception as e:
 # Close the driver instance
 driver.close()
 
+# print(results)
+
 
 # --------------------------------------------
 # Open Calais API
@@ -59,7 +61,21 @@ driver.close()
 api_key = st.secrets["OPENCALAIS_API_KEY"]
 
 
+# Define the function to make the API call
 def make_api_call(api_key, body):
+    """
+    Makes an API call to the Refinitiv PermID service.
+
+    Args:
+        api_key (str): The API key for authentication.
+        body (str): The body of the request.
+
+    Returns:
+        requests.Response: The API response object.
+
+    Raises:
+        requests.exceptions.RequestException: If an error occurs while making the API call.
+    """
     # Define the URL
     url = "https://api-eit.refinitiv.com/permid/calais?outputFormat=xml/rdf"
 
@@ -70,7 +86,7 @@ def make_api_call(api_key, body):
     headers = {
         "x-ag-access-token": api_key,
         "Content-Type": "text/raw",
-        # "x-calais-selectiveTags": "",
+        # "x-calais-selectiveTags": "", #Optional
         "outputformat": "xml/rdf",
     }
 
@@ -80,6 +96,7 @@ def make_api_call(api_key, body):
     return api_response
 
 
+# Define the function to get the response text from the API call
 def get_response_text(api_key, results):
     """
     Retrieves the response text from the API call for each result in the given list of results.
@@ -108,7 +125,7 @@ def get_response_text(api_key, results):
             )
 
         # Break after the first API call
-        break
+        # break
 
     return None
 
@@ -143,15 +160,24 @@ driver = None
 try:
     driver = GraphDatabase.driver(uri, auth=(username, password))
     driver.verify_connectivity()
-    response_text = get_response_text(api_key, results)
-    with driver.session() as session:
-        results = session.execute_write(write_data, response_text)
+
+    # response_text = get_response_text(api_key, results)
+    # with driver.session() as session:
+    #     results = session.execute_write(write_data, response_text)
+
+    for result in results:
+        response_text = get_response_text(api_key, [result])
+        with driver.session() as session:
+            results = session.execute_write(write_data, response_text)
 
 except Exception as e:
     logging.error(f"Failed to create Neo4j driver: {e}")
 
 # Close the driver instance
 driver.close()
+
+# --------------------------------------------
+# Create relationships between the imported data and the ontology
 
 
 # // Create MAPPED_TO relationships between the imported data and the ontology

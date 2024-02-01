@@ -136,3 +136,5 @@ kg_qa = RetrievalQA.from_chain_type(
     chain_type="stuff",
     retriever=retriever,
 )
+
+# print()

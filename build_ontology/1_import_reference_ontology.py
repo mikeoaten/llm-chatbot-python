@@ -1,4 +1,4 @@
-# https://neo4j.com/labs/neosemantics/4.3/config/
+# https://neo4j.com/labs/neosemantics/5.14/config/
 # Import RDF data
 
 # The method n10s.graphconfig.init can help us with this setup.

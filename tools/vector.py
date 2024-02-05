@@ -12,6 +12,7 @@ This query is used to match nodes and relationships in the Neo4j database.
 This module is part of the Langchain Community project and is used for
 retrieval-based Question Answering (QA) tasks.
 """
+
 import streamlit as st
 from langchain.chains import RetrievalQA
 from langchain_community.vectorstores.neo4j_vector import Neo4jVector

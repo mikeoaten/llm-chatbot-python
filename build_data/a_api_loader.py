@@ -1,12 +1,39 @@
-import requests
+"""
+This module is used to fetch news articles from the London Stock
+Exchange API and store them in a Neo4j graph database.
+
+The module uses the requests library to make HTTP requests to the API,
+and the neo4j library to interact with the Neo4j database. It also uses
+the json library to parse the API responses, and the streamlit library
+to manage secrets.
+
+The module defines several functions to interact with the Neo4j database:
+- create_constraints: Creates constraints in the database if they do not exist.
+- merge_newsarticle_nodes: Merges news article nodes into the database.
+- merge_newsarticle_relationships: Merges relationships between nodes in the database.
+
+The module also includes a main script that:
+- Establishes a connection to the Neo4j database.
+- Loops through a list of news article IDs, fetches the corresponding articles
+from the API, and stores them in the database.
+- Logs any errors that occur during this process.
+
+The module assumes that the following secrets are defined:
+- NEO4J_URI: The URI of the Neo4j database.
+- NEO4J_USERNAME: The username to use when connecting to the Neo4j database.
+- NEO4J_PASSWORD: The password to use when connecting to the Neo4j database.
+- NEWSID: A list of news article IDs to fetch from the API.
+"""
+
 import json
+import logging
+import requests
 from neo4j import GraphDatabase
 import streamlit as st
-import logging
 
 
 # Set variables for Neo4j driver
-secrets = "secrets.toml"
+SECRETS = "secrets.toml"
 uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
@@ -19,36 +46,60 @@ def create_constraints(tx):
     """
     Create constraints if they do not exist.
     """
-    tx.run("CREATE CONSTRAINT rns_id IF NOT EXISTS FOR (r:Rns) REQUIRE r.id IS UNIQUE")
     tx.run(
-        "CREATE CONSTRAINT company_companyname IF NOT EXISTS FOR (c:Company) REQUIRE c.companyname IS UNIQUE"
-    )
-    # tx.run(
-    #     "CREATE CONSTRAINT price_id IF NOT EXISTS FOR (p:price_id) REQUIRE p.id IS UNIQUE"
-    # )
-    tx.run(
-        "CREATE CONSTRAINT date_date IF NOT EXISTS FOR (d:Date) REQUIRE d.date IS UNIQUE"
+        """
+        CREATE CONSTRAINT rns_id IF NOT EXISTS
+        FOR (r:Rns) REQUIRE r.id IS UNIQUE
+        """
     )
     tx.run(
-        "CREATE CONSTRAINT news_id IF NOT EXISTS FOR (n:News) REQUIRE n.id IS UNIQUE"
+        """
+        CREATE CONSTRAINT company_companyname IF NOT EXISTS
+        FOR (c:Company) REQUIRE c.companyname IS UNIQUE
+        """
     )
     tx.run(
-        "CREATE CONSTRAINT newscategory_category IF NOT EXISTS FOR (n:NewsCategory) REQUIRE n.category IS UNIQUE"
+        """
+        CREATE CONSTRAINT date_date IF NOT EXISTS
+        FOR (d:Date) REQUIRE d.date IS UNIQUE
+        """
     )
     tx.run(
-        "CREATE CONSTRAINT industry_industry IF NOT EXISTS FOR (i:Industry) REQUIRE i.industry IS UNIQUE"
+        """
+        CREATE CONSTRAINT news_id IF NOT EXISTS
+        FOR (n:News) REQUIRE n.id IS UNIQUE
+        """
     )
     tx.run(
-        "CREATE CONSTRAINT sector_sector IF NOT EXISTS FOR (s:Sector) REQUIRE s.sector IS UNIQUE"
+        """
+        CREATE CONSTRAINT newscategory_category IF NOT EXISTS
+        FOR (n:NewsCategory) REQUIRE n.category IS UNIQUE
+        """
     )
     tx.run(
-        "CREATE CONSTRAINT subsector_subsector IF NOT EXISTS FOR (s:SubSector) REQUIRE s.subsector IS UNIQUE"
+        """
+        CREATE CONSTRAINT industry_industry IF NOT EXISTS
+        FOR (i:Industry) REQUIRE i.industry IS UNIQUE
+        """
     )
     tx.run(
-        "CREATE CONSTRAINT supersector_supersector IF NOT EXISTS FOR (s:SuperSector) REQUIRE s.supersector IS UNIQUE"
+        """
+        CREATE CONSTRAINT sector_sector IF NOT EXISTS
+        FOR (s:Sector) REQUIRE s.sector IS UNIQUE
+        """
     )
-
-    return
+    tx.run(
+        """
+        CREATE CONSTRAINT subsector_subsector IF NOT EXISTS
+        FOR (s:SubSector) REQUIRE s.subsector IS UNIQUE
+        """
+    )
+    tx.run(
+        """
+        CREATE CONSTRAINT supersector_supersector IF NOT EXISTS
+        FOR (s:SuperSector) REQUIRE s.supersector IS UNIQUE
+        """
+    )
 
 
 def merge_newsarticle_nodes(
@@ -74,7 +125,6 @@ def merge_newsarticle_nodes(
     Parameters:
     - tx: Neo4j transaction object
     - id: ID
-    - news_article: News article data in JSON format
     - company_name: Company name
     - title: News title
     - source: News source
@@ -94,7 +144,16 @@ def merge_newsarticle_nodes(
         news_article=news_article,
     )
     tx.run(
-        "MERGE (:Company {company_name: $company_name, industry: $industry, supersector: $supersector, sector: $sector, subsector: $subsector, tidm: $tidm})",
+        """MERGE (:Company {
+                            company_name: $company_name,
+                            industry: $industry,
+                            supersector: $supersector,
+                            sector: $sector,
+                            subsector: $subsector,
+                            tidm: $tidm
+                            }
+                )
+        """,
         company_name=company_name,
         industry=industry,
         supersector=supersector,
@@ -103,7 +162,24 @@ def merge_newsarticle_nodes(
         tidm=tidm,
     )
     tx.run(
-        "MERGE (:News {id: $id, title: $title, source: $source, datetime: $datetime, company_name: $company_name, rns_number: $rns_number, category: $category, headline_name: $headline_name, tidm: $tidm, industry: $industry, supersector: $supersector, sector: $sector, subsector: $subsector })",
+        """
+        MERGE (:News
+                    {id: $id,
+                    title: $title,
+                    source: $source,
+                    datetime: $datetime,
+                    company_name: $company_name,
+                    rns_number: $rns_number,
+                    category: $category,
+                    headline_name: $headline_name,
+                    tidm: $tidm,
+                    industry: $industry,
+                    supersector: $supersector,
+                    sector: $sector,
+                    subsector: $subsector
+                    }
+                )
+        """,
         id=id,
         title=title,
         source=source,
@@ -142,8 +218,6 @@ def merge_newsarticle_nodes(
         "MERGE (:SubSector {subsector: $subsector})",
         subsector=subsector,
     )
-
-    return
 
 
 def merge_newsarticle_relationships(
@@ -229,15 +303,13 @@ def merge_newsarticle_relationships(
         """
     )
 
-    return
-
 
 # Create the driver instance
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    driver.verify_connectivity()
-    with driver.session() as session:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
         # Create constraint if it doesn't exists
         session.execute_write(create_constraints)
 
@@ -305,9 +377,13 @@ try:
         # Merge relationships
         session.execute_write(merge_newsarticle_relationships)
 
+except DRIVER.exceptions.ServiceUnavailable as e:
+    logging.error("Failed to connect to Neo4j: %s", e)
+except DRIVER.exceptions.AuthError as e:
+    logging.error("Authentication error: %s", e)
 except Exception as e:
-    logging.error(f"Failed to create Neo4j driver: {e}")
+    logging.error("An unexpected error occurred: %s", e)
 
 
 # Close the driver instance
-driver.close()
+DRIVER.close()

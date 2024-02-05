@@ -1,6 +1,17 @@
 """
-This script deletes all nodes and relationships in a Neo4j database
-and drops all constraints and indexes.
+This module provides functionality to interact with a Neo4j database.
+It includes functions to delete all nodes and relationships, and to
+drop all constraints and indexes (except defaul indexes) from the database. 
+
+The module uses the neo4j and streamlit libraries to establish a connection
+with the database using credentials stored in a secrets.toml file. The user
+is prompted to confirm whether they want to delete all nodes and relationships.
+If confirmed, the module executes the deletion and then proceeds to drop all
+constraints and indexes.
+
+In case of any exceptions during the execution, such as service unavailability
+or authentication errors, the module logs the error and closes the database
+connection.
 """
 
 import logging
@@ -9,7 +20,7 @@ import streamlit as st
 
 
 # Set variables for Neo4j driver
-secrets = "secrets.toml"
+SECRETS = "secrets.toml"
 uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
@@ -45,18 +56,23 @@ delete_data = input("Delete all nodes and relationships? (yes/no) ") == "yes"
 
 # Import the drop_all_constraints_and_indexes function
 # Create the driver instance
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    with driver.session() as session:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    with DRIVER.session() as session:
         if delete_data:
             # Delete all nodes and relationships in a separate transaction
             session.execute_write(delete_all_nodes_and_relationships)
         # Call the drop_all_constraints_and_indexes function
         session.execute_write(drop_all_constraints_and_indexes)
 
+except DRIVER.exceptions.ServiceUnavailable as e:
+    logging.error("Failed to connect to Neo4j: %s", e)
+except DRIVER.exceptions.AuthError as e:
+    logging.error("Authentication error: %s", e)
 except Exception as e:
-    logging.error(f"Failed to create Neo4j driver: {e}")
+    logging.error("An unexpected error occurred: %s", e)
+
 finally:
-    if driver is not None:
-        driver.close()
+    if DRIVER is not None:
+        DRIVER.close()

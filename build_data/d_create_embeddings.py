@@ -1,9 +1,20 @@
-# https://neo4j.com/developer-blog/neo4j-langchain-vector-index-implementation/
-# https://api.python.langchain.com/en/latest/vectorstores/langchain_community.vectorstores.neo4j_vector.Neo4jVector.html#
+"""
+This module is used to create embeddings for split text from news articles. 
+
+It imports necessary modules and adds a specific path to the system path list. 
+Then, it sets up the variables for the Neo4j driver using secrets from a toml file.
+
+Finally, it uses the `from_existing_graph` method from the `Neo4jVector` class 
+to create embeddings from the existing graph. The embeddings are created for 
+the 'SplitText' nodes in the 'neo4j' database, specifically for the 'split_text' 
+property of these nodes. The resulting embeddings are stored in the 
+'split_text_embedding' property of the nodes.
+"""
 
 import sys
 
-sys.path.append(r"C:\Users\mikej\Documents\GitHub\llm-chatbot-python")
+# Add the path to the sys.path list
+sys.path.append(r"C:\Users\mikej\Documents\GitHub\tikos-rns-demo")
 
 import streamlit as st
 from langchain_community.vectorstores.neo4j_vector import Neo4jVector
@@ -11,41 +22,15 @@ from llm import embeddings
 
 
 # Set variables for Neo4j driver
-secrets = "secrets.toml"
+SECRETS = "secrets.toml"
 uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
 
 
-# # Create embeddings for news headlines
-# Neo4jVector.from_existing_graph(
-#     embeddings,
-#     url=uri,
-#     username=username,
-#     password=password,
-#     database="neo4j",
-#     index_name="news_headline_embedding",
-#     node_label="News",
-#     text_node_properties=["headline_name"],
-#     embedding_node_property="headline_name_embedding",
-# )
-
-# # Create embeddings for news article body text
-# Neo4jVector.from_existing_graph(
-#     embeddings,
-#     url=uri,
-#     username=username,
-#     password=password,
-#     database="neo4j",
-#     index_name="news_body_embedding",
-#     node_label="News",
-#     text_node_properties=["body"],
-#     embedding_node_property="body_embedding",
-# )
-
 # Create embeddings for news article split text
 Neo4jVector.from_existing_graph(
-    embeddings,
+    embedding=embeddings,
     url=uri,
     username=username,
     password=password,

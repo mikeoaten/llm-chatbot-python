@@ -1,12 +1,41 @@
-from bs4 import BeautifulSoup
-from neo4j import GraphDatabase
-import streamlit as st
+"""
+This module is designed to interact with a Neo4j database
+to read and write data. 
+
+It includes two main functions: `read_data` and `write_data`.
+`read_data` reads news articles from the Neo4j database and
+returns a list of these articles.
+`write_data` writes the body text of a news article to the
+corresponding node in the database.
+
+The module first creates a driver instance to connect to the
+Neo4j database. It then uses this driver to execute the
+`read_data` function and store the results.
+
+Next, it loops through the results. For each result, it parses
+the HTML body of the news article, extracts the text, and cleans
+it by removing certain separators and extra line breaks.
+
+Finally, it creates another driver instance and uses it to execute
+the `write_data` function, writing the cleaned text back to the
+corresponding node in the database.
+
+The module handles various exceptions that might occur during the
+execution, such as service unavailability and authentication errors,
+and logs these exceptions for debugging purposes.
+"""
+
 import json
 import re
 import logging
+import streamlit as st
+
+from bs4 import BeautifulSoup
+from neo4j import GraphDatabase
+
 
 # Set variables for Neo4j driver
-secrets = "secrets.toml"
+SECRETS = "secrets.toml"
 uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
@@ -22,10 +51,10 @@ def read_data(tx):
     Returns:
         A list of news articles from the Neo4j database.
     """
-    result = tx.run(
+    read_data_result = tx.run(
         "MATCH (r:Rns WHERE r.news_article IS NOT NULL) RETURN r.news_article, r.id"
     )
-    return [(record["r.news_article"], record["r.id"]) for record in result]
+    return [(record["r.news_article"], record["r.id"]) for record in read_data_result]
 
 
 def write_data(tx):
@@ -39,22 +68,25 @@ def write_data(tx):
         None
     """
     tx.run("MATCH (n:News WHERE n.id = $id) SET n.body = $text", id=id, text=text)
-    return
 
 
 # Create the driver instance
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    driver.verify_connectivity()
-    with driver.session() as session:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
         results = session.execute_read(read_data)
 
+except DRIVER.exceptions.ServiceUnavailable as e:
+    logging.error("Failed to connect to Neo4j: %s", e)
+except DRIVER.exceptions.AuthError as e:
+    logging.error("Authentication error: %s", e)
 except Exception as e:
-    logging.error(f"Failed to create Neo4j driver: {e}")
+    logging.error("An unexpected error occurred: %s", e)
 
 # Close the driver instance
-driver.close()
+DRIVER.close()
 
 # Loop through results
 for result in results:
@@ -94,18 +126,22 @@ for result in results:
     text = text.rstrip()
 
     # Create the driver instance
-    driver = None
+    DRIVER = None
     try:
-        driver = GraphDatabase.driver(uri, auth=(username, password))
-        driver.verify_connectivity()
-        with driver.session() as session:
+        DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+        DRIVER.verify_connectivity()
+        with DRIVER.session() as session:
             session.execute_write(write_data)
 
+    except DRIVER.exceptions.ServiceUnavailable as e:
+        logging.error("Failed to connect to Neo4j: %s", e)
+    except DRIVER.exceptions.AuthError as e:
+        logging.error("Authentication error: %s", e)
     except Exception as e:
-        logging.error(f"Failed to create Neo4j driver: {e}")
+        logging.error("An unexpected error occurred: %s", e)
 
     # Close the driver instance
-    driver.close()
+    DRIVER.close()
 
     # print(id)
     # print(text)

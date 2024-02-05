@@ -22,14 +22,15 @@ The module assumes that the following secrets are defined:
 - NEO4J_URI: The URI of the Neo4j database.
 - NEO4J_USERNAME: The username to use when connecting to the Neo4j database.
 - NEO4J_PASSWORD: The password to use when connecting to the Neo4j database.
-- NEWSID: A list of news article IDs to fetch from the API.
 """
 
 import json
 import logging
 import requests
-from neo4j import GraphDatabase
 import streamlit as st
+
+from neo4j import GraphDatabase
+from extract_links import news_ids
 
 
 # Set variables for Neo4j driver
@@ -37,9 +38,6 @@ SECRETS = "secrets.toml"
 uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
-
-# Set variable for newsid list
-newsid = st.secrets["NEWSID"]
 
 
 def create_constraints(tx):
@@ -313,10 +311,14 @@ try:
         # Create constraint if it doesn't exists
         session.execute_write(create_constraints)
 
-        # Loop through API called with newsids
-        for id in newsid:
+        # Loop through API called with news_ids
+        for index, id in enumerate(news_ids):
+            # Break the loop after 5 iterations
+            if index == 20:
+                break
             response = requests.get(
-                f"https://api.londonstockexchange.com/api/v1/pages?path=news-article&parameters=newsId%253D{id}"
+                f"https://api.londonstockexchange.com/api/v1/pages?path=news-article&parameters=newsId%253D{id}",
+                timeout=5,
             )
             # Decode the _content field from bytes to a string
             data = response.__dict__["_content"].decode("utf-8")

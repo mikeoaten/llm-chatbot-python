@@ -1,11 +1,36 @@
+"""
+This module is used for interacting with a Neo4j database. It reads news
+articles from the database, splits the text of the articles into semantic
+chunks using the SemanticChunker from the langchain_experimental library
+and the OpenAIEmbeddings from the langchain_openai library, and then writes
+the split text back into the database.
+
+The module uses the neo4j GraphDatabase driver for database connectivity.
+The connection parameters (URI, username, and password) are retrieved from
+the Streamlit secrets.
+
+The read_data function is used to read data from the database. It returns a list
+of news article body text and ids.
+
+The write_data function is used to write the split text back into the database.
+It takes as arguments the Neo4j transaction object, the ID of the split, the
+split text, the element ID for the Neo4j 'News' node that the body text is saved
+to, and the URL of the news article.
+
+The module also handles exceptions related to service availability and
+authentication, and logs any  unexpected errors that occur during execution.
+"""
+
+import logging
+import streamlit as st
+
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_openai.embeddings import OpenAIEmbeddings
 from neo4j import GraphDatabase
-import streamlit as st
-import logging
+
 
 # Set variables for Neo4j driver
-secrets = "secrets.toml"
+SECRETS = "secrets.toml"
 uri = st.secrets["NEO4J_URI"]
 username = st.secrets["NEO4J_USERNAME"]
 password = st.secrets["NEO4J_PASSWORD"]
@@ -21,8 +46,12 @@ def read_data(tx):
     Returns:
         A list of news article body text and ids.
     """
-    result = tx.run(
-        "MATCH (n:News WHERE n.body IS NOT NULL) RETURN n.id, n.body, elementId(n) As elementId, n.headline_name"
+    read_data_result = tx.run(
+        """
+        MATCH (n:News WHERE n.body IS NOT NULL)
+        WHERE NOT EXISTS( (n)<-[:CHILD_OF]-(:SplitText) )
+        RETURN n.id, n.body, elementId(n) As elementId, n.headline_name
+        """
     )
     return [
         (
@@ -31,7 +60,7 @@ def read_data(tx):
             record["elementId"],
             record["n.headline_name"],
         )
-        for record in result
+        for record in read_data_result
     ]
 
 
@@ -50,7 +79,13 @@ def write_data(tx, split_id, split_text, split_source, split_url):
         """
         MATCH (n:News)
         WHERE elementId(n) = $split_source
-        MERGE (n)<-[:CHILD_OF]-(ct:SplitText {split_id: $split_id, split_text: $split_text, split_source: $split_source, split_url: $split_url})
+        MERGE (n)<-[:CHILD_OF]-(ct:SplitText {
+                                                split_id: $split_id,
+                                                split_text: $split_text,
+                                                split_source: $split_source,
+                                                split_url: $split_url
+                                            }
+                                )
         SET n.url = $split_url
         """,
         split_id=split_id,
@@ -62,18 +97,22 @@ def write_data(tx, split_id, split_text, split_source, split_url):
 
 
 # Create the driver instance for reading data
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    driver.verify_connectivity()
-    with driver.session() as session:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
         results = session.execute_read(read_data)
 
+except DRIVER.exceptions.ServiceUnavailable as e:
+    logging.error("Failed to connect to Neo4j: %s", e)
+except DRIVER.exceptions.AuthError as e:
+    logging.error("Authentication error: %s", e)
 except Exception as e:
-    logging.error(f"Failed to create Neo4j driver: {e}")
+    logging.error("An unexpected error occurred: %s", e)
 
 # Close the driver instance
-driver.close()
+DRIVER.close()
 
 text_splitter = SemanticChunker(OpenAIEmbeddings())
 
@@ -84,7 +123,7 @@ for result in results:
 
     for index, text in enumerate(texts):
         split_id = f"{id}_{index}"
-        split_text = (
+        SPLIT_TEXT = (
             str(text)
             .replace("page_content='", "")
             .replace('page_content="', "")
@@ -94,28 +133,36 @@ for result in results:
             .strip()
         )
         # Remove the last character
-        split_text = split_text[:-1]
+        SPLIT_TEXT = SPLIT_TEXT[:-1]
         split_source = elementId
         headline_name = headline_name.lower().replace("/", "-").replace(" ", "-")
         split_url = f"https://www.londonstockexchange.com/news-article/BRCS/{headline_name}/{id}"
 
         # Create the driver instance for writing data
-        driver = None
+        DRIVER = None
         try:
-            driver = GraphDatabase.driver(uri, auth=(username, password))
-            driver.verify_connectivity()
-            with driver.session() as session:
+            DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+            DRIVER.verify_connectivity()
+            with DRIVER.session() as session:
                 session.execute_write(
-                    write_data, split_id, split_text, split_source, split_url
+                    write_data,
+                    split_id,
+                    SPLIT_TEXT,
+                    split_source,
+                    split_url,
                 )
 
+        except DRIVER.exceptions.ServiceUnavailable as e:
+            logging.error("Failed to connect to Neo4j: %s", e)
+        except DRIVER.exceptions.AuthError as e:
+            logging.error("Authentication error: %s", e)
         except Exception as e:
-            logging.error(f"Failed to create Neo4j driver: {e}")
+            logging.error("An unexpected error occurred: %s", e)
 
         # Close the driver instance
-        driver.close()
+        DRIVER.close()
 
         print(split_id)
-        print(split_text)
+        print(SPLIT_TEXT)
         print(split_source)
         print(split_url)

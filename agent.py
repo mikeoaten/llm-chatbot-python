@@ -16,6 +16,8 @@ and return_direct parameter.
 https://github.com/neo4j-graphacademy/llm-chatbot-python/commit/bc521bcddd6c5298365bf14d91d534afb5c4c46b
 """
 
+import json
+
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain.tools import Tool
@@ -27,14 +29,33 @@ from tools.cypher import cypher_qa
 from prompts import agent_prompt
 
 
+# For kq_qa
+def run_retriever(query):
+    results = kg_qa.invoke({"query": query})
+    return results["result"]
+
+
+# For cypher_qa
+def run_cypher(query):
+    results = cypher_qa.invoke({"query": query})
+    return results["result"]
+
+
 tools = [
+    Tool.from_function(
+        name="General Chat",
+        description="For general chat not covered by other tools",
+        func=llm.invoke,
+        return_direct=True,
+    ),
     Tool.from_function(
         name="Vector Search Index",
         description="""
         Provides information about company news using Vector Search.
         Always use this tool before using Cypher QA tool.
         """,
-        func=kg_qa,
+        # func=kg_qa,
+        func=run_retriever,
         return_direct=True,
     ),
     Tool.from_function(
@@ -43,13 +64,8 @@ tools = [
         Provides information about company news using Cypher.
         Only use this tool after using Vector Search Index tool.
         """,
-        func=cypher_qa,
-        return_direct=True,
-    ),
-    Tool.from_function(
-        name="General Chat",
-        description="For general chat not covered by other tools",
-        func=llm.invoke,
+        # func=cypher_qa,
+        func=run_cypher,
         return_direct=True,
     ),
 ]
@@ -85,25 +101,6 @@ agent_executor = AgentExecutor(
 )
 
 
-# def generate_response(prompt):
-#     """
-#     Create a handler that calls the Conversational agent
-#     and returns a response to be rendered in the UI
-#     """
-#     response = agent_executor.invoke({"input": prompt})
-#     # return response["output"]
-
-#     output = response["output"]
-
-#     # Check the data type of output
-#     if isinstance(output, str):
-#         return output
-#     elif isinstance(output, dict):
-#         return output.get("result", "")
-#     else:
-#         return "Unexpected output format"
-
-
 def generate_response(prompt):
     """
     Create a handler that calls the Conversational agent
@@ -111,13 +108,4 @@ def generate_response(prompt):
     """
     response = agent_executor.invoke({"input": prompt})
 
-    try:
-        output = response["output"]
-        if isinstance(output, str):
-            return output
-        elif isinstance(output, dict):
-            return output.get("result", "")
-        else:
-            return "Unexpected output format"
-    except Exception as e:
-        return f"Error occurred: {e}"
+    return response["output"]

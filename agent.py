@@ -85,20 +85,39 @@ agent_executor = AgentExecutor(
 )
 
 
+# def generate_response(prompt):
+#     """
+#     Create a handler that calls the Conversational agent
+#     and returns a response to be rendered in the UI
+#     """
+#     response = agent_executor.invoke({"input": prompt})
+#     # return response["output"]
+
+#     output = response["output"]
+
+#     # Check the data type of output
+#     if isinstance(output, str):
+#         return output
+#     elif isinstance(output, dict):
+#         return output.get("result", "")
+#     else:
+#         return "Unexpected output format"
+
+
 def generate_response(prompt):
     """
     Create a handler that calls the Conversational agent
     and returns a response to be rendered in the UI
     """
     response = agent_executor.invoke({"input": prompt})
-    # return response["output"]
 
-    output = response["output"]
-
-    # Check the data type of output
-    if isinstance(output, str):
-        return output
-    elif isinstance(output, dict):
-        return output.get("result", "")
-    else:
-        return "Unexpected output format"
+    try:
+        output = response["output"]
+        if isinstance(output, str):
+            return output
+        elif isinstance(output, dict):
+            return output.get("result", "")
+        else:
+            return "Unexpected output format"
+    except Exception as e:
+        return f"Error occurred: {e}"

@@ -61,8 +61,4 @@ for link in captured_links:
     if re.match(r"^\d{8}$", last_part):
         news_ids.append(int(last_part))
 
-# Print the eight digit numbers
-# for number in news_ids:
-#     print(number)
-
 print(news_ids)

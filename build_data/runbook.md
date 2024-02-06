@@ -1,3 +1,7 @@
+# Neo4j specific requirements
+apoc-extended.jar
+neosemantics.jar
+
 # delete_data_drop_neo4_constraints_indexes.py
 Clear out Neo4j db prior to loading, this will require a yes/no in the terminal to
 delete data as well as indexes/constraints
@@ -7,6 +11,10 @@ Save the html page generated from the search function at https://www.londonstock
 In auxilaries
 name it news_download.html
 
+
+
+# BUILD_DATA
+------------
 
 # a_api_loader.py
 All specified links are extract by extract_links, set a max at ln 314-318
@@ -23,10 +31,42 @@ Text parsing body text ready for splitting and embedding
 
 
 # c_split_text_with_sematic_chunker.py
+
 Creates semantic text chunks using the SemanticChunker from the langchain_experimental library
 and the OpenAIEmbeddings from the langchain_openai library, and then writes
 the split text back into the database.
 
+
+# d_create_embeddings.py
+# Currently has bug d_create_embeddings.py- AttributeError: module 'llm.embeddings' has no attribute 'embed_query'
+# Use e_create_embeddings_neo4j.py until fixed
+
+
+# e_create_embeddings_neo4j
+Large split_text currently causing OpenAI API to crash
+MATCH (st:SplitText WHERE st.split_text IS NOT NULL AND st.split_text_embedding IS NULL)
+WHERE NOT st.split_id STARTS WITH '16055955'
+AND NOT st.split_id STARTS WITH '16056003'
+
+
+
+# BUILD_ONTOLOGY
+----------------
+
+# a_import_reference_ontology.py
+def load_reference_ontology(tx): not working and needing to load directly from the browser (CALL statement remains the same)
+
+
+# b_create_ners_and_map_to_ontology.py
+Omitted the large text in ids
+WARNING:root:Failed to retrieve data for newsId 16056003. Status code: 500
+WARNING:root:Failed to retrieve data for newsId 16055955. Status code: 500
+
+Any with WARNING:root:Failed to retrieve data for newsId 16058994. Status code: 429 can be resubmitted
+
+
+# AOB
+-----
 
 # changes to installed pacckages
 # text_splitter.py ln 89-91

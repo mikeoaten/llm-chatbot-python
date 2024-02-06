@@ -1,0 +1,151 @@
+"""
+This module is used to create embeddings for text data in a
+Neo4j database using the OpenAI API. 
+
+It first reads data from the Neo4j database, specifically nodes
+of type 'SplitText' that have a 'split_text' property but no
+'split_text_embedding' property. 
+
+Then, it creates a vector index for these embeddings in the
+Neo4j database. 
+
+Finally, it writes the embeddings back to the Neo4j database by
+updating the 'split_text_embedding' property of the 'SplitText' nodes. 
+
+The connection to the Neo4j database is established using the
+GraphDatabase driver from the neo4j package. 
+
+The OpenAI API key and the Neo4j connection details (URI, username,
+password) are stored in a 'secrets.toml' file and accessed using
+the streamlit.secrets module.
+"""
+
+import logging
+import streamlit as st
+
+from neo4j import GraphDatabase
+
+# Set variables for Neo4j driver & OPENAI API
+SECRETS = "secrets.toml"
+uri = st.secrets["NEO4J_URI"]
+username = st.secrets["NEO4J_USERNAME"]
+password = st.secrets["NEO4J_PASSWORD"]
+apiKey = st.secrets["OPENAI_API_KEY"]
+
+
+def read_data(tx):
+    """
+    Reads data from Neo4j database.
+
+    Args:
+        tx: The transaction object for executing the Cypher query.
+
+    Returns:
+        A list of tuples containing split IDs and split texts.
+    """
+    read_data_result = tx.run(
+        """
+        MATCH (st:SplitText WHERE st.split_text IS NOT NULL AND st.split_text_embedding IS NULL)
+        WHERE NOT st.split_id STARTS WITH '16055955'
+        AND NOT st.split_id STARTS WITH '16056003'
+        RETURN st.split_id, st.split_text
+        """
+    )
+    split_ids_and_text = [
+        (record["st.split_id"], record["st.split_text"]) for record in read_data_result
+    ]
+    return split_ids_and_text
+
+
+def create_splittext_embedding_index(tx):
+    """
+    Create a vector index for split text embeddings in Neo4j.
+
+    Parameters:
+    - tx: The Neo4j transaction object.
+
+    Returns:
+    None
+    """
+    tx.run(
+        """
+        CREATE VECTOR INDEX split_text_embedding IF NOT EXISTS
+        FOR (st:SplitText) ON (st.split_text_embedding)
+        OPTIONS {indexConfig: {
+                    `vector.dimensions`: 1536,
+                    `vector.similarity_function`: 'cosine'
+                    }
+                }
+        """
+    )
+
+
+def write_data(tx, ids):
+    """
+    Write data to Neo4j database by updating the split_text_embedding property of SplitText nodes.
+
+    Parameters:
+    - tx: The Neo4j transaction object.
+    - ids: A list of split_ids to process.
+
+    Returns:
+    None
+    """
+    for i in ids:
+        tx.run(
+            """
+        MATCH (st:SplitText WHERE st.split_id = $split_id)
+        CALL apoc.ml.openai.embedding([$split_text], $apiKey, {}) YIELD embedding
+        SET st.split_text_embedding = embedding
+        """,
+            split_id=split_id,
+            split_text=split_text,
+            apiKey=apiKey,
+        )
+
+
+# Create the driver instance for reading data
+DRIVER = None
+try:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
+        results = session.execute_read(read_data)
+        # first_result = next(iter(results), None)
+        # if first_result is not None:
+        #     split_id, split_text = first_result
+        #     print(first_result)
+        #     print("data read")
+
+except Exception as e:
+    logging.error("An unexpected error occurred: %s", e)
+
+finally:
+    # Close the driver instance
+    if DRIVER is not None:
+        DRIVER.close()
+        print("driver closed")
+
+
+# Create the driver instance for writing data
+DRIVER = None
+try:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
+        session.execute_write(create_splittext_embedding_index)
+        print("index created")
+    # Loop through results
+    for result in results:
+        split_id, split_text = result
+        with DRIVER.session() as session:
+            session.execute_write(write_data, split_id)
+            print("data written")
+except Exception as e:
+    logging.error("An unexpected error occurred: %s", e)
+
+finally:
+    # Close the driver instance
+    if DRIVER is not None:
+        DRIVER.close()
+        print("driver closed")

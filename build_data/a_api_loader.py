@@ -30,7 +30,7 @@ import requests
 import streamlit as st
 
 from neo4j import GraphDatabase
-from extract_links import news_ids
+from z_extract_links import news_ids
 
 
 # Set variables for Neo4j driver
@@ -123,6 +123,7 @@ def merge_newsarticle_nodes(
     Parameters:
     - tx: Neo4j transaction object
     - id: ID
+    - news_article: News article
     - company_name: Company name
     - title: News title
     - source: News source
@@ -310,11 +311,12 @@ try:
     with DRIVER.session() as session:
         # Create constraint if it doesn't exists
         session.execute_write(create_constraints)
+        print("Constraints created")
 
         # Loop through API called with news_ids
         for index, id in enumerate(news_ids):
             # Break the loop after 5 iterations
-            if index == 20:
+            if index == 100:
                 break
             response = requests.get(
                 f"https://api.londonstockexchange.com/api/v1/pages?path=news-article&parameters=newsId%253D{id}",
@@ -371,6 +373,7 @@ try:
                     subsector,
                     tidm,
                 )
+                print("Nodes merged")
             else:
                 logging.warning(
                     f"Failed to retrieve data for newsId {id}. Status code: {response.status_code}"
@@ -378,14 +381,12 @@ try:
 
         # Merge relationships
         session.execute_write(merge_newsarticle_relationships)
+        print("Relationships merged")
 
-except DRIVER.exceptions.ServiceUnavailable as e:
-    logging.error("Failed to connect to Neo4j: %s", e)
-except DRIVER.exceptions.AuthError as e:
-    logging.error("Authentication error: %s", e)
 except Exception as e:
     logging.error("An unexpected error occurred: %s", e)
 
 
 # Close the driver instance
 DRIVER.close()
+print("driver closed")

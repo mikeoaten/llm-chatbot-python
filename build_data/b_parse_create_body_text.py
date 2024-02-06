@@ -77,16 +77,14 @@ try:
     DRIVER.verify_connectivity()
     with DRIVER.session() as session:
         results = session.execute_read(read_data)
+        print("Data read")
 
-except DRIVER.exceptions.ServiceUnavailable as e:
-    logging.error("Failed to connect to Neo4j: %s", e)
-except DRIVER.exceptions.AuthError as e:
-    logging.error("Authentication error: %s", e)
 except Exception as e:
     logging.error("An unexpected error occurred: %s", e)
 
 # Close the driver instance
 DRIVER.close()
+print("Driver closed")
 
 # Loop through results
 for result in results:
@@ -122,8 +120,8 @@ for result in results:
 
     # Remove consecutive line breaks
     text = re.sub("\n{2,}", "\n", text)
-    # Remove all line breaks or spaces after the last text
-    text = text.rstrip()
+    # Remove all leading and trainling line breaks or spaces
+    text = text.strip()
 
     # Create the driver instance
     DRIVER = None
@@ -132,16 +130,11 @@ for result in results:
         DRIVER.verify_connectivity()
         with DRIVER.session() as session:
             session.execute_write(write_data)
+            print("Data written")
 
-    except DRIVER.exceptions.ServiceUnavailable as e:
-        logging.error("Failed to connect to Neo4j: %s", e)
-    except DRIVER.exceptions.AuthError as e:
-        logging.error("Authentication error: %s", e)
     except Exception as e:
         logging.error("An unexpected error occurred: %s", e)
 
-    # Close the driver instance
-    DRIVER.close()
-
-    # print(id)
-    # print(text)
+# Close the driver instance
+DRIVER.close()
+print("Driver closed")

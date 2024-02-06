@@ -63,13 +63,11 @@ try:
         if delete_data:
             # Delete all nodes and relationships in a separate transaction
             session.execute_write(delete_all_nodes_and_relationships)
+            print("All nodes and relationships deleted.")
         # Call the drop_all_constraints_and_indexes function
         session.execute_write(drop_all_constraints_and_indexes)
+        print("All constraints and indexes dropped.")
 
-except DRIVER.exceptions.ServiceUnavailable as e:
-    logging.error("Failed to connect to Neo4j: %s", e)
-except DRIVER.exceptions.AuthError as e:
-    logging.error("Authentication error: %s", e)
 except Exception as e:
     logging.error("An unexpected error occurred: %s", e)
 

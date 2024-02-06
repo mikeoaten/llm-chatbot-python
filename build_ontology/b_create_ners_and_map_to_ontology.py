@@ -1,11 +1,28 @@
 """
-This module is responsible for creating a mapping between the
-extracted named entities from news articles and the ontology in
-a Neo4j database. It uses the OpenCalais API to extract named
-entities from the news articles and then creates relationships
-between the extracted entities and the ontology nodes in the
-Neo4j database.
+This module is used to interact with a Neo4j database and the
+OpenCalais API. 
+
+It reads news data from the Neo4j database, makes API calls to
+the OpenCalais API to get additional data, and then writes the
+results back to the Neo4j database. 
+
+It also creates relationships between the imported data and the
+ontology in the Neo4j database.
+
+The module uses the neo4j, requests, logging, and streamlit libraries.
+
+Functions:
+- read_news_body(tx): Reads the news body from the Neo4j database.
+- make_api_call(api_key, body): Makes an API call to the OpenCalais API.
+- get_response_text(api_key, results): Retrieves the response text 
+from the API call for each result.
+- write_data(tx, response_text): Writes the response text to the Neo4j
+database.
+- create_constraints(tx): Creates constraints in the Neo4j database if
+they do not exist.
+- merge_data(tx): Merges the data to the ontology in the Neo4j database.
 """
+
 import logging
 import requests
 import streamlit as st
@@ -38,18 +55,18 @@ def read_news_body(tx):
 
 
 # Create the driver instance
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    driver.verify_connectivity()
-    with driver.session() as session:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
         results = session.execute_read(read_news_body)
 
 except Exception as e:
-    logging.error(f"Failed to create Neo4j driver: {e}")
+    logging.error("An unexpected error occurred: %s", e)
 
 # Close the driver instance
-driver.close()
+DRIVER.close()
 
 # --------------------------------------------
 # Open Calais API
@@ -149,21 +166,21 @@ def write_data(tx, response_text):
 
 
 # # Create the driver instance and write the data
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    driver.verify_connectivity()
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
 
     for result in results:
         response_text = get_response_text(api_key, [result])
-        with driver.session() as session:
+        with DRIVER.session() as session:
             results = session.execute_write(write_data, response_text)
 
 except Exception as e:
     logging.error(f"Failed to create Neo4j driver: {e}")
 
 # Close the driver instance
-driver.close()
+DRIVER.close()
 
 # Check if the data has been imported
 # match path = (r1:Resource where r1.uri starts with 'http://d')-[*..1]-(r2:Resource where r2.uri starts with 'http://d')
@@ -275,24 +292,17 @@ def merge_data(tx):
 
 
 # Create the driver instance and merge the data
-driver = None
+DRIVER = None
 try:
-    driver = GraphDatabase.driver(uri, auth=(username, password))
-    driver.verify_connectivity()
-    with driver.session() as session:
+    DRIVER = GraphDatabase.driver(uri, auth=(username, password))
+    DRIVER.verify_connectivity()
+    with DRIVER.session() as session:
         session.execute_write(create_constraints)
-    with driver.session() as session:
+    with DRIVER.session() as session:
         session.execute_write(merge_data)
 
 except Exception as e:
     logging.error(f"Failed to create Neo4j driver: {e}")
 
 # Close the driver instance
-driver.close()
-
-# Check if the constraints have been created
-# show constraints where name ends with '_name'
-
-# Check if the data has been merged
-# match path = (n1:!Resource)--(n2:!Resource)
-# return path
+DRIVER.close()

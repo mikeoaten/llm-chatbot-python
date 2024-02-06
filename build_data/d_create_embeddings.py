@@ -18,8 +18,8 @@ sys.path.append(r"C:\Users\mikej\Documents\GitHub\tikos-rns-demo")
 
 import streamlit as st
 from langchain_community.vectorstores.neo4j_vector import Neo4jVector
-from llm import embeddings
 
+from llm import embeddings
 
 # Set variables for Neo4j driver
 SECRETS = "secrets.toml"
@@ -30,7 +30,7 @@ password = st.secrets["NEO4J_PASSWORD"]
 
 # Create embeddings for news article split text
 Neo4jVector.from_existing_graph(
-    embedding=embeddings,
+    embeddings,
     url=uri,
     username=username,
     password=password,
@@ -40,3 +40,5 @@ Neo4jVector.from_existing_graph(
     text_node_properties=["split_text"],
     embedding_node_property="split_text_embedding",
 )
+
+print("Embeddings created")

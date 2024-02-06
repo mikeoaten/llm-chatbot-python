@@ -103,16 +103,14 @@ try:
     DRIVER.verify_connectivity()
     with DRIVER.session() as session:
         results = session.execute_read(read_data)
+        print("Data read")
 
-except DRIVER.exceptions.ServiceUnavailable as e:
-    logging.error("Failed to connect to Neo4j: %s", e)
-except DRIVER.exceptions.AuthError as e:
-    logging.error("Authentication error: %s", e)
 except Exception as e:
     logging.error("An unexpected error occurred: %s", e)
 
 # Close the driver instance
 DRIVER.close()
+print("Driver closed")
 
 text_splitter = SemanticChunker(OpenAIEmbeddings())
 
@@ -151,18 +149,11 @@ for result in results:
                     split_source,
                     split_url,
                 )
+                print("Data written")
 
-        except DRIVER.exceptions.ServiceUnavailable as e:
-            logging.error("Failed to connect to Neo4j: %s", e)
-        except DRIVER.exceptions.AuthError as e:
-            logging.error("Authentication error: %s", e)
         except Exception as e:
             logging.error("An unexpected error occurred: %s", e)
 
-        # Close the driver instance
-        DRIVER.close()
-
-        print(split_id)
-        print(SPLIT_TEXT)
-        print(split_source)
-        print(split_url)
+# Close the driver instance
+DRIVER.close()
+print("Driver closed")

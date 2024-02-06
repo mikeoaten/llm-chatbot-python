@@ -73,3 +73,28 @@ Any with WARNING:root:Failed to retrieve data for newsId 16058994. Status code: 
 # If there is only one sentence, return it as a single chunk
 if len(single_sentences_list) == 1:
     return [text]
+
+
+
+# pydantic.error_wrappers.ValidationError: 1 validation error for AIMessage
+# content
+# str type expected (type=type_error.str)
+
+Changing add_ai_message in langchain_core/chat_history.py
+to:
+
+def add_ai_message(self, message: Union[AIMessage, str]) -> None:
+    """Convenience method for adding an AI message string to the store.
+
+    Args:
+        message: The AI message to add.
+    """
+    if isinstance(message, AIMessage):
+        self.add_message(message)
+    else:
+        if type(message)==str:
+            self.add_message(AIMessage(content=message))
+        elif type(message)==dict:
+            import json
+            self.add_message(AIMessage(content=json.dumps(message)))
+

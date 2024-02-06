@@ -13,7 +13,7 @@ responses, and displaying relevant documents.
 from datetime import datetime
 import json
 
-# import graphviz
+import graphviz
 import streamlit as st
 from langchain.globals import set_debug
 
@@ -95,34 +95,34 @@ def handle_submit(message):
             + datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         )
 
-        # # # Create a Graphviz graph
-        # dot = graphviz.Digraph(comment="Graph")
+        # Create a Graphviz graph
+        dot = graphviz.Digraph(comment="Graph")
 
-        # top_result_json = None
+        top_result_json = None
 
-        # if results_json:
-        #     top_result_json = results_json[0]
+        if results_json:
+            top_result_json = results_json[0]
 
-        # if top_result_json:
-        #     data = top_result_json.get("kwargs", {}).get("metadata", {}).get("graph")
+        if top_result_json:
+            data = top_result_json.get("kwargs", {}).get("metadata", {}).get("graph")
 
-        #     for item in data:
-        #         if len(item) == 6:  # Assuming each item has 6 elements
-        #             (
-        #                 node_from_id,
-        #                 node_from_label,
-        #                 node_to_id,
-        #                 edge_label,
-        #                 node_to_id,
-        #                 node_to_label,
-        #             ) = item
+            for item in data:
+                if len(item) == 6:  # Assuming each item has 6 elements
+                    (
+                        node_from_id,
+                        node_from_label,
+                        node_to_id,
+                        edge_label,
+                        node_to_id,
+                        node_to_label,
+                    ) = item
 
-        #             # Add nodes and edges to the graph
-        #             dot.node(str(node_from_id), label=str(node_from_label))
-        #             dot.node(str(node_to_id), label=str(node_to_label))
-        #             dot.edge(str(node_from_id), str(node_to_id), label=str(edge_label))
+                    # Add nodes and edges to the graph
+                    dot.node(str(node_from_id), label=str(node_from_label))
+                    dot.node(str(node_to_id), label=str(node_to_label))
+                    dot.edge(str(node_from_id), str(node_to_id), label=str(edge_label))
 
-        # st.graphviz_chart(dot)
+        st.graphviz_chart(dot)
 
 
 # with st.container():

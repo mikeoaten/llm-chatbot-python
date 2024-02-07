@@ -12,6 +12,7 @@ This query is used to match nodes and relationships in the Neo4j database.
 This module is part of the Langchain Community project and is used for
 retrieval-based Question Answering (QA) tasks.
 """
+
 import streamlit as st
 from langchain.chains import RetrievalQA
 from langchain_community.vectorstores.neo4j_vector import Neo4jVector
@@ -51,10 +52,10 @@ WITH
     id(startNode(rels)), 
     CASE 
         WHEN 'Company' IN labels(startNode(rels)) THEN startNode(rels).company_name 
-        WHEN 'News' IN labels(startNode(rels)) THEN startNode(rels).headline_name
+        WHEN 'News' IN labels(startNode(rels)) THEN startNode(rels).title
         WHEN 'NewsCategory' IN labels(startNode(rels)) THEN startNode(rels).category
         WHEN 'Date' IN labels(startNode(rels)) THEN startNode(rels).date
-        WHEN 'Industry' IN labels(startNode(rels)) THEN startNode(rels).industry
+        WHEN 'Industry' IN labels(startNode(rels)) THEN COALESCE(startNode(rels).industry_name, startNode(rels).industry)
         WHEN 'Sector' IN labels(startNode(rels)) THEN startNode(rels).sector
         WHEN 'SubSector' IN labels(startNode(rels)) THEN startNode(rels).subsector
         WHEN 'SuperSector' IN labels(startNode(rels)) THEN startNode(rels).supersector
@@ -69,10 +70,10 @@ WITH
     id(endNode(rels)), 
     CASE 
         WHEN 'Company' IN labels(endNode(rels)) THEN endNode(rels).company_name 
-        WHEN 'News' IN labels(endNode(rels)) THEN endNode(rels).headline_name
+        WHEN 'News' IN labels(endNode(rels)) THEN endNode(rels).title
         WHEN 'NewsCategory' IN labels(endNode(rels)) THEN endNode(rels).category
         WHEN 'Date' IN labels(endNode(rels)) THEN endNode(rels).date
-        WHEN 'Industry' IN labels(endNode(rels)) THEN endNode(rels).industry
+        WHEN 'Industry' IN labels(endNode(rels)) THEN COALESCE(endNode(rels).industry_name, endNode(rels).industry)
         WHEN 'Sector' IN labels(endNode(rels)) THEN endNode(rels).sector
         WHEN 'SubSector' IN labels(endNode(rels)) THEN endNode(rels).subsector
         WHEN 'SuperSector' IN labels(endNode(rels)) THEN endNode(rels).supersector

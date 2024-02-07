@@ -131,13 +131,13 @@ def handle_submit(message):
 for this_message in st.session_state.messages:
     write_message(this_message["role"], this_message["content"], save=False)
 
-# Handle any user input
-if prompt := st.chat_input("Ask away...", key="chat_input_2"):
-    # Display user message in chat message container
-    write_message("user", prompt)
+# # Handle any user input
+# if prompt := st.chat_input("Ask away...", key="chat_input_2"):
+#     # Display user message in chat message container
+#     write_message("user", prompt)
 
-    # Generate a response
-    handle_submit(prompt)
+#     # Generate a response
+#     handle_submit(prompt)
 
 # Create a sidebar
 sidebar = st.sidebar

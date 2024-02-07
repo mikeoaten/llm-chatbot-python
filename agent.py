@@ -54,7 +54,6 @@ tools = [
         Provides information about company news using Vector Search.
         Always use this tool before using Cypher QA tool.
         """,
-        # func=kg_qa,
         func=run_retriever,
         return_direct=True,
     ),
@@ -73,7 +72,7 @@ tools = [
 
 memory = ConversationBufferWindowMemory(
     memory_key="chat_history",
-    k=5,
+    k=1,
     return_messages=True,
     Verbose=True,
 )

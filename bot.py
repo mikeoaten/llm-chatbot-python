@@ -30,7 +30,7 @@ set_debug(True)
 st.set_page_config(page_title="RNS Buddy", page_icon=":newspaper:")
 
 
-st.header("RNS buddy")
+# st.header("RNS buddy")
 
 
 def write_message(role, content, save=True):
@@ -52,7 +52,8 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "Ask me anything about listed UK companies rns news",
+            # "content": "Ask me anything about listed UK companies rns news",
+            "content": "What do you want to know about Lloyds Banking Group?",
         },
     ]
 
@@ -131,12 +132,72 @@ for this_message in st.session_state.messages:
     write_message(this_message["role"], this_message["content"], save=False)
 
 # Handle any user input
-if prompt := st.chat_input("Ask away..."):
+if prompt := st.chat_input("Ask away...", key="chat_input_2"):
     # Display user message in chat message container
     write_message("user", prompt)
 
     # Generate a response
     handle_submit(prompt)
+
+# Create a sidebar
+sidebar = st.sidebar
+
+# Add content to the sidebar
+sidebar.header(":orange[Tikos Chat Demo]", divider="grey")
+sidebar.markdown(
+    """
+    There are 100 Lloyds Bank articles from the
+    regulatory news service (rns) in this demo.
+    Click a sample question below or use the input
+    field in the chat window.\n\n\n\n\t
+    """
+)
+
+# Add a button to the sidebar
+button1 = sidebar.button("Did Lloyds pass the Bank of England Stress Test?")
+button2 = sidebar.button("Summarise Chirantan Barua share options")
+button3 = sidebar.button("List the prospectuses issued by Lloyds in 2023")
+
+sidebar.markdown(
+    """
+    \t\n\n\n\n:grey[© Copyright [Tikos Technologies Limited](http://www.tikos.tech) 2024. All rights reserved.]
+    """
+)
+
+# If the button is clicked, set a flag in the session state
+if button1:
+    st.session_state.bank_stress_test = True
+if button2:
+    st.session_state.barua_share_options = True
+if button3:
+    st.session_state.lloyds_prospectuses = True
+
+# Check if the flag is set in the session state
+if st.session_state.get("bank_stress_test", False):
+    prompt = "Did Lloyds pass the Bank of England Stress Test?"
+    write_message("user", prompt)
+    handle_submit(prompt)
+    st.session_state.bank_stress_test = False
+
+if st.session_state.get("lloyds_prospectuses", False):
+    prompt = "List the prospectuses issued by Lloyds in 2023"
+    write_message("user", prompt)
+    handle_submit(prompt)
+    st.session_state.lloyds_prospectuses = False
+
+if st.session_state.get("barua_share_options", False):
+    prompt = "Summarise Chirantan Barua share options"
+    write_message("user", prompt)
+    handle_submit(prompt)
+    st.session_state.barua_share_options = False
+
+else:
+    # Handle any user input
+    if prompt := st.chat_input("Ask away...", key="chat_input_1"):
+        # Display user message in chat message container
+        write_message("user", prompt)
+        # Generate a response
+        handle_submit(prompt)
 
 
 def on_reset_chat_button_click():

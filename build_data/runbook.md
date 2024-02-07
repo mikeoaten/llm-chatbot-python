@@ -3,13 +3,13 @@ apoc-extended.jar
 neosemantics.jar
 
 # delete_data_drop_neo4_constraints_indexes.py
-Clear out Neo4j db prior to loading, this will require a yes/no in the terminal to
-delete data as well as indexes/constraints
+Clear out Neo4j db prior to loading, this will require a yes/no in the
+terminal to delete data as well as indexes/constraints
 
 # extract_links
-Save the html page generated from the search function at https://www.londonstockexchange.com/news?tab=news-explorer
-In auxilaries
-name it news_download.html
+Save the html page generated from the search function
+at https://www.londonstockexchange.com/news?tab=news-explorer
+In auxilaries name it news_download.html
 
 
 
@@ -65,6 +65,20 @@ WARNING:root:Failed to retrieve data for newsId 16055955. Status code: 500
 Any with WARNING:root:Failed to retrieve data for newsId 16058994. Status code: 429 can be resubmitted
 
 
+
+# RUN APP
+---------
+
+locally at new terminal:
+- streamlit run bot.py
+
+deploy to streamlit cloud:
+- use strealit-dev branch
+- create a .dump file from local Neo4j
+- load to Neo4j Aura instance
+- add secrets to streamlit settings
+- available at https://rns-buddy.streamlit.app/
+
 # AOB
 -----
 
@@ -73,28 +87,3 @@ Any with WARNING:root:Failed to retrieve data for newsId 16058994. Status code: 
 # If there is only one sentence, return it as a single chunk
 if len(single_sentences_list) == 1:
     return [text]
-
-
-
-# pydantic.error_wrappers.ValidationError: 1 validation error for AIMessage
-# content
-# str type expected (type=type_error.str)
-
-Changing add_ai_message in langchain_core/chat_history.py
-to:
-
-def add_ai_message(self, message: Union[AIMessage, str]) -> None:
-    """Convenience method for adding an AI message string to the store.
-
-    Args:
-        message: The AI message to add.
-    """
-    if isinstance(message, AIMessage):
-        self.add_message(message)
-    else:
-        if type(message)==str:
-            self.add_message(AIMessage(content=message))
-        elif type(message)==dict:
-            import json
-            self.add_message(AIMessage(content=json.dumps(message)))
-

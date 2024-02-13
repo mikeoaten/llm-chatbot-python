@@ -1,0 +1,838 @@
+id: https://w3id.org/semanticarts/ontology/gistCore
+name: gistCore
+title: gistCore
+description: gistCore
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  linkml: https://w3id.org/linkml/
+  gistCore: https://w3id.org/None/
+default_prefix: gistCore
+default_range: string
+imports:
+- linkml:types
+- core
+
+slots:
+  accepts:
+    slot_uri: gist:accepts
+    multivalued: true
+  allows:
+    slot_uri: gist:allows
+    multivalued: true
+    range: Behavior
+  comesFromAgent:
+    is_a: hasParticipant
+    slot_uri: gist:comesFromAgent
+    multivalued: true
+  comesFromPlace:
+    slot_uri: gist:comesFromPlace
+    multivalued: true
+  conformsTo:
+    slot_uri: gist:conformsTo
+    multivalued: true
+  contributesTo:
+    slot_uri: gist:contributesTo
+    multivalued: true
+  directs:
+    slot_uri: gist:directs
+    multivalued: true
+  goesToAgent:
+    is_a: hasParticipant
+    slot_uri: gist:goesToAgent
+    multivalued: true
+  goesToPlace:
+    slot_uri: gist:goesToPlace
+    multivalued: true
+  hasAddress:
+    slot_uri: gist:hasAddress
+    multivalued: true
+    range: Address
+  hasAltitude:
+    slot_uri: gist:hasAltitude
+    multivalued: true
+    range: Extent
+  hasBaseUnit:
+    is_a: hasStandardUnit
+    slot_uri: gist:hasBaseUnit
+    multivalued: true
+    range: BaseUnit
+  hasBiologicalParent:
+    slot_uri: gist:hasBiologicalParent
+    multivalued: true
+    range: LivingThing
+  hasCommunicationAddress:
+    is_a: hasAddress
+    slot_uri: gist:hasCommunicationAddress
+    multivalued: true
+    range: Address
+  hasDenominator:
+    slot_uri: gist:hasDenominator
+    multivalued: true
+  hasDirectPart:
+    is_a: hasPart
+    slot_uri: gist:hasDirectPart
+    multivalued: true
+  hasDirectSuperCategory:
+    is_a: hasSuperCategory
+    slot_uri: gist:hasDirectSuperCategory
+    multivalued: true
+  hasFirstMember:
+    is_a: hasMember
+    slot_uri: gist:hasFirstMember
+    multivalued: true
+    range: OrderedMember
+  hasGiver:
+    is_a: hasParticipant
+    slot_uri: gist:hasGiver
+    multivalued: true
+  hasGoal:
+    slot_uri: gist:hasGoal
+    multivalued: true
+  hasIncumbent:
+    slot_uri: gist:hasIncumbent
+    multivalued: true
+  hasMagnitude:
+    slot_uri: gist:hasMagnitude
+    multivalued: true
+    range: Magnitude
+  hasMember:
+    slot_uri: gist:hasMember
+    multivalued: true
+  hasMultiplicand:
+    slot_uri: gist:hasMultiplicand
+    multivalued: true
+  hasMultiplier:
+    slot_uri: gist:hasMultiplier
+    multivalued: true
+  hasNavigationalParent:
+    slot_uri: gist:hasNavigationalParent
+    multivalued: true
+  hasNumerator:
+    slot_uri: gist:hasNumerator
+    multivalued: true
+  hasPart:
+    slot_uri: gist:hasPart
+    multivalued: true
+  hasParticipant:
+    slot_uri: gist:hasParticipant
+    multivalued: true
+  hasParty:
+    is_a: hasParticipant
+    slot_uri: gist:hasParty
+    multivalued: true
+  hasPhysicalLocation:
+    slot_uri: gist:hasPhysicalLocation
+    multivalued: true
+    range: Place
+  hasPrecision:
+    slot_uri: gist:hasPrecision
+    multivalued: true
+    range: Magnitude
+  hasRecipient:
+    is_a: hasParticipant
+    slot_uri: gist:hasRecipient
+    multivalued: true
+  hasStandardUnit:
+    slot_uri: gist:hasStandardUnit
+    multivalued: true
+    range: CoherentUnit
+  hasSuperCategory:
+    slot_uri: gist:hasSuperCategory
+    multivalued: true
+  hasUniqueNavigationalParent:
+    is_a: hasNavigationalParent
+    slot_uri: gist:hasUniqueNavigationalParent
+    multivalued: true
+  hasUniqueSuperCategory:
+    is_a: hasSuperCategory
+    slot_uri: gist:hasUniqueSuperCategory
+    multivalued: true
+  hasUnitOfMeasure:
+    slot_uri: gist:hasUnitOfMeasure
+    multivalued: true
+    range: UnitOfMeasure
+  hasViableRange:
+    slot_uri: gist:hasViableRange
+    multivalued: true
+  isAbout:
+    slot_uri: gist:isAbout
+    multivalued: true
+  isAffectedBy:
+    slot_uri: gist:isAffectedBy
+    multivalued: true
+  isAllocatedBy:
+    slot_uri: gist:isAllocatedBy
+    multivalued: true
+  isAspectOf:
+    slot_uri: gist:isAspectOf
+    multivalued: true
+  isBasedOn:
+    slot_uri: gist:isBasedOn
+    multivalued: true
+  isCategorizedBy:
+    slot_uri: gist:isCategorizedBy
+    multivalued: true
+  isCharacterizedAs:
+    slot_uri: gist:isCharacterizedAs
+    multivalued: true
+    range: Behavior
+  isConnectedTo:
+    slot_uri: gist:isConnectedTo
+    multivalued: true
+  isExpressedIn:
+    slot_uri: gist:isExpressedIn
+    multivalued: true
+  isGeographicallyContainedIn:
+    slot_uri: gist:isGeographicallyContainedIn
+    multivalued: true
+    range: Place
+  isGovernedBy:
+    slot_uri: gist:isGovernedBy
+    multivalued: true
+  isIdentifiedBy:
+    slot_uri: gist:isIdentifiedBy
+    multivalued: true
+    range: ID
+  isMadeUpOf:
+    slot_uri: gist:isMadeUpOf
+    multivalued: true
+    range: PhysicalSubstance
+  isRecognizedBy:
+    slot_uri: gist:isRecognizedBy
+    multivalued: true
+  isRecognizedDirectlyBy:
+    is_a: isRecognizedBy
+    slot_uri: gist:isRecognizedDirectlyBy
+    multivalued: true
+  isRenderedOn:
+    slot_uri: gist:isRenderedOn
+    multivalued: true
+  isTriggeredBy:
+    slot_uri: gist:isTriggeredBy
+    multivalued: true
+  isUnderJurisdictionOf:
+    slot_uri: gist:isUnderJurisdictionOf
+    multivalued: true
+  links:
+    slot_uri: gist:links
+    multivalued: true
+  linksFrom:
+    is_a: links
+    slot_uri: gist:linksFrom
+    multivalued: true
+  linksTo:
+    is_a: links
+    slot_uri: gist:linksTo
+    multivalued: true
+  occupiesGeographically:
+    slot_uri: gist:occupiesGeographically
+    multivalued: true
+    range: Place
+  occupiesGeographicallyPermanently:
+    is_a: occupiesGeographically
+    slot_uri: gist:occupiesGeographicallyPermanently
+    multivalued: true
+  occursIn:
+    slot_uri: gist:occursIn
+    multivalued: true
+  owns:
+    slot_uri: gist:owns
+    multivalued: true
+  precedes:
+    slot_uri: gist:precedes
+    multivalued: true
+  precedesDirectly:
+    is_a: precedes
+    slot_uri: gist:precedesDirectly
+    multivalued: true
+  prevents:
+    slot_uri: gist:prevents
+    multivalued: true
+    range: Behavior
+  produces:
+    slot_uri: gist:produces
+    multivalued: true
+  providesOrderFor:
+    slot_uri: gist:providesOrderFor
+    multivalued: true
+  requires:
+    slot_uri: gist:requires
+    multivalued: true
+  respondsTo:
+    slot_uri: gist:respondsTo
+    multivalued: true
+  actualEndDate:
+    is_a: actualEndDateTime
+    slot_uri: gist:actualEndDate
+    multivalued: true
+  actualEndDateTime:
+    is_a: endDateTime
+    slot_uri: gist:actualEndDateTime
+    multivalued: true
+  actualEndMicrosecond:
+    is_a: actualEndDateTime
+    slot_uri: gist:actualEndMicrosecond
+    multivalued: true
+  actualEndMinute:
+    is_a: actualEndDateTime
+    slot_uri: gist:actualEndMinute
+    multivalued: true
+  actualEndYear:
+    is_a: actualEndDateTime
+    slot_uri: gist:actualEndYear
+    multivalued: true
+  actualStartDate:
+    is_a: actualStartDateTime
+    slot_uri: gist:actualStartDate
+    multivalued: true
+  actualStartDateTime:
+    is_a: startDateTime
+    slot_uri: gist:actualStartDateTime
+    multivalued: true
+  actualStartMicrosecond:
+    is_a: actualStartDateTime
+    slot_uri: gist:actualStartMicrosecond
+    multivalued: true
+  actualStartMinute:
+    is_a: actualStartDateTime
+    slot_uri: gist:actualStartMinute
+    multivalued: true
+  actualStartYear:
+    is_a: actualStartDateTime
+    slot_uri: gist:actualStartYear
+    multivalued: true
+  atDateTime:
+    slot_uri: gist:atDateTime
+    multivalued: true
+  birthDate:
+    is_a: startDateTime
+    slot_uri: gist:birthDate
+    multivalued: true
+  containedText:
+    slot_uri: gist:containedText
+    multivalued: true
+  conversionFactor:
+    slot_uri: gist:conversionFactor
+    multivalued: true
+  conversionOffset:
+    slot_uri: gist:conversionOffset
+    multivalued: true
+  deathDate:
+    is_a: actualEndDate
+    slot_uri: gist:deathDate
+    multivalued: true
+  description:
+    slot_uri: gist:description
+    multivalued: true
+  encryptedText:
+    is_a: containedText
+    slot_uri: gist:encryptedText
+    multivalued: true
+  endDateTime:
+    is_a: atDateTime
+    slot_uri: gist:endDateTime
+    multivalued: true
+  isRecordedAt:
+    is_a: atDateTime
+    slot_uri: gist:isRecordedAt
+    multivalued: true
+  latitude:
+    slot_uri: gist:latitude
+    multivalued: true
+  longitude:
+    slot_uri: gist:longitude
+    multivalued: true
+  name:
+    slot_uri: gist:name
+    multivalued: true
+  numericValue:
+    slot_uri: gist:numericValue
+    multivalued: true
+  plannedEndDate:
+    is_a: plannedEndDateTime
+    slot_uri: gist:plannedEndDate
+    multivalued: true
+  plannedEndDateTime:
+    is_a: endDateTime
+    slot_uri: gist:plannedEndDateTime
+    multivalued: true
+  plannedEndMinute:
+    is_a: plannedEndDateTime
+    slot_uri: gist:plannedEndMinute
+    multivalued: true
+  plannedEndYear:
+    is_a: plannedEndDateTime
+    slot_uri: gist:plannedEndYear
+    multivalued: true
+  plannedStartDate:
+    is_a: plannedStartDateTime
+    slot_uri: gist:plannedStartDate
+    multivalued: true
+  plannedStartDateTime:
+    is_a: startDateTime
+    slot_uri: gist:plannedStartDateTime
+    multivalued: true
+  plannedStartMinute:
+    is_a: plannedStartDateTime
+    slot_uri: gist:plannedStartMinute
+    multivalued: true
+  plannedStartYear:
+    is_a: plannedStartDateTime
+    slot_uri: gist:plannedStartYear
+    multivalued: true
+  sequence:
+    slot_uri: gist:sequence
+    multivalued: true
+  startDateTime:
+    is_a: atDateTime
+    slot_uri: gist:startDateTime
+    multivalued: true
+  tagText:
+    slot_uri: gist:tagText
+    multivalued: true
+  uniqueText:
+    slot_uri: gist:uniqueText
+    multivalued: true
+  unitSymbol:
+    slot_uri: gist:unitSymbol
+    multivalued: true
+  unitSymbolHtml:
+    slot_uri: gist:unitSymbolHtml
+    multivalued: true
+  unitSymbolUnicode:
+    slot_uri: gist:unitSymbolUnicode
+    multivalued: true
+  definition:
+    slot_uri: skos:definition
+    multivalued: true
+  example:
+    slot_uri: skos:example
+    multivalued: true
+  prefLabel:
+    slot_uri: skos:prefLabel
+    multivalued: true
+  scopeNote:
+    slot_uri: skos:scopeNote
+    multivalued: true
+  declare:
+    slot_uri: sh:declare
+    multivalued: true
+  namespace:
+    slot_uri: sh:namespace
+    multivalued: true
+  prefix:
+    slot_uri: sh:prefix
+    multivalued: true
+  domainIncludes:
+    is_a: scopeNote
+    slot_uri: gist:domainIncludes
+    multivalued: true
+  isSupersededBy:
+    slot_uri: gist:isSupersededBy
+    multivalued: true
+  license:
+    slot_uri: gist:license
+    multivalued: true
+  rangeIncludes:
+    is_a: scopeNote
+    slot_uri: gist:rangeIncludes
+    multivalued: true
+classes:
+  PrefixDeclaration:
+    tree_root: true
+    class_uri: sh:PrefixDeclaration
+  Account:
+    class_uri: gist:Account
+  Actuator:
+    is_a: Equipment
+    class_uri: gist:Actuator
+  Address:
+    is_a: Content
+    class_uri: gist:Address
+  Agreement:
+    class_uri: gist:Agreement
+  Area:
+    class_uri: gist:Area
+  AreaUnit:
+    class_uri: gist:AreaUnit
+  Artifact:
+    slot_usage:
+      hasGoal:
+        required: true
+    class_uri: gist:Artifact
+  Aspect:
+    is_a: Category
+    class_uri: gist:Aspect
+  Balance:
+    class_uri: gist:Balance
+  BaseUnit:
+    is_a: SimpleUnitOfMeasure
+    class_uri: gist:BaseUnit
+  Behavior:
+    is_a: Category
+    class_uri: gist:Behavior
+  Building:
+    is_a: Artifact
+    mixins:
+    - Landmark
+    class_uri: gist:Building
+  BundledCatalogItem:
+    class_uri: gist:BundledCatalogItem
+  CatalogItem:
+    is_a: Specification
+    class_uri: gist:CatalogItem
+  Category:
+    slots:
+    - isGovernedBy
+    slot_usage:
+      isAllocatedBy:
+        required: true
+    class_uri: gist:Category
+  CoherentProductUnit:
+    class_uri: gist:CoherentProductUnit
+  CoherentRatioUnit:
+    class_uri: gist:CoherentRatioUnit
+  CoherentUnit:
+    class_uri: gist:CoherentUnit
+  Collection:
+    class_uri: gist:Collection
+  Commitment:
+    class_uri: gist:Commitment
+  Component:
+    class_uri: gist:Component
+  ContemporaryEvent:
+    class_uri: gist:ContemporaryEvent
+  Content:
+    is_a: Artifact
+    slots:
+    - isAbout
+    - isGovernedBy
+    class_uri: gist:Content
+  ContentExpression:
+    is_a: Content
+    slot_usage:
+      isCategorizedBy:
+        required: true
+      isExpressedIn:
+        required: true
+    class_uri: gist:ContentExpression
+  ContingentEvent:
+    class_uri: gist:ContingentEvent
+  ContingentObligation:
+    class_uri: gist:ContingentObligation
+  Contract:
+    class_uri: gist:Contract
+  ContractTerm:
+    is_a: Specification
+    class_uri: gist:ContractTerm
+  ControlledVocabulary:
+    class_uri: gist:ControlledVocabulary
+  Controller:
+    class_uri: gist:Controller
+  ControllerType:
+    is_a: Category
+    class_uri: gist:ControllerType
+  Count:
+    class_uri: gist:Count
+  CountingUnit:
+    class_uri: gist:CountingUnit
+  CountryGeoRegion:
+    class_uri: gist:CountryGeoRegion
+  CountryGovernment:
+    class_uri: gist:CountryGovernment
+  CurrencyPerDurationUnit:
+    class_uri: gist:CurrencyPerDurationUnit
+  CurrencyUnit:
+    class_uri: gist:CurrencyUnit
+  DataSizeUnit:
+    class_uri: gist:DataSizeUnit
+  DegreeOfCommitment:
+    is_a: Category
+    class_uri: gist:DegreeOfCommitment
+  DistanceUnit:
+    class_uri: gist:DistanceUnit
+  Duration:
+    class_uri: gist:Duration
+  DurationUnit:
+    class_uri: gist:DurationUnit
+  ElectricCurrent:
+    class_uri: gist:ElectricCurrent
+  ElectricalCurrentUnit:
+    class_uri: gist:ElectricalCurrentUnit
+  ElectronicMessageAddress:
+    is_a: Address
+    class_uri: gist:ElectronicMessageAddress
+  EmailAddress:
+    is_a: ElectronicMessageAddress
+    class_uri: gist:EmailAddress
+  Equipment:
+    class_uri: gist:Equipment
+  EquipmentType:
+    is_a: Category
+    class_uri: gist:EquipmentType
+  Event:
+    slots:
+    - isCharacterizedAs
+    class_uri: gist:Event
+  Extent:
+    class_uri: gist:Extent
+  FormattedContent:
+    class_uri: gist:FormattedContent
+  Function:
+    is_a: Intention
+    class_uri: gist:Function
+  GeneralMediaType:
+    is_a: Category
+    class_uri: gist:GeneralMediaType
+  GeoPoint:
+    is_a: Place
+    slots:
+    - hasAltitude
+    - latitude
+    - longitude
+    class_uri: gist:GeoPoint
+  GeoRegion:
+    slots:
+    - isGovernedBy
+    class_uri: gist:GeoRegion
+  GeoRoute:
+    class_uri: gist:GeoRoute
+  GeoSegment:
+    is_a: Place
+    class_uri: gist:GeoSegment
+  GeoVolume:
+    is_a: Place
+    class_uri: gist:GeoVolume
+  Goal:
+    is_a: Intention
+    class_uri: gist:Goal
+  GovernedGeoRegion:
+    class_uri: gist:GovernedGeoRegion
+  GovernmentOrganization:
+    is_a: Organization
+    class_uri: gist:GovernmentOrganization
+  HistoricalEvent:
+    class_uri: gist:HistoricalEvent
+  ID:
+    class_uri: gist:ID
+  InformationQuantity:
+    class_uri: gist:InformationQuantity
+  IntellectualProperty:
+    is_a: Artifact
+    slots:
+    - isGovernedBy
+    class_uri: gist:IntellectualProperty
+  Intention:
+    slots:
+    - allows
+    - isGovernedBy
+    - prevents
+    class_uri: gist:Intention
+  IntergovernmentalOrganization:
+    class_uri: gist:IntergovernmentalOrganization
+  Landmark:
+    is_a: Place
+    class_uri: gist:Landmark
+  Language:
+    class_uri: gist:Language
+  LivingThing:
+    slots:
+    - hasBiologicalParent
+    class_uri: gist:LivingThing
+  LuminousIntensity:
+    class_uri: gist:LuminousIntensity
+  LuminousIntensityUnit:
+    class_uri: gist:LuminousIntensityUnit
+  Magnitude:
+    slots:
+    - hasUnitOfMeasure
+    - numericValue
+    class_uri: gist:Magnitude
+  Mass:
+    class_uri: gist:Mass
+  MassUnit:
+    class_uri: gist:MassUnit
+  MediaType:
+    is_a: Category
+    class_uri: gist:MediaType
+  Medium:
+    is_a: Category
+    class_uri: gist:Medium
+  Message:
+    class_uri: gist:Message
+  MessageDefinition:
+    is_a: SchemaMetaData
+    class_uri: gist:MessageDefinition
+  MolarQuantity:
+    class_uri: gist:MolarQuantity
+  MoleUnit:
+    class_uri: gist:MoleUnit
+  Monetary:
+    class_uri: gist:Monetary
+  MonetaryPerDuration:
+    class_uri: gist:MonetaryPerDuration
+  Network:
+    class_uri: gist:Network
+  NetworkLink:
+    class_uri: gist:NetworkLink
+  NetworkNode:
+    slot_usage:
+      hasMember:
+        required: true
+    class_uri: gist:NetworkNode
+  Obligation:
+    class_uri: gist:Obligation
+  Offer:
+    class_uri: gist:Offer
+  OrderedCollection:
+    slots:
+    - hasFirstMember
+    class_uri: gist:OrderedCollection
+  OrderedMember:
+    slots:
+    - providesOrderFor
+    class_uri: gist:OrderedMember
+  Organization:
+    slots:
+    - hasCommunicationAddress
+    - isGovernedBy
+    - owns
+    class_uri: gist:Organization
+  Permission:
+    class_uri: gist:Permission
+  Person:
+    slots:
+    - hasCommunicationAddress
+    - isGovernedBy
+    - owns
+    class_uri: gist:Person
+  PhenomenaType:
+    is_a: Category
+    class_uri: gist:PhenomenaType
+  PhysicalActionType:
+    is_a: Category
+    class_uri: gist:PhysicalActionType
+  PhysicalEvent:
+    class_uri: gist:PhysicalEvent
+  PhysicalIdentifiableItem:
+    slots:
+    - isGovernedBy
+    - occupiesGeographically
+    slot_usage:
+      hasMagnitude:
+        required: true
+      isMadeUpOf:
+        required: true
+    class_uri: gist:PhysicalIdentifiableItem
+  PhysicalSubstance:
+    slots:
+    - isGovernedBy
+    - occupiesGeographically
+    slot_usage:
+      hasMagnitude:
+        required: true
+    class_uri: gist:PhysicalSubstance
+  Place:
+    slots:
+    - isGeographicallyContainedIn
+    class_uri: gist:Place
+  PostalAddress:
+    is_a: Address
+    class_uri: gist:PostalAddress
+  ProductCategory:
+    is_a: Category
+    class_uri: gist:ProductCategory
+  ProductMagnitude:
+    class_uri: gist:ProductMagnitude
+  ProductSpecification:
+    class_uri: gist:ProductSpecification
+  ProductUnit:
+    class_uri: gist:ProductUnit
+  Project:
+    class_uri: gist:Project
+  RatioMagnitude:
+    class_uri: gist:RatioMagnitude
+  RatioUnit:
+    class_uri: gist:RatioUnit
+  ReferenceValue:
+    is_a: Magnitude
+    class_uri: gist:ReferenceValue
+  RenderedContent:
+    class_uri: gist:RenderedContent
+  Requirement:
+    is_a: Intention
+    class_uri: gist:Requirement
+  Restriction:
+    class_uri: gist:Restriction
+  ScheduledEvent:
+    class_uri: gist:ScheduledEvent
+  ScheduledTask:
+    class_uri: gist:ScheduledTask
+  SchemaMetaData:
+    class_uri: gist:SchemaMetaData
+  Sensor:
+    is_a: Equipment
+    class_uri: gist:Sensor
+  ServiceSpecification:
+    class_uri: gist:ServiceSpecification
+  SimpleUnitOfMeasure:
+    class_uri: gist:SimpleUnitOfMeasure
+  Specification:
+    is_a: Requirement
+    class_uri: gist:Specification
+  StreetAddress:
+    is_a: PostalAddress
+    class_uri: gist:StreetAddress
+  SubCountryGovernment:
+    class_uri: gist:SubCountryGovernment
+  System:
+    class_uri: gist:System
+  Tag:
+    class_uri: gist:Tag
+  Task:
+    class_uri: gist:Task
+  TaskTemplate:
+    class_uri: gist:TaskTemplate
+  Taxonomy:
+    class_uri: gist:Taxonomy
+  TelephoneNumber:
+    is_a: Address
+    class_uri: gist:TelephoneNumber
+  Temperature:
+    class_uri: gist:Temperature
+  TemperatureUnit:
+    class_uri: gist:TemperatureUnit
+  Template:
+    class_uri: gist:Template
+  TemporalRelation:
+    slot_usage:
+      hasParticipant:
+        multivalued: true
+      endDateTime:
+        multivalued: false
+        required: true
+      startDateTime:
+        multivalued: false
+        required: true
+    class_uri: gist:TemporalRelation
+  Text:
+    class_uri: gist:Text
+  TimeInterval:
+    class_uri: gist:TimeInterval
+  Transaction:
+    is_a: Event
+    class_uri: gist:Transaction
+  UnitOfMeasure:
+    slots:
+    - hasBaseUnit
+    - hasStandardUnit
+    - conversionFactor
+    - conversionOffset
+    - unitSymbol
+    - unitSymbolHtml
+    - unitSymbolUnicode
+    class_uri: gist:UnitOfMeasure
+  Volume:
+    class_uri: gist:Volume
+  VolumeUnit:
+    class_uri: gist:VolumeUnit
